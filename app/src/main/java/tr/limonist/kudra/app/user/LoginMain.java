@@ -77,6 +77,9 @@ public class LoginMain extends Activity {
         stub.setLayoutResource(R.layout.b_top_img_txt_emp);
         stub.inflate();
 
+
+
+
         tv_baslik = (MyTextView) findViewById(R.id.tv_baslik);
         tv_baslik.setText(getString(R.string.s_log_in));
         tv_baslik.setTextColor(getResources().getColor(R.color.a_white11));
@@ -124,6 +127,38 @@ public class LoginMain extends Activity {
         });
 
         et_user = (EditText) findViewById(R.id.et_user);
+        et_pass = (EditText) findViewById(R.id.et_pass);
+        et_pass.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                        checkMail = false;
+                        checkPass = false;
+                        checkValid = false;
+
+                        logEmail = et_user.getText().toString();
+                        LogPass = et_pass.getText().toString();
+
+                        if (APP.isValidEmail(logEmail)) {
+                            if (LogPass.length() > 0) {
+                                pd.show();
+                                new Connection().execute("");
+                            } else {
+                                APP.show_status(m_activity, 2,
+                                        getResources().getString(R.string.s_please_enter_a_password));
+                            }
+                        } else {
+                            APP.show_status(m_activity, 2,
+                                    getResources().getString(R.string.s_please_enter_a_valid_email_address));
+                        }
+
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
+
 
         tv_forget = (MyTextView) findViewById(R.id.tv_forget);
         tv_forget.setOnClickListener(new OnClickListener() {

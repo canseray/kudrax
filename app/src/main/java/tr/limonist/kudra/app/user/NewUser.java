@@ -38,6 +38,7 @@ public class NewUser extends Activity {
     EditText et_mail, et_pass, et_name, et_surname, et_phone;
     String s_mail, s_pass, s_name, s_surname, s_phone;
     private TransparentProgressDialog pd;
+    private boolean is_check;
     private Activity m_activity;
     private String part1;
     private String respPart1,respPart2,respPart3;
@@ -83,6 +84,8 @@ public class NewUser extends Activity {
             @Override
             public void onClick(View arg0) {
 
+                //open aggrement dialog sign check box
+
                 s_mail = et_mail.getText().toString();
                 s_pass = et_pass.getText().toString();
                 s_name = et_name.getText().toString();
@@ -94,8 +97,13 @@ public class NewUser extends Activity {
                         if (APP.isValidEmail(s_mail)) {
                             if (s_phone.length() > 0) {
                                 if (s_pass.length() > 5 && s_pass.length() < 21) {
+                                    if (is_check) {
                                         pd.show();
                                         new Connection().execute("");
+                                    } else {
+                                        APP.show_status(m_activity, 2,
+                                                getResources().getString(R.string.s_please_read_and_accept_user_aggrement));
+                                    }
                                 } else {
                                     APP.show_status(m_activity, 2,
                                             getResources().getString(R.string.s_please_enter_a_password));

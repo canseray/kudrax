@@ -52,6 +52,7 @@
     <string name="s_total">Toplam</string>
     <string name="s_order_status">Sipariş Durumu</string>
     <string name="s_please_read_and_accept_user_aggrement">Lütfen kullanıcı sözleşmesini okuyup kabul edin.</string>
+
     <string name="s_search">Arama</string>
     <string name="s_use">Kullan</string>
     <string name="s_send_request">Talebi Gönder</string>
@@ -102,11 +103,12 @@
     <string name="s_log_in_exp">Lütfen e-posta adresinizi ve şifrenizi kullanarak giriş yapın</string>
     <string name="s_pass_recovery_exp">Eğer Şifrenizi hatırlamıyorsanız, şifrenizi kurtarmak için geçerli bir e-posta adresi girip, şifrenizi kurtarma talebinde bulunabilirsiniz.</string>
     <string name="s_new_user_desc">Lütfen boş alanları doldurarak üyelik işlemlerine devam edin.</string>
-    <string name="s_read_and_accept_user_contract">Sözleşmeyi okudum ve kabul ediyorum.</string>
+    <string name="s_read_and_accept_user_contract">Kullanıcı Sözleşmesini okudum ve kabul ediyorum</string>
     <string name="s_old_pass">Eski Şifre</string>
     <string name="s_new_pass">Yeni Şifre</string>
     <string name="s_old_password_wrong">Eski şifreniz hatalı.</string>
     <string name="s_profile_photo">Profil Görseli</string>
+    <string name="s_done_process">İŞLEMİ TAMAMLA</string>
     <string name="s_profile_photo_desc">Yeni profil görseliniz eklenecek, onaylıyor musunuz?</string>
     <string name="s_add">Ekle</string>
     <string name="s_no_data">. . .</string>

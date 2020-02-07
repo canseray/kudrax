@@ -9,6 +9,7 @@
     <string name="s_read_and_accept_user_contract">I have read and accept the contract</string>
     <string name="s_old_pass">Old Password</string>
     <string name="s_new_pass">New Password</string>
+    <string name="s_done_process">DONE PROCESS</string>
     <string name="s_user_information">USER INFORMATION</string>
     <string name="s_old_password_wrong">Old password is wrong.</string>
     <string name="s_profile_photo">Profile Image</string>
