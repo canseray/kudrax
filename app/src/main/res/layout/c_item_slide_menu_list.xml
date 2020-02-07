@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="@dimen/dp5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp70"
+        android:gravity="center"
+        android:padding="@dimen/dp10" >
+
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/img"
+            android:layout_width="@dimen/dp30"
+            android:layout_height="@dimen/dp30"
+            android:layout_weight="0"
+            app:actualImageScaleType="fitCenter"
+            app:placeholderImage="@mipmap/place_holder"
+            app:placeholderImageScaleType="fitCenter" />
+
+        <tr.limonist.extras.MyTextView
+            android:fontFamily="@font/comfortaa"
+            android:id="@+id/title"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_weight="1"
+            android:gravity="center_vertical|left"
+            android:textColor="@drawable/text_black"
+            android:textSize="@dimen/dp18" />
+
+        <tr.limonist.extras.MyTextView
+            android:fontFamily="@font/comfortaa"
+            android:id="@+id/badge"
+            android:layout_width="@dimen/dp30"
+            android:layout_height="@dimen/dp30"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_weight="0"
+            android:background="@drawable/but_circle_main1"
+            android:gravity="center"
+            android:padding="@dimen/dp3"
+            android:textColor="@color/a_white11"
+            android:textSize="@dimen/dp12"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</LinearLayout>

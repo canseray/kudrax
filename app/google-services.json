@@ -1,0 +1,533 @@
+{
+  "project_info": {
+    "project_number": "132461755642",
+    "firebase_url": "https://limonist.firebaseio.com",
+    "project_id": "limonist",
+    "storage_bucket": "limonist.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132461755642:android:f463b4830b2454c7",
+        "android_client_info": {
+          "package_name": "com.limonist.stklife"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu-SOdUJjsQxxn3NE8ws_J12m6qOYgLow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132461755642:android:cd4aa391f2d703bc",
+        "android_client_info": {
+          "package_name": "cy.generalandprovisionalproperty.ingoesproperties"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu-SOdUJjsQxxn3NE8ws_J12m6qOYgLow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132461755642:android:9bed35bd796a4d8d",
+        "android_client_info": {
+          "package_name": "cy.limonist.alfam_mobil"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu-SOdUJjsQxxn3NE8ws_J12m6qOYgLow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132461755642:android:09f75da70933d5a2",
+        "android_client_info": {
+          "package_name": "cy.limonist.esk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu-SOdUJjsQxxn3NE8ws_J12m6qOYgLow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132461755642:android:2fd57d0de9cb5f9c",
+        "android_client_info": {
+          "package_name": "cy.limonist.goysepete"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu-SOdUJjsQxxn3NE8ws_J12m6qOYgLow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132461755642:android:b56f159a5c94b735",
+        "android_client_info": {
+          "package_name": "cy.limonist.goysepete_personel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu-SOdUJjsQxxn3NE8ws_J12m6qOYgLow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132461755642:android:2cda486bee083246",
+        "android_client_info": {
+          "package_name": "cy.limonist.kteb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu-SOdUJjsQxxn3NE8ws_J12m6qOYgLow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132461755642:android:c948d2b170f58d51",
+        "android_client_info": {
+          "package_name": "tr.limonist.akmansoymarket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu-SOdUJjsQxxn3NE8ws_J12m6qOYgLow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132461755642:android:add02c362d7d8e0f",
+        "android_client_info": {
+          "package_name": "tr.limonist.kudra"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu-SOdUJjsQxxn3NE8ws_J12m6qOYgLow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132461755642:android:0ca1c5121b35aea9",
+        "android_client_info": {
+          "package_name": "tr.limonist.bilgepuan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu-SOdUJjsQxxn3NE8ws_J12m6qOYgLow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132461755642:android:ab87ecef17b6e22f",
+        "android_client_info": {
+          "package_name": "tr.limonist.clubpera"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu-SOdUJjsQxxn3NE8ws_J12m6qOYgLow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132461755642:android:73a357fb0b1088f1",
+        "android_client_info": {
+          "package_name": "tr.limonist.gaziantep.arabanlilarkulturveyardim"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu-SOdUJjsQxxn3NE8ws_J12m6qOYgLow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132461755642:android:c7f51f152aa4c71c",
+        "android_client_info": {
+          "package_name": "tr.limonist.istanbul.enbiosis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu-SOdUJjsQxxn3NE8ws_J12m6qOYgLow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132461755642:android:871ab128156399e7",
+        "android_client_info": {
+          "package_name": "tr.limonist.kahramanmaras.akmansoykurye"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu-SOdUJjsQxxn3NE8ws_J12m6qOYgLow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132461755642:android:52fc60b366de1f9a",
+        "android_client_info": {
+          "package_name": "tr.limonist.kahramanmaras.akmansoytoplayici"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu-SOdUJjsQxxn3NE8ws_J12m6qOYgLow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132461755642:android:6f33123e644e1a52",
+        "android_client_info": {
+          "package_name": "tr.limonist.sasacadde"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu-SOdUJjsQxxn3NE8ws_J12m6qOYgLow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132461755642:android:9f744332211bfa00",
+        "android_client_info": {
+          "package_name": "tr.limonist.sasacadde_corporate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu-SOdUJjsQxxn3NE8ws_J12m6qOYgLow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132461755642:android:c5032415d9ccbfd3",
+        "android_client_info": {
+          "package_name": "tr.limonist.trekinturkey"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu-SOdUJjsQxxn3NE8ws_J12m6qOYgLow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132461755642-acsjolrkptgat2vmfkukt1qbk4c8i22b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

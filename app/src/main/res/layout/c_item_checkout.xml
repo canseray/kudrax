@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/a_white11"
+    android:layout_margin="@dimen/dp5"
+    android:padding="@dimen/dp5"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:duplicateParentState="true"
+        android:background="@drawable/back_rnd_str_black3_tra"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp40"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:duplicateParentState="true"
+            android:id="@+id/lay_main"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:padding="@dimen/dp5"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <com.github.lguipeng.library.animcheckbox.AnimCheckBox
+                android:id="@+id/scb"
+                android:layout_width="@dimen/dp25"
+                android:layout_height="@dimen/dp25"
+                app:checked="false"
+                app:circle_color="@color/a_main21"
+                app:stroke_color="@color/a_black11"
+                app:stroke_width="@dimen/dp2" />
+
+        <tr.limonist.extras.MyTextView
+            android:layout_marginLeft="@dimen/dp10"
+            android:id="@+id/title"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center_vertical|left"
+            android:textColor="@drawable/text_black"
+            android:textSize="@dimen/dp18" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

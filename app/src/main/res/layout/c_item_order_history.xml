@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/a_white11"
+        android:orientation="vertical"
+        app:cardCornerRadius="@dimen/dp10"
+        app:cardElevation="@dimen/dp5"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="@dimen/dp5"
+                android:layout_height="fill_parent"
+                android:layout_weight="0"
+                android:background="@color/a_main21" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/dp10">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/dp35"
+                    android:orientation="horizontal">
+
+                    <tr.limonist.extras.MyTextView
+                        android:id="@+id/date"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/comfortaa"
+                        android:gravity="center"
+                        android:textColor="@drawable/text_black2"
+                        android:textSize="@dimen/dp15" />
+
+                    <tr.limonist.extras.MyTextView
+                        android:id="@+id/number"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/comfortaa"
+                        android:gravity="center"
+                        android:textColor="@drawable/text_black"
+                        android:textSize="@dimen/dp18"
+                        android:textStyle="bold" />
+
+                    <tr.limonist.extras.MyTextView
+                        android:id="@+id/total"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/comfortaa"
+                        android:gravity="center"
+                        android:textColor="@drawable/text_black"
+                        android:textSize="@dimen/dp18"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/dp20"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <tr.limonist.extras.MyTextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/comfortaa"
+                        android:gravity="center_vertical|left"
+                        android:text="@string/s_order_status"
+                        android:textColor="@drawable/text_black2"
+                        android:textSize="@dimen/dp15"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/dp30"
+                    android:layout_marginTop="@dimen/dp8"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <tr.limonist.extras.MyTextView
+                        android:id="@+id/status"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/comfortaa"
+                        android:gravity="center_vertical|left"
+                        android:textColor="@drawable/text_black"
+                        android:textSize="@dimen/dp15" />
+
+                    <ImageView
+                        android:id="@+id/img_delivery"
+                        android:layout_width="@dimen/dp30"
+                        android:layout_height="@dimen/dp30"
+                        android:layout_marginLeft="@dimen/dp5"
+                        android:layout_marginRight="@dimen/dp5"
+                        android:layout_weight="0"
+                        android:src="@drawable/b_ic_delivery"
+                        android:visibility="gone" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.github.mmin18.widget.RealtimeBlurView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:realtimeBlurRadius="20dp"
+        app:realtimeOverlayColor="#8FFF" />
+
+    <LinearLayout
+        android:weightSum="100"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center_horizontal|bottom"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="90"
+        android:gravity="center_horizontal|bottom"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:paddingTop="@dimen/dp15"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/back_rnd15_str_black2_white_only_top"
+            android:gravity="bottom"
+            tools:ignore="WebViewLayout">
+
+            <WebView
+                android:id="@+id/webView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dp10"
+                android:layout_weight="0" />
+
+            <tr.limonist.extras.MyTextView
+                android:layout_margin="@dimen/dp10"
+                android:id="@+id/button"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dp40"
+                android:layout_weight="0"
+                android:background="@drawable/but_oval_main"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dp25"
+                android:paddingRight="@dimen/dp25"
+                android:textColor="@drawable/text_white"
+                android:textSize="@dimen/dp15" />
+        </LinearLayout>
+
+    </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

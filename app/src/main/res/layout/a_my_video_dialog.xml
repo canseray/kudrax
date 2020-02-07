@@ -1,0 +1,21 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/a_black11"
+    android:paddingTop="@dimen/dp25"
+    android:orientation="vertical">
+
+    <VideoView
+        android:layout_centerInParent="true"
+        android:id="@+id/video"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:padding="@dimen/dp5"
+        android:id="@+id/img_close"
+        android:layout_width="@dimen/dp50"
+        android:layout_height="@dimen/dp50" />
+
+</RelativeLayout>

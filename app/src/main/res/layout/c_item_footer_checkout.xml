@@ -1,0 +1,136 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/dp10"
+    android:paddingBottom="@dimen/dp10">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/a_white11"
+        android:duplicateParentState="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/dp5">
+
+        <tr.limonist.extras.MyTextView
+            android:fontFamily="@font/comfortaa"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dp30"
+            android:gravity="center_vertical|left"
+            android:text="@string/s_payment_info"
+            android:textColor="@drawable/text_black"
+            android:textSize="@dimen/dp18" />
+
+        <LinearLayout
+            android:paddingTop="@dimen/dp10"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <tr.limonist.extras.MyTextView
+                android:fontFamily="@font/comfortaa"
+                android:padding="@dimen/dp5"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/s_please_enter_card_number"
+                android:textColor="@color/a_black12"
+                android:textSize="@dimen/dp15" />
+
+            <com.devmarvel.creditcardentry.library.CreditCardForm
+                android:id="@+id/credit_card_form"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dp50"
+                android:background="@drawable/back_rnd_str_black3_tra"
+                android:focusable="true"
+                android:gravity="center"
+                android:inputType="number"
+                android:padding="@dimen/dp3"
+                app:helper_text_color="@color/a_black12"
+                app:include_helper="false"
+                app:include_zip="false" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dp50"
+                android:layout_marginTop="@dimen/dp10"
+                android:background="@drawable/back_rnd_str_black3_tra"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp10">
+
+                <com.github.lguipeng.library.animcheckbox.AnimCheckBox
+                    android:id="@+id/scb"
+                    android:layout_width="@dimen/dp30"
+                    android:layout_height="@dimen/dp30"
+                    app:checked="false"
+                    app:circle_color="@color/a_main21"
+                    app:stroke_color="@color/a_black11"
+                    app:stroke_width="@dimen/dp2" />
+
+                <tr.limonist.extras.MyTextView
+                    android:fontFamily="@font/comfortaa"
+                    android:id="@+id/tv_read"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:gravity="center_vertical|left"
+                    android:text="@string/s_read_and_accept_sales_contract"
+                    android:textColor="@drawable/text_black"
+                    android:textSize="@dimen/dp18" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dp40"
+                android:layout_marginTop="@dimen/dp10"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <ImageView
+                    android:layout_margin="@dimen/dp2"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="15"
+                    android:src="@drawable/sll" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="80"
+                    android:gravity="center|left"
+                    android:orientation="vertical"
+                    android:weightSum="100">
+
+                    <tr.limonist.extras.MyTextView
+                        android:fontFamily="@font/comfortaa"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="40"
+                        android:gravity="center|left|bottom"
+                        android:text="@string/s_secure_shop"
+                        android:textColor="@color/a_black11"
+                        android:textSize="@dimen/dp12" />
+
+                    <tr.limonist.extras.MyTextView
+                        android:fontFamily="@font/comfortaa"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="40"
+                        android:gravity="center|left|top"
+                        android:text="@string/s_with_ssl_certificate"
+                        android:textColor="@color/a_black12"
+                        android:textSize="@dimen/dp10" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

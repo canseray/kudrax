@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "52275626295",
+    "firebase_url": "https://malatya-pazari.firebaseio.com",
+    "project_id": "malatya-pazari",
+    "storage_bucket": "malatya-pazari.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:52275626295:android:0be53158c4b372a8",
+        "android_client_info": {
+          "package_name": "tr.limonist.istanbul.malatyapazari"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "52275626295-2fpv93d9cqpcnthe5iotbcrd7c8raklk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVaPrumBJPgKo-SisA7Cw_Aimrr3mmIjo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

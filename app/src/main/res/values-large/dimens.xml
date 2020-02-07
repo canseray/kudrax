@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<dimen name="dp_half">0.75dp</dimen>
+    <dimen name="dp1">1.5dp</dimen>
+    <dimen name="dp2">3dp</dimen>
+    <dimen name="dp3">4.5dp</dimen>
+    <dimen name="dp4">6dp</dimen>
+    <dimen name="dp5">7.5dp</dimen>
+    <dimen name="dp6">9dp</dimen>
+    <dimen name="dp8">12dp</dimen>
+    <dimen name="dp10">15dp</dimen>
+    <dimen name="dp12">18dp</dimen>
+    <dimen name="dp15">22.5dp</dimen>
+    <dimen name="dp18">27dp</dimen>
+    <dimen name="dp20">30dp</dimen>
+    <dimen name="dp25">37.5dp</dimen>
+    <dimen name="dp30">45dp</dimen>
+    <dimen name="dp35">52.5dp</dimen>
+    <dimen name="dp40">60dp</dimen>
+    <dimen name="dp50">75dp</dimen>
+    <dimen name="dp60">90dp</dimen>
+    <dimen name="dp70">105dp</dimen>
+    <dimen name="dp80">120dp</dimen>
+    <dimen name="dp90">135dp</dimen>
+    <dimen name="dp100">150dp</dimen>
+    <dimen name="dp110">165dp</dimen>
+    <dimen name="dp120">180dp</dimen>
+    <dimen name="dp150">225dp</dimen>
+    <dimen name="dp175">262dp</dimen>
+    <dimen name="dp185">278dp</dimen>
+    <dimen name="dp200">300dp</dimen>
+    <dimen name="dp220">330dp</dimen>
+    <dimen name="dp250">375dp</dimen>
+    <dimen name="dp300">450dp</dimen>
+    <dimen name="dp350">525dp</dimen>
+    <dimen name="dp400">600dp</dimen>
+    <dimen name="dp700">1000dp</dimen>
+    <dimen name="dp95">143dp</dimen>
+   <dimen name="dp65">98dp</dimen>
+   <dimen name="dp75">113dp</dimen>
+    <dimen name="dp45">68dp</dimen>
+    <dimen name="dp55">83dp</dimen>
+
+    <dimen name="ksw_md_thumb_ripple_size">63dp</dimen>
+	<dimen name="ksw_md_thumb_solid_inset">16dp</dimen>
+	<dimen name="ksw_md_thumb_shadow_inset">16dp</dimen>
+	<dimen name="ksw_md_thumb_shadow_inset_top">16dp</dimen>
+	<dimen name="ksw_md_thumb_shadow_inset_bottom">15dp</dimen>
+
+	<dimen name="ksw_md_thumb_solid_size">30dp</dimen>
+	<dimen name="ksw_md_thumb_shadow_size">31dp</dimen>
+	<dimen name="ksw_md_thumb_shadow_offset">3dp</dimen>
+</resources>

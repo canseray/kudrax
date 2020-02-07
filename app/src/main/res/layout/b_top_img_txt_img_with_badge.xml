@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp40"
+        android:paddingLeft="@dimen/dp5"
+        android:paddingRight="@dimen/dp5">
+
+        <LinearLayout
+            android:id="@+id/top_left"
+            android:layout_width="@dimen/dp40"
+            android:layout_height="@dimen/dp40"
+            android:layout_weight="0"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/img_left"
+                android:layout_width="@dimen/dp30"
+                android:layout_height="@dimen/dp30"
+                android:duplicateParentState="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <tr.limonist.extras.MyTextView
+                android:fontFamily="@font/comfortaa"
+                android:id="@+id/tv_baslik"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:textColor="@color/a_black11"
+                android:textSize="@dimen/dp18" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/top_right"
+            android:layout_width="@dimen/dp40"
+            android:layout_height="@dimen/dp40"
+            android:layout_weight="0">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/img_right"
+                    android:layout_width="@dimen/dp30"
+                    android:layout_height="@dimen/dp30"
+                    android:duplicateParentState="true" />
+            </LinearLayout>
+
+            <tr.limonist.extras.MyTextView
+                android:fontFamily="@font/comfortaa"
+                android:id="@+id/badge_right"
+                android:layout_width="@dimen/dp20"
+                android:layout_height="@dimen/dp20"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/but_circle_black1"
+                android:gravity="center"
+                android:textColor="@drawable/text_white"
+                android:textSize="@dimen/dp12"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

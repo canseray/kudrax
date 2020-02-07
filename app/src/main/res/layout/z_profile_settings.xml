@@ -1,0 +1,97 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/a_back"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/dp25">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ViewStub
+                        android:id="@+id/lay_stub"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dp10">
+
+                    <RelativeLayout
+                        android:layout_width="@dimen/dp100"
+                        android:layout_height="@dimen/dp120"
+                        android:layout_marginTop="@dimen/dp20"
+                        android:layout_marginBottom="@dimen/dp20">
+
+                        <com.facebook.drawee.view.SimpleDraweeView
+                            android:id="@+id/img"
+                            android:layout_width="@dimen/dp100"
+                            android:layout_height="@dimen/dp100"
+                            android:layout_alignParentTop="true"
+                            app:placeholderImage="@mipmap/ic_placeholder_profile"
+                            app:placeholderImageScaleType="fitCenter"
+                            app:actualImageScaleType="fitCenter"
+                            app:roundAsCircle="true"
+                            app:roundingBorderColor="@color/a_black11"
+                            app:roundingBorderWidth="@dimen/dp1" />
+
+                        <ImageView
+                            android:id="@+id/img_camera"
+                            android:layout_width="@dimen/dp40"
+                            android:layout_height="@dimen/dp40"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/but_circle_black1"
+                            android:padding="@dimen/dp2"
+                            android:src="@drawable/b_ic_camera_white" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:id="@+id/lay_main"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="@dimen/dp15" >
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

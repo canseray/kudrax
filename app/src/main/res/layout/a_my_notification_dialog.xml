@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <com.github.mmin18.widget.RealtimeBlurView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:realtimeBlurRadius="5dp"
+        app:realtimeOverlayColor="#4FFF" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dp5"
+        android:paddingRight="@dimen/dp5"
+        android:weightSum="100">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="97"
+            android:background="@drawable/top_shadow"
+            android:gravity="bottom"
+            android:orientation="vertical"
+            android:weightSum="100">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="98"
+                android:gravity="top"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/dp30"
+                    android:paddingLeft="@dimen/dp10"
+                    android:paddingRight="@dimen/dp10" >
+
+                    <View
+                        android:layout_width="@dimen/dp30"
+                        android:layout_height="@dimen/dp30"
+                        android:layout_weight="0" />
+
+                    <View
+                        android:layout_width="@dimen/dp30"
+                        android:layout_height="@dimen/dp30"
+                        android:layout_marginLeft="@dimen/dp15"
+                        android:layout_weight="0" />
+
+                    <tr.limonist.extras.MyTextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="@dimen/dp10"
+                        android:layout_marginRight="@dimen/dp10"
+                        android:layout_weight="1"
+                        android:textStyle="bold
+"                       android:fontFamily="@font/comfortaa"
+                        android:gravity="center"
+                        android:text="@string/s_notifications"
+                        android:textAllCaps="true"
+                        android:textColor="@color/a_black11"
+                        android:textSize="@dimen/dp18" />
+
+                    <ImageView
+                        android:id="@+id/img_right2"
+                        android:layout_width="@dimen/dp30"
+                        android:layout_height="@dimen/dp30"
+                        android:layout_marginRight="@dimen/dp15"
+                        android:layout_weight="0"
+                        android:src="@drawable/b_ic_edit" />
+
+                    <ImageView
+                        android:id="@+id/img_right"
+                        android:layout_width="@dimen/dp30"
+                        android:layout_height="@dimen/dp30"
+                        android:layout_weight="0"
+                        android:src="@drawable/b_ic_close_black" />
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
+
+                    <android.support.v4.widget.SwipeRefreshLayout
+                        android:id="@+id/refresh"
+                        android:layout_width="match_parent"
+                        android:layout_height="fill_parent" >
+
+                        <com.twotoasters.jazzylistview.JazzyListView
+                            android:id="@+id/list"
+                            android:layout_width="match_parent"
+                            android:layout_height="fill_parent"
+                            android:divider="@android:color/transparent"
+                            android:dividerHeight="@dimen/dp5"
+                            android:scrollbars="none" />
+                    </android.support.v4.widget.SwipeRefreshLayout>
+
+                    <TextView
+                        android:id="@android:id/empty"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:gravity="center"
+                        android:padding="@dimen/dp20"
+                        android:text="@string/s_no_info"
+                        android:textColor="@color/a_black12"
+                        android:textSize="@dimen/dp25"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
+                </FrameLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

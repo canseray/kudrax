@@ -1,0 +1,158 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/a_main11"
+    android:clipChildren="false"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/dp15"
+    android:paddingTop="@dimen/dp15">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp10">
+
+        <RelativeLayout
+            android:layout_width="@dimen/dp60"
+            android:layout_height="@dimen/dp60"
+            android:layout_weight="0">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/img"
+                android:layout_width="@dimen/dp50"
+                android:layout_height="@dimen/dp50"
+                android:layout_centerInParent="true"
+                app:actualImageScaleType="fitCenter"
+                app:placeholderImage="@mipmap/ic_placeholder_profile"
+                app:placeholderImageScaleType="fitCenter"
+                app:roundAsCircle="true"
+                app:roundingBorderColor="@color/a_white11"
+                app:roundingBorderWidth="@dimen/dp2" />
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/img_status"
+                android:layout_width="@dimen/dp25"
+                android:layout_height="@dimen/dp25"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/but_circle_main1"
+                app:actualImageScaleType="fitCenter"
+                app:placeholderImage="@mipmap/ic_placeholder_profile"
+                app:placeholderImageScaleType="fitCenter"
+                app:roundAsCircle="true" />
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <tr.limonist.extras.MyTextView
+                android:id="@+id/name"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dp25"
+                android:fontFamily="@font/comfortaa"
+                android:gravity="bottom|left"
+                android:textColor="@color/a_white11"
+                android:textSize="@dimen/dp15"
+                android:textStyle="bold" />
+
+            <tr.limonist.extras.MyTextView
+                android:id="@+id/mail"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dp20"
+                android:layout_marginTop="@dimen/dp8"
+                android:fontFamily="@font/comfortaa"
+                android:gravity="top|left"
+                android:textColor="@color/a_white11"
+                android:textSize="@dimen/dp12" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginRight="@dimen/dp10"
+        android:layout_marginLeft="@dimen/dp10"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/dp40"
+        android:background="@drawable/back_oval_white3"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dp15"
+        android:paddingRight="@dimen/dp15">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|left"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/dp25"
+                android:layout_height="@dimen/dp25"
+                android:layout_weight="0"
+                android:src="@drawable/ic_promotion_white" />
+
+            <tr.limonist.extras.MyTextView
+                android:id="@+id/point"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="@dimen/dp8"
+                android:layout_weight="1"
+                android:fontFamily="@font/comfortaa"
+                android:gravity="center_vertical|left"
+                android:textColor="@color/a_white11"
+                android:textSize="@dimen/dp20"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="@dimen/dp2"
+            android:layout_height="fill_parent"
+            android:layout_margin="@dimen/dp5"
+            android:layout_weight="0"
+            android:background="@color/a_white11" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|left"
+            android:orientation="horizontal">
+
+            <tr.limonist.extras.MyTextView
+                android:id="@+id/status"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginRight="@dimen/dp8"
+                android:layout_weight="1"
+                android:fontFamily="@font/comfortaa"
+                android:gravity="center_vertical|left"
+                android:textColor="@color/a_white11"
+                android:textSize="@dimen/dp20"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="@dimen/dp20"
+                android:layout_height="@dimen/dp20"
+                android:layout_weight="0"
+                android:rotation="180"
+                android:src="@drawable/ic_prew_white1" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

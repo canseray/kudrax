@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/dp5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp90"
+        android:background="@drawable/but_rnd_str_black3_white"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp5">
+
+        <ImageView
+            android:layout_width="@dimen/dp50"
+            android:layout_height="@dimen/dp50"
+            android:layout_weight="0"
+            android:src="@drawable/b_ic_placeholder_branch" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp10"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <tr.limonist.extras.MyTextView
+                android:id="@+id/name"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dp30"
+                android:fontFamily="@font/comfortaa"
+                android:gravity="center_vertical|left"
+                android:textColor="@drawable/text_black"
+                android:textSize="@dimen/dp20"
+                android:textStyle="bold" />
+
+            <tr.limonist.extras.MyTextView
+                android:id="@+id/address"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dp40"
+                android:fontFamily="@font/comfortaa"
+                android:gravity="center_vertical|left"
+                android:maxLines="2"
+                android:minLines="2"
+                android:textColor="@drawable/text_black2"
+                android:textSize="@dimen/dp15" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="@dimen/dp40"
+            android:layout_height="@dimen/dp40"
+            android:layout_weight="0"
+            android:src="@drawable/ic_info3" />
+
+    </LinearLayout>
+
+</LinearLayout>

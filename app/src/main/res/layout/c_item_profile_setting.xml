@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_selector_slide_meu"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_margin="@dimen/dp5"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp50"
+        android:gravity="center"
+        android:paddingRight="@dimen/dp15"
+        android:paddingLeft="@dimen/dp15"
+        android:paddingTop="@dimen/dp5"
+        android:paddingBottom="@dimen/dp5"
+        android:background="@drawable/but_oval_str_black1_tra"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <tr.limonist.extras.MyTextView
+                android:fontFamily="@font/comfortaa"
+                android:id="@+id/title"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dp12"
+                android:layout_weight="0"
+                android:gravity="center_vertical|left"
+                android:textColor="@drawable/text_profile"
+                android:textSize="@dimen/dp10" />
+
+            <tr.limonist.extras.MyTextView
+                android:fontFamily="@font/comfortaa"
+                android:id="@+id/tv_value"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:gravity="center_vertical|left"
+                android:textColor="@drawable/text_black"
+                android:textSize="@dimen/dp15" />
+
+            <EditText
+                android:fontFamily="@font/comfortaa"
+                android:id="@+id/et_value"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:gravity="center_vertical|left"
+                android:imeOptions="actionNext"
+                android:textStyle="bold"
+                android:textColor="@color/a_black11"
+                android:textColorHint="@color/a_black13"
+                android:textSize="@dimen/dp15" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="@dimen/dp20"
+            android:layout_height="@dimen/dp20"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp2"
+            android:layout_weight="0"
+            android:rotation="180"
+            android:src="@drawable/b_ic_prew_black" />
+    </LinearLayout>
+
+</LinearLayout>

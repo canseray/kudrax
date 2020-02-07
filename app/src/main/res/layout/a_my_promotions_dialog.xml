@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <com.github.mmin18.widget.RealtimeBlurView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:realtimeBlurRadius="5dp"
+        app:realtimeOverlayColor="#0FFF" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:weightSum="100">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="97"
+            android:background="@drawable/top_shadow"
+            android:gravity="bottom"
+            android:orientation="vertical"
+            android:weightSum="100">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:gravity="top"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:paddingLeft="@dimen/dp10"
+                    android:paddingRight="@dimen/dp10">
+
+                    <ImageView
+                        android:id="@+id/img_left"
+                        android:layout_width="@dimen/dp40"
+                        android:layout_height="@dimen/dp40"
+                        android:layout_weight="0"
+                        android:src="@drawable/b_ic_close_black" />
+
+
+                    <tr.limonist.extras.MyTextView
+                        android:fontFamily="@font/comfortaa"
+                        android:id="@+id/tv_title"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="@dimen/dp10"
+                        android:layout_marginRight="@dimen/dp10"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textAllCaps="true"
+                        android:textColor="@color/a_black11"
+                        android:textSize="@dimen/dp18" />
+
+                    <ImageView
+                        android:layout_width="@dimen/dp40"
+                        android:layout_height="@dimen/dp40"
+                        android:layout_weight="0" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/dp_half"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:background="@color/a_black13" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@color/a_back"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/comfortaa"
+                        android:gravity="center"
+                        android:padding="@dimen/dp5"
+                        android:text="@string/s_my_promotion_desc"
+                        android:textColor="@color/a_black12"
+                        android:textSize="@dimen/dp10" />
+
+                    <TextView
+                        android:id="@+id/point"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/comfortaa"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:padding="@dimen/dp5"
+                        android:textColor="@color/a_main21"
+                        android:textSize="@dimen/dp50" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp50"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="@dimen/dp3">
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <com.ogaclejapan.smarttablayout.SmartTabLayout
+                                android:id="@+id/viewpagertab"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/dp35"
+                                android:clipToPadding="false"
+                                android:paddingLeft="@dimen/dp10"
+                                android:paddingRight="@dimen/dp10"
+                                app:stl_defaultTabBackground="@drawable/list_selector_slide_meu_main1"
+                                app:stl_defaultTabTextColor="@drawable/text_black2_white"
+                                app:stl_defaultTabTextHorizontalPadding="@dimen/dp25"
+                                app:stl_defaultTabTextSize="@dimen/dp15"
+                                app:stl_dividerColor="@android:color/transparent"
+                                app:stl_dividerThickness="@dimen/dp20"
+                                app:stl_indicatorColor="@color/a_main21"
+                                app:stl_indicatorCornerRadius="@dimen/dp20"
+                                app:stl_indicatorGravity="center"
+                                app:stl_indicatorInterpolation="smart"
+                                app:stl_indicatorThickness="@dimen/dp30"
+                                app:stl_underlineColor="@color/a_main21"
+                                app:stl_underlineThickness="0dp" />
+                        </LinearLayout>
+
+                        <tr.limonist.extras.AutoScrollViewPager
+                            android:id="@+id/jazzy_pager"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+                    <ListView
+                        android:id="@+id/list"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/dp5"
+                        android:layout_weight="1"
+                        android:divider="@color/zxing_transparent"
+                        android:dividerHeight="@dimen/dp10"
+                        android:scrollbars="none" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

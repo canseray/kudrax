@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp40"
+        android:paddingLeft="@dimen/dp5"
+        android:paddingRight="@dimen/dp5">
+
+        <LinearLayout
+            android:id="@+id/top_left"
+            android:layout_width="@dimen/dp40"
+            android:layout_height="@dimen/dp40"
+            android:layout_weight="0"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/img_left"
+                android:layout_width="@dimen/dp30"
+                android:layout_height="@dimen/dp30"
+                android:duplicateParentState="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/dp50"
+            android:layout_height="@dimen/dp40"
+            android:layout_weight="0"
+            android:gravity="center_vertical|right"
+            android:orientation="horizontal">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/img"
+                android:layout_width="@dimen/dp35"
+                android:layout_height="@dimen/dp35"
+                android:layout_centerVertical="true"
+                android:layout_weight="0"
+                app:actualImageScaleType="fitCenter"
+                app:placeholderImage="@mipmap/ic_placeholder_profile"
+                app:placeholderImageScaleType="fitCenter"
+                app:roundAsCircle="true"
+                app:roundingBorderColor="@color/a_main11"
+                app:roundingBorderWidth="@dimen/dp1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:weightSum="100">
+
+            <tr.limonist.extras.MyTextView
+                android:id="@+id/tv_baslik"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="50"
+                android:gravity="center_vertical|left"
+                android:textColor="@color/a_black11"
+                android:textSize="@dimen/dp18" />
+
+            <tr.limonist.extras.MyTextView
+                android:id="@+id/tv_online"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="40"
+                android:gravity="center_vertical|left"
+                android:textColor="@color/a_black11"
+                android:textSize="@dimen/dp15" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

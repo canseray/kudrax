@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="dp_half">1dp</dimen>
+    <dimen name="dp1">2dp</dimen>
+    <dimen name="dp2">4dp</dimen>
+    <dimen name="dp3">6dp</dimen>
+    <dimen name="dp4">8dp</dimen>
+    <dimen name="dp5">10dp</dimen>
+    <dimen name="dp6">12dp</dimen>
+    <dimen name="dp8">16dp</dimen>
+    <dimen name="dp10">20dp</dimen>
+    <dimen name="dp12">24dp</dimen>
+    <dimen name="dp15">30dp</dimen>
+    <dimen name="dp18">36dp</dimen>
+    <dimen name="dp20">40dp</dimen>
+    <dimen name="dp25">50dp</dimen>
+    <dimen name="dp30">60dp</dimen>
+    <dimen name="dp35">70dp</dimen>
+    <dimen name="dp40">80dp</dimen>
+    <dimen name="dp50">100dp</dimen>
+    <dimen name="dp60">120dp</dimen>
+    <dimen name="dp70">140dp</dimen>
+    <dimen name="dp80">160dp</dimen>
+    <dimen name="dp90">180dp</dimen>
+    <dimen name="dp100">200dp</dimen>
+    <dimen name="dp110">220dp</dimen>
+    <dimen name="dp120">240dp</dimen>
+    <dimen name="dp150">300dp</dimen>
+    <dimen name="dp175">350dp</dimen>
+    <dimen name="dp185">370dp</dimen>
+    <dimen name="dp200">400dp</dimen>
+    <dimen name="dp220">440dp</dimen>
+    <dimen name="dp250">500dp</dimen>
+    <dimen name="dp300">600dp</dimen>
+    <dimen name="dp350">700dp</dimen>
+    <dimen name="dp400">800dp</dimen>
+    <dimen name="dp700">1400dp</dimen>
+    <dimen name="dp95">190dp</dimen>
+    <dimen name="dp65">130dp</dimen>
+    <dimen name="dp75">150dp</dimen>
+    <dimen name="dp45">90dp</dimen>
+    <dimen name="dp55">110dp</dimen>
+    <dimen name="ksw_md_thumb_ripple_size">84dp</dimen>
+    <dimen name="ksw_md_thumb_solid_inset">22dp</dimen>
+    <dimen name="ksw_md_thumb_shadow_inset">22dp</dimen>
+    <dimen name="ksw_md_thumb_shadow_inset_top">22dp</dimen>
+    <dimen name="ksw_md_thumb_shadow_inset_bottom">20dp</dimen>
+    <dimen name="ksw_md_thumb_solid_size">40dp</dimen>
+    <dimen name="ksw_md_thumb_shadow_size">42dp</dimen>
+    <dimen name="ksw_md_thumb_shadow_offset">4dp</dimen>
+
+</resources>

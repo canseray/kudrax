@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/a_white11"
+    android:gravity="center"
+    android:paddingTop="@dimen/dp25"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ViewStub
+            android:id="@+id/lay_stub"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="@color/a_back"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" >
+
+            <com.scwang.smartrefresh.layout.SmartRefreshLayout
+                android:id="@+id/refreshLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <com.twotoasters.jazzylistview.JazzyListView
+                    android:id="@+id/list"
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:dividerHeight="@dimen/dp_half"
+                    android:divider="@color/a_black13"
+                    android:scrollbars="none" />
+            </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+        </FrameLayout>
+
+        <LinearLayout
+            android:background="@color/a_white11"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dp80"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp10">
+
+            <tr.limonist.extras.MyTextView
+                android:fontFamily="@font/comfortaa"
+                android:id="@+id/tv_done"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dp50"
+                android:layout_weight="1"
+                android:background="@drawable/but_rnd_main2"
+                android:gravity="center"
+                android:text="@string/s_confirm_cart"
+                android:textColor="@color/a_white11"
+                android:textSize="@dimen/dp18" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <tr.limonist.extras.MyTextView
+                    android:fontFamily="@font/comfortaa"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|right"
+                    android:text="@string/s_total"
+                    android:textColor="@drawable/text_black2"
+                    android:textSize="@dimen/dp15" />
+
+                <tr.limonist.extras.MyTextView
+                    android:fontFamily="@font/comfortaa"
+                    android:id="@+id/tv_total"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|right"
+                    android:textColor="@drawable/text_black"
+                    android:textSize="@dimen/dp20" />
+
+                <tr.limonist.extras.MyTextView
+                    android:visibility="gone"
+                    android:fontFamily="@font/comfortaa"
+                    android:id="@+id/tv_used_point"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/dp20"
+                    android:layout_weight="0"
+                    android:gravity="center_vertical|right"
+                    android:textColor="@drawable/text_black2"
+                    android:textSize="@dimen/dp10" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

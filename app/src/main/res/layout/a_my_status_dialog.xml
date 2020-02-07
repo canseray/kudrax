@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal|top"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:id="@+id/lay_status"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/a_warning11"
+        android:orientation="vertical"
+        android:padding="@dimen/dp5"
+        android:visibility="gone" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/img_status"
+                android:layout_width="@dimen/dp30"
+                android:layout_height="@dimen/dp30"
+                android:duplicateParentState="true"
+                android:src="@drawable/status_warning" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/tv_status_baslik"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:padding="@dimen/dp3"
+                    android:shadowColor="@color/a_black11"
+                    android:shadowDx="5"
+                    android:shadowDy="5"
+                    android:shadowRadius="5"
+                    android:textColor="@color/a_white11"
+                    android:textSize="@dimen/dp15"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_status_message"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:padding="@dimen/dp3"
+                    android:shadowColor="@color/a_black11"
+                    android:shadowDx="5"
+                    android:shadowDy="5"
+                    android:shadowRadius="5"
+                    android:textColor="@color/a_white11"
+                    android:textSize="@dimen/dp12" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

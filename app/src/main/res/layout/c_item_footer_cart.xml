@@ -1,0 +1,35 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/dp10"
+    android:paddingTop="@dimen/dp10">
+
+    <LinearLayout
+        android:background="@color/a_white11"
+        android:padding="@dimen/dp5"
+        android:duplicateParentState="true"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp50"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:duplicateParentState="true"
+            android:src="@drawable/b_ic_discount_main"
+            android:layout_width="@dimen/dp35"
+            android:layout_height="@dimen/dp35" />
+
+        <tr.limonist.extras.MyTextView
+            android:fontFamily="@font/comfortaa"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center_vertical|left"
+            android:text="@string/s_promotion_code"
+            android:textColor="@drawable/text_black"
+            android:textSize="@dimen/dp18" />
+
+    </LinearLayout>
+
+</LinearLayout>
