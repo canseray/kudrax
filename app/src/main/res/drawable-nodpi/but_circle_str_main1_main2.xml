@@ -3,14 +3,14 @@
 
     <item android:state_pressed="true">
         <shape android:shape="oval">
-            <stroke android:color="@color/a_main11" android:width="@dimen/dp2"/>
-            <solid android:color="@color/a_main13" />
+            <stroke android:color="@color/a_brown12" android:width="@dimen/dp1"/>
+            <solid android:color="@color/a_brown14" />
         </shape>
     </item>
     <item>
         <shape android:shape="oval">
-            <stroke android:color="@color/a_main11" android:width="@dimen/dp2"/>
-            <solid android:color="@color/a_main13" />
+            <stroke android:color="@color/a_brown12" android:width="@dimen/dp1"/>
+            <solid android:color="@color/a_brown14" />
         </shape>
     </item>
 

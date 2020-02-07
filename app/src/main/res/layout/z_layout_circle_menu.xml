@@ -579,19 +579,6 @@
             android:gravity="center"
             android:orientation="horizontal"
             android:weightSum="30">
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_weight="20">
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:src="@drawable/logo" />
-
-            </RelativeLayout>
-
         </LinearLayout>
 
     </LinearLayout>

@@ -50,7 +50,7 @@
                 android:fontFamily="@font/comfortaa"
                 android:gravity="center_vertical|left"
                 android:maxLines="3"
-                android:textColor="@drawable/text_white"
+                android:textColor="@color/a_brown11"
                 android:textSize="@dimen/dp15" />
 
         </LinearLayout>

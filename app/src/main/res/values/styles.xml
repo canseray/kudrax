@@ -4,6 +4,7 @@
         <item name="actionSheetStyle">@style/ActionSheetStyleiOS7</item>
         <item name="colorPrimary">@color/a_white11</item>
         <item name="colorPrimaryDark">@color/a_white11</item>
+        <item name="android:windowFullscreen">true</item>
     </style>
     <style name="TransparentProgressDialog" parent="Theme.AppCompat.Dialog">
         <item name="android:windowFrame">@null</item>

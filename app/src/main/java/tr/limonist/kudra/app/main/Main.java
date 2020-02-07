@@ -112,6 +112,9 @@ public class Main extends AppCompatActivity {
 
         setContentView(R.layout.z_main);
 
+        LinearLayout viewstub_parent_ly = findViewById(R.id.viewstub_parent_ly);
+        viewstub_parent_ly.setBackgroundColor(getResources().getColor(R.color.a_brown14));
+
         ViewStub stub = findViewById(R.id.lay_stub);
         stub.setLayoutResource(R.layout.b_top_img_img_img);
         stub.inflate();
@@ -237,13 +240,13 @@ public class Main extends AppCompatActivity {
         });
 
         ImageView img_left = findViewById(R.id.img_left);
-        img_left.setImageResource(R.drawable.b_ic_menu_side_white);
+        img_left.setImageResource(R.drawable.hidden_menu_icon_k);
 
         ImageView img_right = findViewById(R.id.img_right);
-        img_right.setImageResource(R.drawable.b_ic_qr_code_white);
+        img_right.setImageResource(R.drawable.qr_code_k);
 
         ImageView img_center = findViewById(R.id.img_center);
-        img_center.setImageResource(R.drawable.logo);
+        img_center.setImageResource(R.drawable.header_text_k);
 
         refreshLayout = findViewById(R.id.refreshLayout);
         refreshLayout.setRefreshHeader(new WaterDropHeader(this));

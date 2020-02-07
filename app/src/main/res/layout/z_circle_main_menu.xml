@@ -1,0 +1,93 @@
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<RelativeLayout
+    android:id="@+id/rl3"
+    android:layout_width="0dp"
+    android:layout_height="fill_parent"
+    android:layout_weight="10"
+    android:background="@drawable/but_circle_str_main1_main2">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:weightSum="100">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="75"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="75">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:weightSum="100">
+
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:id="@+id/img3"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="50"
+                        app:actualImageScaleType="fitCenter"
+                        app:placeholderImage="@mipmap/place_holder" />
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="5" />
+
+                    <tr.limonist.extras.MyTextView
+                        android:id="@+id/title3"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="25"
+                        android:fontFamily="@font/noteworthy_bold"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:textColor="@color/a_brown11"
+                        android:textSize="@dimen/dp15"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <tr.limonist.extras.MyTextView
+                    android:id="@+id/badge3"
+                    android:layout_width="@dimen/dp30"
+                    android:layout_height="@dimen/dp30"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/but_circle_main2"
+                    android:gravity="center"
+                    android:textColor="@drawable/text_white"
+                    android:textSize="@dimen/dp12"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
+
+</LinearLayout>
