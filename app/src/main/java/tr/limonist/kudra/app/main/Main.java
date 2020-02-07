@@ -103,6 +103,8 @@ public class Main extends AppCompatActivity {
         new Connection2().execute("");
     }
 
+    //jazzy gridview  ile  z_circle_main_menu
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -127,7 +129,6 @@ public class Main extends AppCompatActivity {
                 if (APP.main_user != null) {
                     final MySlideMenuDialog smd = new MySlideMenuDialog(m_activity);
                     smd.setData(results_slide);
-                    smd.setStatus(part_user_informaiton[7], part_user_informaiton[5], part_user_informaiton[6]);
                     smd.setItemClick(new AdapterView.OnItemClickListener() {
 
                         @Override
@@ -179,8 +180,10 @@ public class Main extends AppCompatActivity {
 
                                             } else if (smi.getPrep().contentEquals("LOGOUTAPPACTION")) {
 
+
+
                                                 final MyAlertDialog alert = new MyAlertDialog(m_activity,
-                                                        0, getString(R.string.s_log_out),
+                                                        R.drawable.logout_k , "",
                                                         getString(R.string.s_log_out_exp),
                                                         getString(R.string.s_log_out), getString(R.string.s_cancel),
                                                         true);
@@ -399,20 +402,6 @@ public class Main extends AppCompatActivity {
 
                 deliveryDialog.dismiss();
                 new MyQrCodeDialog(m_activity);
-
-            }
-
-        });
-
-        final LinearLayout lay_vale = deliveryDialog.findViewById(R.id.lay_vale);
-        lay_vale.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-
-                deliveryDialog.dismiss();
-                scanner_type = 1;
-                new IntentIntegrator(m_activity).setCaptureActivity(ScannerActivity.class).setCameraId(camera_type).initiateScan();
 
             }
 

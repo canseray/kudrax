@@ -10,6 +10,7 @@ import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v4.util.Pair;
 import android.view.View;
+import android.view.ViewStub;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -30,15 +31,18 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import at.grabner.circleprogress.CircleProgressView;
+import tr.limonist.extras.MyTextView;
 import tr.limonist.kudra.APP;
 import tr.limonist.kudra.R;
 import tr.limonist.extras.TransparentProgressDialog;
 
 public class MyQrCodeDialog extends Dialog {
+	MyTextView tv_done, tv_baslik, tv_forget;
+	private ImageView img_left;
 	private final TransparentProgressDialog pd;
 	private final ImageView img;
 	private final CircleProgressView circle;
-	private final TextView second,tv_title,tv_exp;
+	private final TextView second,tv_exp;
 	Activity m_activity;
 	LinearLayout lay_dismiss;
 	int REFRESH_TIME_IN_SECOND = 30;
@@ -58,11 +62,31 @@ public class MyQrCodeDialog extends Dialog {
 
 		pd = new TransparentProgressDialog(m_activity, "", true);
 
+		LinearLayout viewstub_parent_ly = findViewById(R.id.viewstub_parent_ly);
+
+		ViewStub stub = findViewById(R.id.lay_stub);
+		stub.setLayoutResource(R.layout.b_top_img_txt_emp);
+		stub.inflate();
+
+		tv_baslik = (MyTextView) findViewById(R.id.tv_baslik);
+		tv_baslik.setText(m_activity.getString(R.string.s_my_qr_code));
+		tv_baslik.setTextColor(m_activity.getResources().getColor(R.color.a_brown11));
+
+		img_left = (ImageView) findViewById(R.id.img_left);
+		img_left.setImageResource(R.drawable.left_k);
+		img_left.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				m_activity.finish();
+			}
+
+		});
+
 		img = (ImageView) findViewById(R.id.img);
 		circle = (CircleProgressView) findViewById(R.id.circle);
 		second = (TextView) findViewById(R.id.second);
 
-		tv_title = (TextView) findViewById(R.id.tv_title);
 		tv_exp = (TextView) findViewById(R.id.tv_exp);
 
 		lay_dismiss = (LinearLayout) findViewById(R.id.lay_dismiss);
@@ -205,7 +229,6 @@ public class MyQrCodeDialog extends Dialog {
 			}
 		}
 
-		tv_title.setText(part4.length > 1 ? part4[1] : m_activity.getString(R.string.s_my_qr_code));
 		tv_exp.setText(part4.length > 0 ? part4[0] : m_activity.getString(R.string.s_my_qr_code_exp));
 
 		second.setText(String.valueOf(REFRESH_TIME_IN_SECOND));

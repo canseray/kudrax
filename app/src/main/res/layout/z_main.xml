@@ -54,7 +54,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent">
 
-                    <include layout="@layout/z_layout_circle_menu"/>
+                    <include layout="@layout/z_layout_grid_menu"/>
 
                 </LinearLayout>
 

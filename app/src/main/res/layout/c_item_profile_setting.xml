@@ -14,8 +14,17 @@
         android:paddingLeft="@dimen/dp15"
         android:paddingTop="@dimen/dp5"
         android:paddingBottom="@dimen/dp5"
-        android:background="@drawable/but_oval_str_black1_tra"
         android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="@dimen/dp20"
+            android:layout_height="@dimen/dp20"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp2"
+            android:layout_weight="0"
+            android:rotation="180"
+            android:src="@drawable/b_ic_prew_black" />
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -59,15 +68,7 @@
                 android:textSize="@dimen/dp15" />
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/img"
-            android:layout_width="@dimen/dp20"
-            android:layout_height="@dimen/dp20"
-            android:layout_marginLeft="@dimen/dp10"
-            android:layout_marginRight="@dimen/dp2"
-            android:layout_weight="0"
-            android:rotation="180"
-            android:src="@drawable/b_ic_prew_black" />
+
     </LinearLayout>
 
 </LinearLayout>

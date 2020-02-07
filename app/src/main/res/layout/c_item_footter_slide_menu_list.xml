@@ -1,0 +1,39 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/zxing_transparent"
+    android:clipChildren="false"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingRight="@dimen/dp30"
+    android:paddingBottom="@dimen/dp15">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:padding="@dimen/dp5">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/link_img"
+            android:layout_gravity="center"
+            android:layout_width="@dimen/dp200"
+            android:layout_height="@dimen/dp150"
+            android:background="@drawable/logo_brown_k"
+            app:actualImageScaleType="fitCenter" />
+
+        <tr.limonist.extras.MyTextView
+            android:layout_gravity="center"
+            android:fontFamily="@font/comfortaa"
+            android:textColor="@color/a_brown11"
+            android:textSize="@dimen/dp18"
+            android:id="@+id/detail_link"
+            android:text="@string/s_detail_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+          />
+    </LinearLayout>
+
+</LinearLayout>

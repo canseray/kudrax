@@ -7,8 +7,8 @@
     <com.github.mmin18.widget.RealtimeBlurView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:realtimeBlurRadius="20dp"
-        app:realtimeOverlayColor="#0FFF" />
+        app:realtimeBlurRadius="10dp"
+        app:realtimeOverlayColor="#F000" />
 
     <LinearLayout
         android:id="@+id/main"
@@ -22,8 +22,8 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="0dp"
-            android:layout_weight="85"
-            android:background="@drawable/back_rnd15_str_white2_gray4"
+            android:layout_weight="70"
+            android:background="@drawable/dialog_oval_str_white"
             android:gravity="center_vertical"
             android:orientation="vertical"
             android:padding="@dimen/dp15">
@@ -33,7 +33,7 @@
                 android:layout_width="@dimen/dp40"
                 android:layout_height="@dimen/dp40"
                 android:layout_weight="0"
-                android:src="@drawable/b_ic_close_white" />
+                android:src="@drawable/b_ic_close_brown" />
 
             <LinearLayout
                 android:id="@+id/lay_scan"
@@ -50,7 +50,7 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="35"
                     android:duplicateParentState="true"
-                    android:src="@drawable/b_ic_option_qr_scan" />
+                    android:src="@drawable/qr_code_scanner_k" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -70,7 +70,7 @@
                         android:gravity="center_vertical|right"
                         android:text="@string/s_option_qr_scan_title"
                         android:textAllCaps="true"
-                        android:textColor="@drawable/text_white"
+                        android:textColor="@color/a_brown11"
                         android:textSize="@dimen/dp20"
                         android:textStyle="bold" />
 
@@ -82,7 +82,7 @@
                         android:fontFamily="@font/comfortaa"
                         android:gravity="center_vertical|right"
                         android:text="@string/s_option_qr_scan"
-                        android:textColor="@drawable/text_white2"
+                        android:textColor="@color/a_brown11"
                         android:textSize="@dimen/dp12" />
 
                 </LinearLayout>
@@ -105,7 +105,7 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="35"
                     android:duplicateParentState="true"
-                    android:src="@drawable/b_ic_option_qr_code" />
+                    android:src="@drawable/qr_id_code_k" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -125,7 +125,7 @@
                         android:gravity="center_vertical|right"
                         android:text="@string/s_option_qr_code_title"
                         android:textAllCaps="true"
-                        android:textColor="@drawable/text_white"
+                        android:textColor="@color/a_brown11"
                         android:textSize="@dimen/dp20"
                         android:textStyle="bold" />
 
@@ -137,62 +137,7 @@
                         android:fontFamily="@font/comfortaa"
                         android:gravity="center_vertical|right"
                         android:text="@string/s_option_qr_code"
-                        android:textColor="@drawable/text_white2"
-                        android:textSize="@dimen/dp12" />
-
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_vale"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:padding="@dimen/dp10"
-                android:weightSum="100">
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="35"
-                    android:duplicateParentState="true"
-                    android:src="@drawable/b_ic_option_vale_qr_scan" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:layout_marginLeft="@dimen/dp15"
-                    android:layout_weight="65"
-                    android:duplicateParentState="true"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <tr.limonist.extras.MyTextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0"
-                        android:duplicateParentState="true"
-                        android:fontFamily="@font/comfortaa"
-                        android:gravity="center_vertical|right"
-                        android:text="@string/s_option_qr_vale_title"
-                        android:textAllCaps="true"
-                        android:textColor="@drawable/text_white"
-                        android:textSize="@dimen/dp20"
-                        android:textStyle="bold" />
-
-                    <tr.limonist.extras.MyTextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp10"
-                        android:duplicateParentState="true"
-                        android:fontFamily="@font/comfortaa"
-                        android:gravity="center_vertical|right"
-                        android:text="@string/s_option_qr_vale"
-                        android:textColor="@drawable/text_white2"
+                        android:textColor="@color/a_brown11"
                         android:textSize="@dimen/dp12" />
 
                 </LinearLayout>

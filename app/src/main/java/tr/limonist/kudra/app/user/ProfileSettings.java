@@ -95,7 +95,7 @@ public class ProfileSettings extends ActivityManagePermission {
 
         MyTextView tv_baslik = (MyTextView) findViewById(R.id.tv_baslik);
         tv_baslik.setText(getString(R.string.s_my_account));
-        tv_baslik.setTextColor(getResources().getColor(R.color.a_black11));
+        tv_baslik.setTextColor(getResources().getColor(R.color.a_brown11));
 
         LinearLayout top_left = (LinearLayout) findViewById(R.id.top_left);
         top_left.setOnClickListener(new OnClickListener() {
@@ -108,14 +108,14 @@ public class ProfileSettings extends ActivityManagePermission {
         });
 
         ImageView img_left = (ImageView) findViewById(R.id.img_left);
-        img_left.setImageResource(R.drawable.b_ic_prew_black);
+        img_left.setImageResource(R.drawable.left_k);
 
         MyTextView tv_right = (MyTextView) findViewById(R.id.tv_right);
         tv_right.setTextSize((int)getResources().getDimension(R.dimen.dp15));
         tv_right.setAllCaps(true);
         tv_right.setText(getString(R.string.s_save));
-        tv_right.setBackgroundResource(R.drawable.but_oval_main2);
-        tv_right.setTextColor(getResources().getColor(R.drawable.text_white));
+        tv_right.setBackgroundResource(R.drawable.but_oval_str_brown1_tra);
+        tv_right.setTextColor(getResources().getColor(R.color.a_brown11));
         tv_right.setOnClickListener(new OnClickListener() {
 
             @Override

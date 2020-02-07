@@ -9,19 +9,21 @@
     android:weightSum="100" >
 
     <LinearLayout
+        android:paddingRight="@dimen/dp30"
         android:id="@+id/lay_status"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="85"
-        android:background="@color/a_white11"
+        android:background="@drawable/hidden_menu_k"
         android:orientation="vertical" >
 
         <com.twotoasters.jazzylistview.JazzyListView
+            android:paddingHorizontal="@dimen/dp10"
             android:id="@+id/list"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:divider="@color/a_main12"
-            android:dividerHeight="0dp"
+            android:divider="@color/a_brown11"
+            android:dividerHeight="@dimen/dp_half"
             android:listSelector="@drawable/list_selector_slide_meu"
             android:scrollbars="none" />
     </LinearLayout>

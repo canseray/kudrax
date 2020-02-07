@@ -75,7 +75,7 @@
             android:maxLines="2"
             android:gravity="center"
             android:fontFamily="@font/noteworthy_bold"
-            android:textColor="@drawable/text_white"
+            android:textColor="@color/a_brown11"
             android:textSize="@dimen/dp15"
             android:textStyle="bold" />
 

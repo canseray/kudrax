@@ -3,9 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/a_gray4"
-    android:orientation="vertical"
-    android:paddingTop="@dimen/dp25">
+    android:background="@color/a_white11"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,6 +12,33 @@
         android:gravity="center"
         android:orientation="vertical"
         android:padding="@dimen/dp10">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/viewstub_parent_ly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ViewStub
+                    android:id="@+id/lay_stub"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/dp_half"
+                    android:background="@color/a_brown11"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,9 +67,9 @@
                 android:layout_width="@dimen/dp80"
                 android:layout_height="@dimen/dp80"
                 android:layout_centerInParent="true"
-                app:cpv_barColor="@color/a_white11"
+                app:cpv_barColor="@color/a_brown11"
                 app:cpv_barWidth="@dimen/dp3"
-                app:cpv_rimColor="@color/a_white12"
+                app:cpv_rimColor="@color/a_brown12"
                 app:cpv_rimWidth="@dimen/dp1"
                 app:cpv_seekMode="true"
                 app:cpv_showUnit="false" />
@@ -63,7 +89,7 @@
                 android:fontFamily="@font/comfortaa"
                 android:gravity="center"
                 android:text="@string/s_second"
-                android:textColor="@color/a_white11"
+                android:textColor="@color/a_brown11"
                 android:textSize="@dimen/dp10" />
 
 
@@ -77,30 +103,12 @@
                 android:fontFamily="@font/comfortaa"
                 android:gravity="center"
                 android:text="0"
-                android:textColor="@drawable/text_white"
+                android:textColor="@color/a_brown11"
                 android:textSize="@dimen/dp25"
                 android:textStyle="bold" />
 
         </RelativeLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp10"
-            android:layout_weight="0"
-            android:gravity="center"
-            android:padding="@dimen/dp5">
-
-            <TextView
-                android:id="@+id/tv_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/comfortaa"
-                android:gravity="center"
-                android:textColor="@color/a_white11"
-                android:textSize="@dimen/dp20"
-                android:textStyle="bold" />
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -115,26 +123,32 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/comfortaa"
                 android:gravity="center"
-                android:textColor="@color/a_white11"
+                android:textColor="@color/a_brown11"
                 android:textSize="@dimen/dp15" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/lay_dismiss"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp50"
-            android:layout_marginBottom="@dimen/dp10"
+            android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:gravity="right"
-            android:weightSum="100">
+            android:gravity="center"
+            android:padding="@dimen/dp15">
 
-            <ImageView
-                android:layout_width="@dimen/dp50"
-                android:layout_height="@dimen/dp50"
-                android:duplicateParentState="true"
-                android:src="@drawable/b_ic_close_white" />
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/comfortaa"
+                android:gravity="center"
+                android:text="@string/s_close"
+                android:textAllCaps="true"
+                android:paddingVertical="@dimen/dp5"
+                android:paddingHorizontal="@dimen/dp20"
+                android:background="@drawable/but_oval_str_brown1_tra2"
+                android:textColor="@color/a_brown11"
+                android:textSize="@dimen/dp18" />
         </LinearLayout>
+
     </LinearLayout>
 
 </RelativeLayout>

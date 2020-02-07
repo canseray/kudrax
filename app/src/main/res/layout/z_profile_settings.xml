@@ -31,6 +31,10 @@
                         android:id="@+id/lay_stub"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/a_brown11"/>
 
                 </LinearLayout>
 
@@ -52,11 +56,11 @@
                             android:layout_width="@dimen/dp100"
                             android:layout_height="@dimen/dp100"
                             android:layout_alignParentTop="true"
-                            app:placeholderImage="@mipmap/ic_placeholder_profile"
+                            app:placeholderImage="@drawable/name_surname_k"
                             app:placeholderImageScaleType="fitCenter"
                             app:actualImageScaleType="fitCenter"
                             app:roundAsCircle="true"
-                            app:roundingBorderColor="@color/a_black11"
+                            app:roundingBorderColor="@color/a_brown11"
                             app:roundingBorderWidth="@dimen/dp1" />
 
                         <ImageView
@@ -67,7 +71,7 @@
                             android:layout_centerHorizontal="true"
                             android:background="@drawable/but_circle_black1"
                             android:padding="@dimen/dp2"
-                            android:src="@drawable/b_ic_camera_white" />
+                            android:src="@drawable/add_photo_k" />
 
                     </RelativeLayout>
 

@@ -57,7 +57,7 @@
     <string name="s_use">Kullan</string>
     <string name="s_send_request">Talebi Gönder</string>
     <string name="s_contract">Sözleşme</string>
-    <string name="s_my_account">Hesabım</string>
+    <string name="s_my_account">HESAP BİLGİLERİM</string>
     <string name="s_select">Seçiniz</string>
     <string name="s_log_out_exp">Uygulamadan çıkış yapmak istediğinize emin misiniz?</string>
     <string name="s_no_info">. . .</string>
@@ -106,6 +106,7 @@
     <string name="s_read_and_accept_user_contract">Kullanıcı Sözleşmesini okudum ve kabul ediyorum</string>
     <string name="s_old_pass">Eski Şifre</string>
     <string name="s_new_pass">Yeni Şifre</string>
+    <string name="s_detail_info">Ayrıntılı Bilgi İçin Tıklayın</string>
     <string name="s_old_password_wrong">Eski şifreniz hatalı.</string>
     <string name="s_profile_photo">Profil Görseli</string>
     <string name="s_done_process">İŞLEMİ TAMAMLA</string>

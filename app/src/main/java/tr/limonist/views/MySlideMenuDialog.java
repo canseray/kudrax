@@ -35,8 +35,8 @@ public class MySlideMenuDialog extends Dialog {
 	ArrayList<SlideMenuItem> results;
 	private JazzyListView list;
 	private lazy adapter;
-	private MyTextView name,mail,point,status;
-	private SimpleDraweeView img,img_status;
+	private MyTextView name,mail,detail_link;
+	private SimpleDraweeView img,link_img;
 
 	public MySlideMenuDialog(Activity activity) {
 		super(activity, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
@@ -85,11 +85,8 @@ public class MySlideMenuDialog extends Dialog {
 		View head = layoutInflater.inflate(R.layout.c_item_head_slide_menu_list, null);
 
 		name = (MyTextView) head.findViewById(R.id.name);
-		point = (MyTextView) head.findViewById(R.id.point);
-		status = (MyTextView) head.findViewById(R.id.status);
 		mail = (MyTextView) head.findViewById(R.id.mail);
 
-		img_status = (SimpleDraweeView) head.findViewById(R.id.img_status);
 		img = (SimpleDraweeView) head.findViewById(R.id.img);
 		img.setImageURI(APP.main_user.image);
 		mail.setText(APP.main_user.email);
@@ -98,7 +95,13 @@ public class MySlideMenuDialog extends Dialog {
 		head.setEnabled(false);
 		head.setClickable(false);
 
+		View foot = layoutInflater.inflate(R.layout.c_item_footter_slide_menu_list, null);
+		link_img = foot.findViewById(R.id.link_img);
+		detail_link = foot.findViewById(R.id.detail_link);
+		//set on click
+
 		list.addHeaderView(head);
+		list.addFooterView(foot);
 
 	}
 
@@ -175,12 +178,6 @@ public class MySlideMenuDialog extends Dialog {
 		adapter = new lazy(results);
 		list.setAdapter(adapter);
 		adapter.notifyDataSetChanged();
-	}
-
-	public void setStatus(String status_image,String mPoint,String mStatus) {
-		img_status.setImageURI(status_image);
-		point.setText(mPoint);
-		status.setText(mStatus);
 	}
 
 	@Override

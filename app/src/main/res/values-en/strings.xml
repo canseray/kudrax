@@ -23,6 +23,7 @@
     <string name="s_photo_desc">Do you want to see current image or change current one?</string>
     <string name="s_photo_view">See</string>
     <string name="s_photo_change">Change</string>
+    <string name="s_detail_info">Click to Information Details</string>
     <string name="s_no_active_form">No active form...</string>
     <string name="ExpirationDateHelp">Expiration Date (MM/YY)</string>
     <string name="SecurityCodeHelp">Sequrity Code (CVV)</string>

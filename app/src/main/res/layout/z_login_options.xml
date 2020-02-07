@@ -108,19 +108,9 @@
                         <LinearLayout
                             android:layout_marginTop="@dimen/dp20"
                             android:layout_width="fill_parent"
-                            android:layout_height="@dimen/dp50"
+                            android:layout_height="@dimen/dp10"
                             android:layout_weight="20"
                             android:gravity="end">
-                            <Button
-                                android:background="@drawable/but_oval_str_white1_tra"
-                                android:fontFamily="@font/comfortaa"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:padding="@dimen/dp5"
-                                android:text="@string/s_next"
-                                android:textColor="@color/a_white11"
-                                android:textSize="@dimen/dp15" />
                         </LinearLayout>
 
                     </LinearLayout>
