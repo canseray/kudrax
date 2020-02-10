@@ -176,8 +176,7 @@ public class Categories extends Activity {
                             MainItem ai = new MainItem(temp.length > 0 ? temp[0] : "",
                                     temp.length > 1 ? temp[1] : "", temp.length > 2 ? temp[2] : "",
                                     temp.length > 3 ? temp[3] : "", temp.length > 4 ? temp[4] : "",
-                                    temp.length > 5 ? temp[5] : "", temp.length > 6 ? temp[6] : "",
-                                    temp.length > 7 ? temp[7] : "");
+                                    temp.length > 5 ? temp[5] : "");
                             results.add(ai);
                         }
 

@@ -55,10 +55,10 @@ public class ChangePassword extends Activity {
 
         tv_baslik = (MyTextView) findViewById(R.id.tv_baslik);
         tv_baslik.setText(getString(R.string.s_change_password));
-        tv_baslik.setTextColor(getResources().getColor(R.color.a_white11));
+        tv_baslik.setTextColor(getResources().getColor(R.color.a_brown11));
 
         img_left = (ImageView) findViewById(R.id.img_left);
-        img_left.setImageResource(R.drawable.b_ic_close_white);
+        img_left.setImageResource(R.drawable.left_k);
 
         top_left = (LinearLayout) findViewById(R.id.top_left);
         top_left.setOnClickListener(new View.OnClickListener() {

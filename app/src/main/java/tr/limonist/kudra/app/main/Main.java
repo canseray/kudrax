@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.support.v4.util.Pair;
 import android.support.v4.view.PagerAdapter;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.Slide;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,7 @@ import com.google.zxing.integration.android.IntentResult;
 import com.scwang.smartrefresh.header.WaterDropHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+import com.viewpagerindicator.CirclePageIndicator;
 
 import org.w3c.dom.Document;
 
@@ -74,10 +76,12 @@ public class Main extends AppCompatActivity {
     private TransparentProgressDialog pd;
     public String part_intertiate_ads;
     public String[] part_social = {""};
-    private String[] part_banner, part_mail;
+    private String[] part_banner, part_status;
     private String[] part_category_items;
+    private String[] part_side_menu;
     ArrayList<BannerItem> results_banner;
     ArrayList<MainItem> results, results_temp;
+    ArrayList<SlideMenuItem> results_slide_menu;
     AutoScrollViewPager mJazzy;
     private String result_code = "";
     private String qrPart1, qrPart2;
@@ -91,6 +95,8 @@ public class Main extends AppCompatActivity {
     int scanner_type = 0;
     LinearLayout lay_main;
     RelativeLayout lay_circle;
+    CirclePageIndicator circleIndicator;
+
 
     int[] rl_resources = {R.id.rl1,R.id.rl2,R.id.rl3,R.id.rl4,R.id.rl5,R.id.rl6};
     int[] img_resources = {R.id.img1,R.id.img2,R.id.img3,R.id.img4,R.id.img5,R.id.img6};
@@ -128,7 +134,7 @@ public class Main extends AppCompatActivity {
             public void onClick(View arg0) {
                 if (APP.main_user != null) {
                     final MySlideMenuDialog smd = new MySlideMenuDialog(m_activity);
-                    smd.setData(results_slide);
+                    smd.setData(results_slide_menu);
                     smd.setItemClick(new AdapterView.OnItemClickListener() {
 
                         @Override
@@ -140,7 +146,7 @@ public class Main extends AppCompatActivity {
                                     @Override
                                     public void run() {
                                         if (position > 0) {
-                                            SlideMenuItem smi = results_slide.get(position - 1);
+                                            SlideMenuItem smi = results_slide_menu.get(position - 1);
                                             if (smi.getPrep().contentEquals("PRESENTMODALFORPROFILESETTINGSVIEW")) {
                                                 startActivity(new Intent(m_activity, ProfileSettings.class));
                                             } else if (smi.getPrep().contentEquals("PRESENTMODALFORORDERHISTORYVIEW")) {
@@ -156,7 +162,7 @@ public class Main extends AppCompatActivity {
                                             } else if (smi.getPrep().contentEquals("PRESENTSENDMAILVIEW")) {
 
                                                 String[] emails = new String[1];
-                                                emails[0] = part_mail[0];
+                                                emails[0] = part_user_informaiton[2];
                                                 Intent intent = new Intent(Intent.ACTION_SENDTO);
                                                 intent.setData(Uri.parse("mailto:"));
                                                 intent.putExtra(Intent.EXTRA_EMAIL, emails);
@@ -300,7 +306,9 @@ public class Main extends AppCompatActivity {
             }
         });
 
+        circleIndicator = (CirclePageIndicator) findViewById(R.id.indicator);
         mJazzy = findViewById(R.id.jazzy_pager);
+
         lay_main = findViewById(R.id.lay_main);
         lay_circle = findViewById(R.id.lay_circle);
 
@@ -341,6 +349,7 @@ public class Main extends AppCompatActivity {
 
         pd.show();
         new Connection().execute("");
+        new Connection6().execute("");
 
         if (getIntent().hasExtra("call_type"))
             if (getIntent().getStringExtra("call_type").contentEquals("notification"))
@@ -411,6 +420,77 @@ public class Main extends AppCompatActivity {
 
     }
 
+    //sidemenu
+    private class Connection6 extends AsyncTask<String, Void, String> {
+
+        protected String doInBackground(String... args) {
+
+            results_slide_menu = new ArrayList<>();
+
+            List<Pair<String, String>> nameValuePairs = new ArrayList<>();
+
+            nameValuePairs.add(new Pair<>("param1", APP.base64Encode(APP.main_user != null ? APP.main_user.id : "0")));
+            nameValuePairs.add(new Pair<>("param2", APP.base64Encode(APP.language_id)));
+            nameValuePairs.add(new Pair<>("param3", APP.base64Encode("A")));
+
+
+            String xml = APP.post1(nameValuePairs, APP.path + "/get_side_menu_list.php");
+
+            if (xml != null && !xml.contentEquals("fail")) {
+
+                try {
+
+                    DocumentBuilder newDocumentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+                    Document parse = newDocumentBuilder.parse(new ByteArrayInputStream(xml.getBytes()));
+                    for (int i = 0; i < parse.getElementsByTagName("row").getLength(); i++) {
+
+                        part_side_menu = APP.base64Decode(APP.getElement(parse, "part1")).split("\\[##\\]");
+
+                    }
+
+                    if (!part_side_menu[0].contentEquals("")) {
+
+                        for (int i = 0; i < part_side_menu.length; i++) {
+                            String[] temp = part_side_menu[i].split("\\[#\\]");
+                             SlideMenuItem ai = new SlideMenuItem(temp.length > 0 ? temp[0] : "",
+                                    temp.length > 1 ? temp[1] : "",
+                                    temp.length > 2 ? temp[2] : "",
+                                    temp.length > 3 ? temp[3] : "",
+                                    temp.length > 4 ? temp[4] : "");
+                            results_slide_menu.add(ai);
+                        }
+
+
+
+
+                        return "true";
+                    } else
+                        return "false";
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    return "false";
+                }
+
+            } else {
+                return "false";
+            }
+        }
+
+        protected void onPostExecute(String result) {
+            if (pd != null)
+                pd.dismiss();
+            if (refreshLayout != null)
+                refreshLayout.finishRefresh();
+            if (result.contentEquals("true")) {
+                fillCompoments();
+            } else {
+                APP.show_status(m_activity, 1, getResources().getString(R.string.s_unexpected_connection_error_has_occured));
+            }
+        }
+    }
+
+
     private class Connection extends AsyncTask<String, Void, String> {
 
         protected String doInBackground(String... args) {
@@ -441,12 +521,12 @@ public class Main extends AppCompatActivity {
                     for (int i = 0; i < parse.getElementsByTagName("row").getLength(); i++) {
 
                         part_category_items = APP.base64Decode(APP.getElement(parse, "part1")).split("\\[##\\]");
-                        part_intertiate_ads = APP.base64Decode(APP.getElement(parse, "part3"));
-                        part_user_informaiton = APP.base64Decode(APP.getElement(parse, "part5")).split("\\[#\\]", -1);
-                        part_mail = APP.base64Decode(APP.getElement(parse, "part6")).split("\\[#\\]", -1);
-                        part_slide_items = APP.base64Decode(APP.getElement(parse, "part9")).split("\\[##\\]");
-                        part_banner = APP.base64Decode(APP.getElement(parse, "part10")).split("\\[##\\]");
-                        part_social = APP.base64Decode(APP.getElement(parse, "part11")).split("\\[#\\]");
+                        part_intertiate_ads = APP.base64Decode(APP.getElement(parse, "part2"));
+                        part_user_informaiton = APP.base64Decode(APP.getElement(parse, "part4")).split("\\[#\\]", -1);
+                        part_status = APP.base64Decode(APP.getElement(parse, "part3")).split("\\[#\\]", -1);
+                       // part_slide_items = APP.base64Decode(APP.getElement(parse, "part9")).split("\\[##\\]");
+                        part_banner = APP.base64Decode(APP.getElement(parse, "part5")).split("\\[##\\]");
+                        part_social = APP.base64Decode(APP.getElement(parse, "part6")).split("\\[#\\]");
 
                     }
 
@@ -454,7 +534,12 @@ public class Main extends AppCompatActivity {
 
                         for (int i = 0; i < part_category_items.length; i++) {
                             String[] temp = part_category_items[i].split("\\[#\\]");
-                            MainItem ai = new MainItem(temp.length > 0 ? temp[0] : "", temp.length > 1 ? temp[1] : "", temp.length > 2 ? temp[2] : "", temp.length > 3 ? temp[3] : "", temp.length > 4 ? temp[4] : "", temp.length > 5 ? temp[5] : "", temp.length > 6 ? temp[6] : "", temp.length > 7 ? temp[7] : "");
+                            MainItem ai = new MainItem(temp.length > 0 ? temp[0] : "",
+                                    temp.length > 1 ? temp[1] : "",
+                                    temp.length > 2 ? temp[2] : "",
+                                    temp.length > 3 ? temp[3] : "",
+                                    temp.length > 4 ? temp[4] : "",
+                                    temp.length > 5 ? temp[5] : "");
                             results.add(ai);
                         }
 
@@ -462,13 +547,16 @@ public class Main extends AppCompatActivity {
 
                             for (int i = 0; i < part_banner.length; i++) {
                                 String[] temp = part_banner[i].split("\\[#\\]");
-                                BannerItem ai = new BannerItem(temp.length > 0 ? temp[0] : "", temp.length > 1 ? temp[1] : "", temp.length > 2 ? temp[2] : "", temp.length > 3 ? temp[3] : "");
+                                BannerItem ai = new BannerItem(temp.length > 0 ? temp[0] : "",
+                                        temp.length > 1 ? temp[1] : "",
+                                        temp.length > 2 ? temp[2] : "",
+                                        temp.length > 3 ? temp[3] : "");
                                 results_banner.add(ai);
                             }
 
                         }
 
-                        if (!part_slide_items[0].contentEquals("")) {
+                       /* if (!part_slide_items[0].contentEquals("")) {
 
                             for (int i = 0; i < part_slide_items.length; i++) {
                                 String[] temp = part_slide_items[i].split("\\[#\\]");
@@ -478,7 +566,7 @@ public class Main extends AppCompatActivity {
                                 results_slide.add(ai);
                             }
 
-                        }
+                        } */
 
                         return "true";
                     } else
@@ -518,6 +606,8 @@ public class Main extends AppCompatActivity {
 
             slider_adapter = new pageAdapter();
             mJazzy.setAdapter(slider_adapter);
+            circleIndicator.setViewPager(mJazzy);
+
 
         }
 
@@ -527,7 +617,7 @@ public class Main extends AppCompatActivity {
             public void run() {
 
                 if (!part_intertiate_ads.contentEquals("")) {
-                    startActivity(new Intent(m_activity, SelfAd.class).putExtra("onemli", part_intertiate_ads));
+                 //   startActivity(new Intent(m_activity, SelfAd.class).putExtra("onemli", part_intertiate_ads));
                 }
             }
         }, 500);
@@ -547,7 +637,7 @@ public class Main extends AppCompatActivity {
                 MainItem item = results.get(i);
 
                 SimpleDraweeView img = findViewById(img_resources[i]);
-               // img.setImageURI(item.getImage());
+                img.setImageURI(item.getImage());
 
                 MyTextView title = findViewById(title_resources[i]);
                 title.setText(item.getTitle());
@@ -814,15 +904,18 @@ public class Main extends AppCompatActivity {
 
                     if (!part_category_items[0].contentEquals("")) {
 
-                        if (!part_category_items[0].contentEquals("")) {
-
                             for (int i = 0; i < part_category_items.length; i++) {
                                 String[] temp = part_category_items[i].split("\\[#\\]");
-                                MainItem ai = new MainItem(temp.length > 0 ? temp[0] : "", temp.length > 1 ? temp[1] : "", temp.length > 2 ? temp[2] : "", temp.length > 3 ? temp[3] : "", temp.length > 4 ? temp[4] : "", temp.length > 5 ? temp[5] : "", temp.length > 6 ? temp[6] : "", temp.length > 7 ? temp[7] : "");
+                                MainItem ai = new MainItem(temp.length > 0 ? temp[0] : "",
+                                        temp.length > 1 ? temp[1] : "",
+                                        temp.length > 2 ? temp[2] : "",
+                                        temp.length > 3 ? temp[3] : "",
+                                        temp.length > 4 ? temp[4] : "",
+                                        temp.length > 5 ? temp[5] : "");
                                 results_temp.add(ai);
                             }
 
-                        }
+
 
                         return "true";
                     } else
@@ -855,10 +948,13 @@ public class Main extends AppCompatActivity {
             vi = inflater.inflate(R.layout.c_item_banner, null);
 
             TextView title = vi.findViewById(R.id.title);
+            TextView content = vi.findViewById(R.id.content);
+
             SimpleDraweeView img = vi.findViewById(R.id.img);
 
             img.setImageURI(results_banner.get(position).getImage());
             title.setText(results_banner.get(position).getTitle());
+            content.setText(results_banner.get(position).getContent());
 
             vi.setOnClickListener(new View.OnClickListener() {
                 @Override

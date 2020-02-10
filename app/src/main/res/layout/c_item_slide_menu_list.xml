@@ -18,7 +18,7 @@
             android:layout_height="@dimen/dp30"
             android:layout_weight="0"
             app:actualImageScaleType="fitCenter"
-            app:placeholderImage="@mipmap/place_holder"
+            app:placeholderImage="@mipmap/logo_brown_k"
             app:placeholderImageScaleType="fitCenter" />
 
         <tr.limonist.extras.MyTextView

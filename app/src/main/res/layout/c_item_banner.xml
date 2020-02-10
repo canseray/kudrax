@@ -7,7 +7,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp70"
+        android:layout_height="@dimen/dp80"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -17,7 +17,7 @@
             android:layout_height="fill_parent"
             android:layout_marginLeft="@dimen/dp5"
             app:actualImageScaleType="fitCenter"
-            app:placeholderImage="@mipmap/place_holder"
+            app:placeholderImage="@mipmap/logo_brown_k"
             app:roundedCornerRadius="@dimen/dp8" />
 
         <LinearLayout
@@ -28,23 +28,11 @@
             android:orientation="vertical"
             android:padding="@dimen/dp5">
 
-            <!-- <TextView
-                 android:id="@+id/title"
-                 android:layout_width="fill_parent"
-                 android:layout_height="wrap_content"
-                 android:layout_marginTop="@dimen/dp5"
-                 android:layout_weight="0"
-                 android:gravity="top|left"
-                 android:maxLines="2"
-                 android:textColor="@drawable/text_white"
-                 android:textSize="@dimen/dp15"
-                 android:textStyle="bold" />
  -->
             <TextView
                 android:id="@+id/title"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_marginTop="@dimen/dp5"
                 android:layout_weight="1"
                 android:ellipsize="end"
                 android:fontFamily="@font/comfortaa"
@@ -52,6 +40,18 @@
                 android:maxLines="3"
                 android:textColor="@color/a_brown11"
                 android:textSize="@dimen/dp15" />
+
+            <TextView
+                android:id="@+id/content"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:fontFamily="@font/comfortaa"
+                android:gravity="center_vertical|left"
+                android:maxLines="3"
+                android:textColor="@color/a_brown11"
+                android:textSize="@dimen/dp12" />
 
         </LinearLayout>
 

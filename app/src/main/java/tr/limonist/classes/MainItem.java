@@ -9,52 +9,62 @@ public class MainItem implements Serializable {
     private String image;
     private String prep;
     private String badge;
-    private String accountable;
-    private String message;
-    private String promotion;
+    private String accountStatus;
 
-    public MainItem(String id, String title, String image, String prep, String badge, String message, String accountable, String promotion) {
-
+    public MainItem(String id, String title, String image, String prep, String badge, String accountStatus) {
         this.id = id;
         this.title = title;
         this.image = image;
         this.prep = prep;
         this.badge = badge;
-        this.accountable = accountable;
-        this.message = message;
-        this.promotion = promotion;
-
-    }
-
-    public String getPromotion() {
-        return promotion;
+        this.accountStatus = accountStatus;
     }
 
     public String getId() {
         return id;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getTitle() {
         return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getImage() {
         return image;
     }
 
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public String getPrep() {
         return prep;
+    }
+
+    public void setPrep(String prep) {
+        this.prep = prep;
     }
 
     public String getBadge() {
         return badge;
     }
 
-    public String getAccountable() {
-        return accountable;
+    public void setBadge(String badge) {
+        this.badge = badge;
     }
 
-    public String getMessage() {
-        return message;
+    public String getAccountStatus() {
+        return accountStatus;
+    }
+
+    public void setAccountStatus(String accountStatus) {
+        this.accountStatus = accountStatus;
     }
 }

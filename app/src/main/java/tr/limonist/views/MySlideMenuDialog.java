@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.KeyEvent;
@@ -27,6 +28,7 @@ import tr.limonist.kudra.APP;
 import tr.limonist.kudra.R;
 import tr.limonist.classes.SlideMenuItem;
 import tr.limonist.extras.MyTextView;
+import tr.limonist.kudra.app.user.ProfileSettings;
 
 public class MySlideMenuDialog extends Dialog {
 	boolean show_status = false;
@@ -36,7 +38,7 @@ public class MySlideMenuDialog extends Dialog {
 	private JazzyListView list;
 	private lazy adapter;
 	private MyTextView name,mail,detail_link;
-	private SimpleDraweeView img,link_img;
+	private SimpleDraweeView img,link_img,edit_profile;
 
 	public MySlideMenuDialog(Activity activity) {
 		super(activity, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
@@ -84,6 +86,8 @@ public class MySlideMenuDialog extends Dialog {
 		LayoutInflater layoutInflater = LayoutInflater.from(m_activity);
 		View head = layoutInflater.inflate(R.layout.c_item_head_slide_menu_list, null);
 
+
+		edit_profile = head.findViewById(R.id.edit_profile);
 		name = (MyTextView) head.findViewById(R.id.name);
 		mail = (MyTextView) head.findViewById(R.id.mail);
 
@@ -91,6 +95,13 @@ public class MySlideMenuDialog extends Dialog {
 		img.setImageURI(APP.main_user.image);
 		mail.setText(APP.main_user.email);
 		name.setText(APP.main_user.name + " " + APP.main_user.surname);
+
+		edit_profile.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				m_activity.startActivity(new Intent(m_activity, ProfileSettings.class));
+			}
+		});
 
 		head.setEnabled(false);
 		head.setClickable(false);

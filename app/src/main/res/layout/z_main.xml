@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/main_background_k"
     android:layout_height="fill_parent">
 
@@ -82,11 +83,21 @@
                         android:layout_height="fill_parent"
                         android:layout_weight="1" />
 
+                    <com.viewpagerindicator.CirclePageIndicator
+                        android:id="@+id/indicator"
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"
+                        android:layout_weight="0"
+                        app:fillColor="@color/a_brown14"
+                        app:pageColor="@color/a_brown11"
+                        app:radius="@dimen/dp4"
+                        app:strokeColor="@color/a_brown11" />
+
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp60"
+                    android:layout_height="@dimen/dp50"
                     android:layout_weight="0"
                     android:background="@color/a_brown14"
                     android:gravity="center"
