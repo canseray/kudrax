@@ -393,7 +393,7 @@ public class Products extends FragmentActivity {
         public class ViewHolder {
 
             SimpleDraweeView img;
-            ImageView img_play, img_favorite;
+            SimpleDraweeView img_play, img_favorite;
             MyTextView title, price;
 
         }
@@ -421,10 +421,10 @@ public class Products extends FragmentActivity {
             holder.title.setText(item.getTitle());
             holder.price.setText(item.getPrice());
 
-            if(!item.getVideo().contentEquals(""))
-                holder.img_play.setImageResource(R.drawable.ic_video_on1);
+          /*  if(!item.getVideo().contentEquals(""))
+                holder.img_play.setImageResource(R.drawable.play_k);
             else
-                holder.img_play.setImageResource(R.drawable.ic_video_off1);
+                holder.img_play.setImageResource(R.drawable.play_k); */
 
             holder.img_play.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -436,10 +436,10 @@ public class Products extends FragmentActivity {
                 }
             });
 
-            if(!item.getFavorite().contentEquals("0"))
-                holder.img_favorite.setImageResource(R.drawable.b_ic_fav_on);
+           /* if(!item.getFavorite().contentEquals("0"))
+                holder.img_favorite.setImageResource(R.drawable.fav_flower_k);
             else
-                holder.img_favorite.setImageResource(R.drawable.b_ic_fav_off);
+                holder.img_favorite.setImageResource(R.drawable.fav_flower_k); */
 
             holder.img_favorite.setOnClickListener(new View.OnClickListener() {
                 @Override

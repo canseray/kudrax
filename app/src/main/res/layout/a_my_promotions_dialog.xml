@@ -43,7 +43,7 @@
                         android:layout_width="@dimen/dp40"
                         android:layout_height="@dimen/dp40"
                         android:layout_weight="0"
-                        android:src="@drawable/b_ic_close_black" />
+                        android:src="@drawable/left_k" />
 
 
                     <tr.limonist.extras.MyTextView
@@ -56,7 +56,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:textAllCaps="true"
-                        android:textColor="@color/a_black11"
+                        android:textColor="@color/a_brown11"
                         android:textSize="@dimen/dp18" />
 
                     <ImageView
@@ -68,9 +68,9 @@
 
                 <View
                     android:layout_width="fill_parent"
-                    android:layout_height="@dimen/dp_half"
+                    android:layout_height="@dimen/dp1"
                     android:layout_marginTop="@dimen/dp5"
-                    android:background="@color/a_black13" />
+                    android:background="@color/a_brown11" />
 
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -86,8 +86,8 @@
                         android:gravity="center"
                         android:padding="@dimen/dp5"
                         android:text="@string/s_my_promotion_desc"
-                        android:textColor="@color/a_black12"
-                        android:textSize="@dimen/dp10" />
+                        android:textColor="@color/a_brown11"
+                        android:textSize="@dimen/dp12" />
 
                     <TextView
                         android:id="@+id/point"
@@ -97,11 +97,12 @@
                         android:gravity="center"
                         android:textStyle="bold"
                         android:padding="@dimen/dp5"
-                        android:textColor="@color/a_main21"
+                        android:textColor="@color/a_brown11"
                         android:textSize="@dimen/dp50" />
 
 
                     <LinearLayout
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/dp50"
                         android:gravity="center"
@@ -141,6 +142,69 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:visibility="gone" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:weightSum="100"
+                        android:padding="@dimen/dp10"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_weight="50"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <tr.limonist.extras.MyTextView
+                                android:text="@string/s_amount"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:fontFamily="@font/comfortaa"
+                                android:textColor="@color/a_gray22"
+                                android:background="@drawable/but_oval_str_gray1_tra"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/dp40"/>
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="@dimen/dp5"
+                            android:layout_height="match_parent"
+                            android:background="@color/zxing_transparent"/>
+
+                        <LinearLayout
+                            android:layout_weight="50"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <tr.limonist.extras.MyTextView
+                                android:text="@string/s_use"
+                                android:fontFamily="@font/comfortaa"
+                                android:textColor="@color/a_brown11"
+                                android:gravity="center"
+                                android:textSize="@dimen/dp18"
+                                android:background="@drawable/but_oval_str_brown1_tra"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/dp40"/>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/dp5"
+                                android:background="@color/zxing_transparent"/>
+
+                            <tr.limonist.extras.MyTextView
+                                android:text="@string/s_cancel"
+                                android:fontFamily="@font/comfortaa"
+                                android:textColor="@color/a_brown11"
+                                android:gravity="center"
+                                android:textSize="@dimen/dp18"
+                                android:background="@drawable/but_oval_str_brown1_tra"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/dp40"/>
+
+                        </LinearLayout>
                     </LinearLayout>
 
                     <ListView

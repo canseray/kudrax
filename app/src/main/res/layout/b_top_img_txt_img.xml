@@ -5,8 +5,11 @@
     android:orientation="vertical" >
 
     <LinearLayout
+        android:layout_gravity="center_vertical"
+        android:foregroundGravity="center_vertical"
+        android:gravity="center_vertical"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp40"
+        android:layout_height="@dimen/dp50"
         android:paddingLeft="@dimen/dp5"
         android:paddingRight="@dimen/dp5" >
 
@@ -40,7 +43,7 @@
                 android:textAllCaps="true"
                 android:textStyle="bold"
                 android:textColor="@color/a_black11"
-                android:textSize="@dimen/dp18" />
+                android:textSize="@dimen/dp20" />
         </LinearLayout>
 
         <LinearLayout

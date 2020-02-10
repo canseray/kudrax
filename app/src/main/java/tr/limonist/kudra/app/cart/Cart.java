@@ -2,7 +2,9 @@ package tr.limonist.kudra.app.cart;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,6 +17,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.scwang.smartrefresh.header.WaterDropHeader;
@@ -40,8 +43,12 @@ import tr.limonist.extras.MyTextView;
 import tr.limonist.extras.TransparentProgressDialog;
 import tr.limonist.kudra.APP;
 import tr.limonist.kudra.R;
+import tr.limonist.kudra.app.SplashScreen;
+import tr.limonist.views.MyAlertDialog;
+import tr.limonist.views.MyInfoDialog;
 import tr.limonist.views.MyPaymentDetailDialog;
 import tr.limonist.views.MyPromotionDialog;
+import tr.limonist.views.MyQuestionDialog;
 
 public class Cart extends Activity {
 
@@ -73,15 +80,20 @@ public class Cart extends Activity {
         setContentView(R.layout.z_cart);
 
         ViewStub stub = findViewById(R.id.lay_stub);
-        stub.setLayoutResource(R.layout.b_top_img_txt_img);
+        stub.setLayoutResource(R.layout.b_top_img_txt_txt);
         stub.inflate();
 
         MyTextView tv_baslik = findViewById(R.id.tv_baslik);
-        tv_baslik.setTextColor(getResources().getColor(R.color.a_black11));
+        tv_baslik.setTextColor(getResources().getColor(R.color.a_brown11));
         tv_baslik.setText(getString(R.string.s_your_cart));
 
         ImageView img_left = findViewById(R.id.img_left);
-        img_left.setImageResource(R.drawable.b_ic_prew_black);
+        img_left.setImageResource(R.drawable.left_k);
+
+        MyTextView txt_rigth = findViewById(R.id.tv_right);
+        tv_baslik.setTextColor(getResources().getColor(R.color.a_brown11));
+        txt_rigth.setText(R.string.s_remove_cart);
+
 
         LinearLayout top_left = findViewById(R.id.top_left);
         top_left.setOnClickListener(new View.OnClickListener() {
@@ -93,11 +105,8 @@ public class Cart extends Activity {
 
         });
 
-        ImageView img_right = findViewById(R.id.img_right);
-        img_right.setImageResource(R.drawable.b_ic_delete_black);
 
-        LinearLayout top_right = findViewById(R.id.top_right);
-        top_right.setOnClickListener(new View.OnClickListener() {
+        txt_rigth.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
@@ -121,8 +130,32 @@ public class Cart extends Activity {
         tv_done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!part3.contentEquals("0"))
-                    startActivity(new Intent(m_activity,CheckOut.class).putExtra("total",part2).putExtra("currency",part5).putExtra("item_count",part3));
+
+                final MyQuestionDialog alert = new MyQuestionDialog(m_activity,
+                        getString(R.string.s_cargo_confirm), getString(R.string.s_yes),
+                        getString(R.string.s_cancel_caps), false);
+
+                alert.setNegativeClicl(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        alert.dismiss();
+                        finish();
+                    }
+                });
+                alert.setPositiveClicl(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        alert.dismiss();
+                        pd.show();
+                        if(!part3.contentEquals("0"))
+                            startActivity(new Intent(m_activity,CheckOut.class)
+                                    .putExtra("total",part2).putExtra("currency",part5)
+                                    .putExtra("item_count",part3));
+                    }
+                });
+                alert.show();
 
             }
         });
@@ -141,7 +174,7 @@ public class Cart extends Activity {
         tv_total = (MyTextView) findViewById(R.id.tv_total);
 
         LayoutInflater layoutInflater = LayoutInflater.from(m_activity);
-        head = layoutInflater.inflate(R.layout.c_item_head_cart, null);
+        /*head = layoutInflater.inflate(R.layout.c_item_head_cart, null);
 
         TextView date = (TextView) head.findViewById(R.id.date);
         TextView title = (TextView) head.findViewById(R.id.title);
@@ -151,11 +184,15 @@ public class Cart extends Activity {
         String date_n = new SimpleDateFormat("dd MMMM EEEE", Locale.getDefault()).format(new Date());
         date.setText(date_n);
 
-        footer = layoutInflater.inflate(R.layout.c_item_footer_cart, null);
+        */
+
+        //footer = findby myTextView
+        //footer = layoutInflater.inflate(R.layout.c_item_footer_cart, null);
+        footer = findViewById(R.id.tv_promotion);
         footer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new MyPromotionDialog(m_activity,getString(R.string.s_promotions),true,part2);
+                new MyPromotionDialog(m_activity,getString(R.string.s_kudra_points),true,part2);
             }
         });
 

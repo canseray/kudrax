@@ -3,7 +3,6 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/a_white11"
-    android:paddingTop="@dimen/dp25"
     android:orientation="vertical">
 
     <LinearLayout
@@ -43,9 +42,11 @@
 
                 <com.twotoasters.jazzylistview.JazzyListView
                     android:id="@+id/list"
+                    android:paddingHorizontal="@dimen/dp20"
                     android:layout_width="match_parent"
                     android:layout_height="fill_parent"
-                    android:dividerHeight="@dimen/dp_half"
+                    android:dividerHeight="@dimen/dp1"
+                    android:divider="@color/a_brown11"
                     android:scrollbars="none" />
             </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 

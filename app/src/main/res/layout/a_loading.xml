@@ -15,7 +15,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_margin="@dimen/dp5"
-            android:src="@drawable/progress_logo" />
+            android:src="@drawable/logo_brown_k" />
 
         <com.pnikosis.materialishprogress.ProgressWheel
             android:id="@+id/progress_custom"
@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             app:matProg_barWidth="@dimen/dp3"
             app:matProg_circleRadius="@dimen/dp100"
-            app:matProg_barColor="@color/a_main11"
+            app:matProg_barColor="@color/a_brown11"
             app:matProg_progressIndeterminate="true" />
     </RelativeLayout>
 

@@ -2,9 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/a_white11"
     android:gravity="center"
-    android:paddingTop="@dimen/dp25"
     android:orientation="vertical">
 
     <LinearLayout
@@ -18,10 +16,14 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
 
+        <View
+            android:background="@color/a_brown11"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp1"/>
+
     </LinearLayout>
 
     <LinearLayout
-        android:background="@color/a_back"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:gravity="center"
@@ -43,74 +45,175 @@
                     android:layout_width="match_parent"
                     android:layout_height="fill_parent"
                     android:dividerHeight="@dimen/dp_half"
-                    android:divider="@color/a_black13"
+                    android:divider="@color/a_brown11"
+                    android:paddingHorizontal="@dimen/dp20"
                     android:scrollbars="none" />
             </com.scwang.smartrefresh.layout.SmartRefreshLayout>
         </FrameLayout>
+        <View
+            android:background="@color/a_brown11"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp1"/>
 
         <LinearLayout
-            android:background="@color/a_white11"
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/dp70"
+            android:paddingVertical="@dimen/dp30"
             android:layout_weight="0"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="@dimen/dp10">
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <tr.limonist.extras.MyTextView
-                android:fontFamily="@font/comfortaa"
-                android:id="@+id/tv_done"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:background="@drawable/but_rnd_main2"
-                android:gravity="center"
-                android:text="@string/s_confirm_cart"
-                android:textColor="@color/a_white11"
-                android:textSize="@dimen/dp18" />
 
             <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:paddingHorizontal="@dimen/dp30"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp40"
+                android:orientation="horizontal">
 
                 <tr.limonist.extras.MyTextView
                     android:fontFamily="@font/comfortaa"
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical|right"
+                    android:layout_height="@dimen/dp40"
+                    android:text="@string/s_min_total"
+                    android:textColor="@color/a_brown11"
+                    android:textSize="@dimen/dp15" />
+
+                <tr.limonist.extras.MyTextView
+                    android:fontFamily="@font/comfortaa"
+                    android:id="@+id/tv_min_total"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:textColor="@drawable/text_black"
+                    android:textSize="@dimen/dp20" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_marginStart="@dimen/dp30"
+                android:layout_marginEnd="@dimen/dp30"
+                android:background="@color/a_brown11"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"/>
+
+            <LinearLayout
+                android:paddingHorizontal="@dimen/dp30"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp40"
+                android:orientation="horizontal">
+
+                <tr.limonist.extras.MyTextView
+                    android:fontFamily="@font/comfortaa"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:text="@string/s_ara_total"
+                    android:textColor="@color/a_brown11"
+                    android:textSize="@dimen/dp15" />
+
+                <tr.limonist.extras.MyTextView
+                    android:fontFamily="@font/comfortaa"
+                    android:id="@+id/tv_ara_total"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:textColor="@drawable/text_black"
+                    android:textSize="@dimen/dp20" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_marginStart="@dimen/dp30"
+                android:layout_marginEnd="@dimen/dp30"
+                android:background="@color/a_brown11"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"/>
+
+            <LinearLayout
+                android:paddingHorizontal="@dimen/dp30"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp40"
+                android:orientation="horizontal">
+
+                <tr.limonist.extras.MyTextView
+                    android:fontFamily="@font/comfortaa"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/dp40"
                     android:text="@string/s_total"
-                    android:textColor="@drawable/text_black2"
+                    android:textColor="@color/a_brown11"
                     android:textSize="@dimen/dp15" />
 
                 <tr.limonist.extras.MyTextView
                     android:fontFamily="@font/comfortaa"
                     android:id="@+id/tv_total"
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical|right"
+                    android:layout_height="@dimen/dp40"
                     android:textColor="@drawable/text_black"
                     android:textSize="@dimen/dp20" />
 
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/img_detail"
-                android:layout_width="@dimen/dp40"
+            <View
+                android:layout_marginStart="@dimen/dp30"
+                android:layout_marginEnd="@dimen/dp30"
+                android:background="@color/a_brown11"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"/>
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/dp30"
+            android:orientation="vertical">
+
+            <tr.limonist.extras.MyTextView
+                android:fontFamily="@font/comfortaa"
+                android:id="@+id/tv_promotion"
+                android:layout_width="fill_parent"
                 android:layout_height="@dimen/dp40"
-                android:layout_marginLeft="@dimen/dp15"
-                android:layout_weight="0"
-                android:padding="@dimen/dp3"
-                android:rotation="90"
-                android:src="@drawable/b_ic_prew_black" />
+                android:background="@drawable/but_oval_str_brown1_tra"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:text="@string/s_use_point"
+                android:textColor="@color/a_brown11"
+                android:textSize="@dimen/dp18" />
+
+            <View
+                android:background="@color/zxing_transparent"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"/>
+
+            <tr.limonist.extras.MyTextView
+                android:fontFamily="@font/comfortaa"
+                android:id="@+id/tv_done"
+                android:textAllCaps="true"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dp40"
+                android:background="@drawable/but_oval_str_brown1_tra"
+                android:gravity="center"
+                android:text="@string/s_confirm_cart"
+                android:textColor="@color/a_brown11"
+                android:textSize="@dimen/dp18" />
+
+
 
         </LinearLayout>
 
 
     </LinearLayout>
+
+
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/img_detail"
+        android:layout_width="@dimen/dp40"
+        android:layout_height="@dimen/dp40"
+        android:layout_marginLeft="@dimen/dp15"
+        android:padding="@dimen/dp3"
+        android:rotation="90"
+        android:src="@drawable/b_ic_prew_black" />
 
 </LinearLayout>

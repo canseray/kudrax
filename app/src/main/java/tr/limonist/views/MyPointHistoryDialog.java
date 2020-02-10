@@ -1,4 +1,4 @@
-package tr.limonist.views;
+                                                                                                                                               package tr.limonist.views;
 
 import android.app.Activity;
 import android.app.Dialog;

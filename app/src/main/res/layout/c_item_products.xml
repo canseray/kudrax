@@ -15,86 +15,78 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_marginLeft="@dimen/dp10"
-            android:layout_marginTop="@dimen/dp10"
             android:layout_marginRight="@dimen/dp10"
-            android:layout_marginBottom="@dimen/dp10"
-            android:background="@drawable/but_oval_str_stroke_tra"
             android:gravity="center_horizontal|top"
             android:orientation="vertical">
 
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/img"
                 android:layout_width="fill_parent"
-                android:layout_height="@dimen/dp110"
+                android:layout_height="fill_parent"
                 app:actualImageScaleType="fitCenter"
-                app:placeholderImage="@mipmap/place_holder"
+                app:placeholderImage="@mipmap/logo_brown_k"
                 app:roundTopLeft="true"
                 app:roundTopRight="true"
-                app:roundedCornerRadius="@dimen/dp25" />
-
-            <tr.limonist.extras.MyTextView
-                android:id="@+id/title"
-                android:layout_width="fill_parent"
-                android:layout_height="@dimen/dp45"
-                android:gravity="center"
-                android:textColor="@drawable/text_black"
-                android:textSize="@dimen/dp15"
-                android:textStyle="bold" />
-
-            <tr.limonist.extras.MyTextView
-                android:id="@+id/price"
-                android:layout_width="fill_parent"
-                android:layout_height="@dimen/dp40"
-                android:gravity="center"
-                android:textColor="@drawable/text_main2"
-                android:textSize="@dimen/dp15"
-                android:textStyle="bold" />
+                app:roundAsCircle="true"
+                app:roundingBorderColor="@color/a_brown11"
+                app:roundingBorderWidth="@dimen/dp1"/>
 
         </LinearLayout>
 
-        <LinearLayout
-            android:duplicateParentState="true"
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/dp25"
-            android:layout_alignParentBottom="true"
-            android:gravity="center"
-            android:weightSum="100">
-
-            <tr.limonist.extras.MyTextView
-                android:duplicateParentState="true"
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_weight="60"
-                android:background="@drawable/but_oval_str_stroke_white"
-                android:fontFamily="@font/comfortaa"
-                android:gravity="center"
-                android:text="@string/s_buy"
-                android:textAllCaps="true"
-                android:textColor="@drawable/text_black"
-                android:textSize="@dimen/dp15"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        <ImageView
+        <com.facebook.drawee.view.SimpleDraweeView
+            app:roundAsCircle="true"
+            app:roundingBorderColor="@color/a_brown11"
+            app:roundingBorderWidth="@dimen/dp1"
             android:id="@+id/img_play"
             android:layout_width="@dimen/dp30"
             android:layout_height="@dimen/dp30"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:background="@color/a_white11"
-            android:src="@drawable/ic_video_off1" />
+            app:placeholderImage="@mipmap/play_k" />
 
-        <ImageView
+        <com.facebook.drawee.view.SimpleDraweeView
+            app:roundAsCircle="true"
+            app:roundingBorderColor="@color/a_brown11"
+            app:roundingBorderWidth="@dimen/dp1"
             android:id="@+id/img_favorite"
             android:layout_width="@dimen/dp30"
             android:layout_height="@dimen/dp30"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
-            android:background="@color/a_white11"
-            android:src="@drawable/b_ic_fav_on" />
+            app:placeholderImage="@mipmap/fav_flower_k"
+            android:background="@color/a_white11"/>
 
     </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:duplicateParentState="true"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/dp25"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:weightSum="100">
+
+        <tr.limonist.extras.MyTextView
+            android:id="@+id/title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/a_brown11"
+            android:textSize="@dimen/dp15"
+            android:textStyle="bold" />
+
+        <tr.limonist.extras.MyTextView
+            android:id="@+id/price"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/a_brown11"
+            android:textSize="@dimen/dp15"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 
 
 </LinearLayout>

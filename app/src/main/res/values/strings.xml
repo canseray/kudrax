@@ -1,10 +1,16 @@
 <resources>
     <string name="app_name" translatable="false">KUDRA</string>
     <string name="s_connection_error">Bağlantı Hatası...</string>
+
     <string name="s_refresh">Yenile</string>
     <string name="s_cancel">Vazgeç</string>
     <string name="s_close">Kapat</string>
+    <string name="s_yes">EVET</string>
+    <string name="s_cancel_caps">VAZGEÇ</string>
+
     <string name="s_unexpected_connection_error_has_occured">Beklenmedik bir hata oluştu.Lütfen tekrar deneyiniz.</string>
+    <string name="s_cargo_confirm">Siparişinizi kargo ile teslim almayı onaylıyor musunuz?</string>
+
 
     <string name="s_log_in">GİRİŞ YAP</string>
     <string name="s_new_account">Yeni Hesap Oluştur</string>
@@ -50,13 +56,19 @@
     <string name="s_payment">Ödeme</string>
     <string name="s_error_occured_when_pay">Ödeme sırasında hata oluştu.</string>
     <string name="s_total">Toplam</string>
+    <string name="s_ara_total">Ara Toplam</string>
+    <string name="s_min_total">Minimum Sipariş Tutarı</string>
+
     <string name="s_order_status">Sipariş Durumu</string>
     <string name="s_please_read_and_accept_user_aggrement">Lütfen kullanıcı sözleşmesini okuyup kabul edin.</string>
 
     <string name="s_search">Arama</string>
     <string name="s_use">Kullan</string>
+    <string name="s_count">-Sipariş Adedi-</string>
+
     <string name="s_send_request">Talebi Gönder</string>
     <string name="s_contract">Sözleşme</string>
+    <string name="s_use_point">Kudra Puan Kullan</string>
     <string name="s_my_account">HESAP BİLGİLERİM</string>
     <string name="s_select">Seçiniz</string>
     <string name="s_log_out_exp">Uygulamadan çıkış yapmak istediğinize emin misiniz?</string>
@@ -66,7 +78,8 @@
     <string name="s_used_prom">Kullanılmış Prom.</string>
     <string name="s_product_detail">Ürün Detayı</string>
     <string name="s_confirm_cart">Sepeti Onayla</string>
-    <string name="s_your_cart">Sepetiniz</string>
+    <string name="s_your_cart">Sepet</string>
+    <string name="s_remove_cart">Sepeti Boşalt</string>
     <string name="s_products">Ürünler</string>
     <string name="s_promotion_code">Promosyon Kodu</string>
     <string name="s_eelect_address">Adres Seçiniz</string>
@@ -138,15 +151,19 @@
     <string name="s_option_qr_vale_title">Vale Kod Tarayıcı</string>
     <string name="s_option_qr_vale">Aracınızı valeden teslim almak için VALE kartınızda bulunan VALE QR kodunu taratabilirsiniz</string>
     <string name="s_contact">İletişim</string>
-    <string name="s_my_promotion_desc">You can reach the information about your active, used promotions and total usable money point below.</string>
+    <string name="s_my_promotion_desc">Kullanabileceğiniz toplam <b>Kudra Puan</b></string>
     <string name="s_total_usable_point">Toplam Kullanılabilir Puan Tutarı</string>
     <string name="s_earned_point">Kazanılan Puanlar</string>
     <string name="s_used_point">Kullanılan Puanlar</string>
     <string name="s_point_history">Puan Geçmişi</string>
     <string name="s_promotions">Promosyonlar</string>
+    <string name="s_kudra_points">Kudra Puan</string>
     <string name="s_total_cart_amount_x">Toplam Sepet Miktarı : %s</string>
     <string name="s_enter_point_amount_here">Kullanılacak puan miktarını buraya girin</string>
     <string name="s_must_enter_as_many_point_as_your_cart_amount">Sepet miktarınız kadar puan girmelisiniz</string>
     <string name="s_used_point_amount_x">Kullanılan Puan Miktarı : %s</string>
+    <string name="s_amount">miktar*</string>
+
+
 
 </resources>

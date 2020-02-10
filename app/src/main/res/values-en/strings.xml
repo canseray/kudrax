@@ -3,6 +3,10 @@
     <string name="s_next">NEXT</string>
     <string name="s_do_next">NEXT</string>
     <string name="s_skin_type">SKIN TYPE</string>
+    <string name="s_yes">YES</string>
+    <string name="s_cancel_caps">CANCEL</string>
+
+
     <string name="s_log_in_exp">Please enter your e-mail address and password to log in.</string>
     <string name="s_pass_recovery_exp">If you don\'t remember your password, please enter a valid e-mail address to recover your password.</string>
     <string name="s_new_user_desc">Please fill all fields below for registration.</string>
@@ -54,7 +58,13 @@
     <string name="s_used_point_amount_x">Used Point Amount : %s</string>
 
     <string name="s_skip">Skip</string>
+    <string name="s_count">-Counts-</string>
+
     <string name="s_log_in">Log In</string>
+    <string name="s_ara_total">Ara Toplam</string>
+    <string name="s_min_total">Min Total</string>
+    <string name="s_remove_cart">Remove Cart</string>
+    <string name="s_use_point">Use Kudra Point</string>
     <string name="s_new_account">New Account</string>
     <string name="s_email_address">E-MAIL</string>
     <string name="s_password">PASSWORD</string>
@@ -80,6 +90,7 @@
     <string name="s_please_enter_x">Please enter %s</string>
     <string name="s_done">Done</string>
     <string name="s_save">Save</string>
+    <string name="s_kudra_points">Kudra Point</string>
     <string name="s_my_account">My Account</string>
     <string name="s_log_out">Log Out</string>
     <string name="s_log_out_exp">Log Out, do you confirm?</string>
@@ -139,6 +150,10 @@
     <string name="s_estiamated_time">Estimated Time</string>
     <string name="s_estiamated_distance">Estimated Distance</string>
     <string name="s_your_delivery">Your Delivery</string>
+    <string name="s_amount">amount*</string>
+    <string name="s_cargo_confirm">Do you confirm receiving your order by cargo?</string>
+
+
     <string-array name="profile_titles">
         <item>First Name</item>
         <item>Last Name</item>

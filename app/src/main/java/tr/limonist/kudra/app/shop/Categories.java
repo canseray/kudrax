@@ -121,6 +121,7 @@ public class Categories extends Activity {
         }); */
 
         badge_right = findViewById(R.id.badge_right);
+        badge_right.setVisibility(View.INVISIBLE);
 
         refreshLayout = findViewById(R.id.refreshLayout);
         refreshLayout.setRefreshHeader(new WaterDropHeader(this));
@@ -133,8 +134,8 @@ public class Categories extends Activity {
 
         list = findViewById(R.id.list);
         list.setEmptyView(findViewById(android.R.id.empty));
-        list.setDivider(new ColorDrawable(Color.TRANSPARENT));
-        list.setDividerHeight(10);
+        list.setDivider(getResources().getDrawable(R.color.a_brown11));
+        list.setDividerHeight(2);
 
         results = new ArrayList<>();
         adapter = new lazy();
@@ -211,7 +212,9 @@ public class Categories extends Activity {
 
                 if(count>0)
                 {
-                    badge_right.setVisibility(View.VISIBLE);
+                    //badge_right.setVisibility(View.VISIBLE);
+
+                    badge_right.setVisibility(View.GONE);
                     badge_right.setText(part2);
                 }
                 else

@@ -41,7 +41,7 @@ public class ProductDetail extends Activity {
     String product_id = "0",product_title="";
     MyTextView badge_right;
     SimpleDraweeView img;
-    private SparkButton spark;
+    private SimpleDraweeView spark;
     private MyTextView tv_title;
     private TextView tv_count;
     private MyTextView tv_total;
@@ -50,6 +50,8 @@ public class ProductDetail extends Activity {
     private LinearLayout lay_cart;
     private String sendPart1,sendPart2;
     private String favPart1,favPart2;
+
+    //spark btn yerine share
 
     @Override
     protected void onResume() {
@@ -77,6 +79,7 @@ public class ProductDetail extends Activity {
         stub.inflate();
 
         MyTextView tv_baslik = findViewById(R.id.tv_baslik);
+        tv_baslik.setTextColor(getResources().getColor(R.color.a_brown11));
         tv_baslik.setText(getString(R.string.s_product_detail));
 
         LinearLayout top_left = findViewById(R.id.top_left);
@@ -90,7 +93,7 @@ public class ProductDetail extends Activity {
         });
 
         ImageView img_left = findViewById(R.id.img_left);
-        img_left.setImageResource(R.drawable.b_ic_prew_black);
+        img_left.setImageResource(R.drawable.left_k);
 
         RelativeLayout top_right = findViewById(R.id.top_right);
         top_right.setOnClickListener(new View.OnClickListener() {
@@ -102,7 +105,7 @@ public class ProductDetail extends Activity {
         });
 
         ImageView img_right = findViewById(R.id.img_right);
-        img_right.setImageResource(R.drawable.b_ic_add_cart_black);
+        img_right.setImageResource(R.drawable.box_k);
 
         badge_right = findViewById(R.id.badge_right);
         badge_right.setBackgroundResource(R.drawable.but_circle_black1);
@@ -116,7 +119,7 @@ public class ProductDetail extends Activity {
             }
         });
 
-        spark = (SparkButton) findViewById(R.id.spark);
+        spark = (SimpleDraweeView) findViewById(R.id.spark);
 
         tv_title = (MyTextView) findViewById(R.id.tv_title);
 
@@ -243,11 +246,11 @@ public class ProductDetail extends Activity {
         } else badge_right.setVisibility(View.GONE);
 
         if (part_product_favorite.contentEquals("1")) {
-            spark.setChecked(true);
-            spark.playAnimation();
+            //spark.setChecked(true);
+            //spark.playAnimation();
         }
 
-        spark.setEventListener(new SparkEventListener() {
+      /*  spark.setEventListener(new SparkEventListener() {
             @Override
             public void onEvent(ImageView button, boolean buttonState) {
                 pd.show();
@@ -263,7 +266,14 @@ public class ProductDetail extends Activity {
             public void onEventAnimationStart(ImageView button, boolean buttonState) {
 
             }
-        });
+        }); */
+
+      spark.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              //share
+          }
+      });
 
         single_price = Double.parseDouble(part_product_price);
         product_cart_count = 1;
@@ -403,10 +413,14 @@ public class ProductDetail extends Activity {
             if (pd != null)
                 pd.dismiss();
             if (result.contentEquals("true")) {
-                if (favPart2.contentEquals("1"))
-                    spark.setChecked(true);
-                else
-                    spark.setChecked(false);
+                if (favPart2.contentEquals("1")){
+
+                }
+                    //spark.setChecked(true);
+                else{
+                    // spark.setChecked(false);
+
+                }
 
             } else if (result.contentEquals("error")) {
                 APP.show_status(m_activity, 2, favPart2);

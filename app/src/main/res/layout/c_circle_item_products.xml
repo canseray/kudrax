@@ -1,0 +1,104 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/dp10">
+
+    <RelativeLayout
+        android:duplicateParentState="true"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/dp250">
+
+        <LinearLayout
+            android:duplicateParentState="true"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp10"
+            android:layout_marginBottom="@dimen/dp10"
+            android:gravity="center_horizontal|top"
+            android:orientation="vertical">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/img"
+                app:roundAsCircle="true"
+                app:roundingBorderWidth="@dimen/dp1"
+                app:roundingBorderColor="@color/a_brown11"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                app:actualImageScaleType="fitCenter"
+                app:placeholderImage="@mipmap/logo_brown_k"
+                app:roundedCornerRadius="@dimen/dp25" />
+
+            <tr.limonist.extras.MyTextView
+                android:id="@+id/title"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dp45"
+                android:gravity="center"
+                android:textColor="@drawable/text_black"
+                android:textSize="@dimen/dp15"
+                android:textStyle="bold" />
+
+            <tr.limonist.extras.MyTextView
+                android:id="@+id/price"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dp40"
+                android:gravity="center"
+                android:textColor="@drawable/text_main2"
+                android:textSize="@dimen/dp15"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:duplicateParentState="true"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dp25"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:weightSum="100">
+
+            <tr.limonist.extras.MyTextView
+                android:duplicateParentState="true"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="60"
+                android:fontFamily="@font/comfortaa"
+                android:gravity="center"
+                android:text="@string/s_buy"
+                android:textAllCaps="true"
+                android:textColor="@color/a_brown11"
+                android:textSize="@dimen/dp15"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/img_play"
+            android:layout_width="@dimen/dp30"
+            android:layout_height="@dimen/dp30"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:background="@color/a_white11"
+            android:src="@drawable/ic_video_off1" />
+
+        <ImageView
+            android:id="@+id/img_favorite"
+            android:layout_width="@dimen/dp30"
+            android:layout_height="@dimen/dp30"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:background="@color/a_white11"
+            android:src="@drawable/b_ic_fav_on" />
+
+    </RelativeLayout>
+
+    <View
+        android:background="@color/a_brown11"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp1"/>
+
+</LinearLayout>
