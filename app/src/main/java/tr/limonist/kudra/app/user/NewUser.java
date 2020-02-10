@@ -12,6 +12,7 @@ import android.view.ViewStub;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.github.lguipeng.library.animcheckbox.AnimCheckBox;
 import com.google.gson.Gson;
@@ -36,11 +37,13 @@ public class NewUser extends Activity {
 
     MyTextView tv_done;
     EditText et_mail, et_pass, et_name, et_surname, et_phone;
-    String s_mail, s_pass, s_name, s_surname, s_phone;
+    TextView et_skin_type;
+    String s_mail, s_pass, s_name, s_surname, s_phone, s_skin_type;
     private TransparentProgressDialog pd;
     private boolean is_check;
     private Activity m_activity;
     private String part1;
+    AnimCheckBox acb;
     private String respPart1,respPart2,respPart3;
 
     @Override
@@ -84,26 +87,23 @@ public class NewUser extends Activity {
             @Override
             public void onClick(View arg0) {
 
-                //open aggrement dialog sign check box
 
                 s_mail = et_mail.getText().toString();
                 s_pass = et_pass.getText().toString();
                 s_name = et_name.getText().toString();
                 s_surname = et_surname.getText().toString();
                 s_phone = et_phone.getText().toString();
+               // s_skin_type = et_skin_type.getText().toString();
 
                 if (s_name.length() > 0) {
                     if (s_surname.length() > 0) {
                         if (APP.isValidEmail(s_mail)) {
                             if (s_phone.length() > 0) {
                                 if (s_pass.length() > 5 && s_pass.length() < 21) {
-                                    if (is_check) {
-                                        pd.show();
-                                        new Connection().execute("");
-                                    } else {
-                                        APP.show_status(m_activity, 2,
-                                                getResources().getString(R.string.s_please_read_and_accept_user_aggrement));
-                                    }
+                                         pd.show();
+                                       // new Connection().execute("");
+                                        startActivity(new Intent(m_activity, UserAggrement.class).putExtra("contract",part1));
+
                                 } else {
                                     APP.show_status(m_activity, 2,
                                             getResources().getString(R.string.s_please_enter_a_password));
@@ -132,6 +132,28 @@ public class NewUser extends Activity {
         et_name = (EditText) findViewById(R.id.et_name);
         et_surname = (EditText) findViewById(R.id.et_surname);
         et_phone = (EditText) findViewById(R.id.et_phone);
+
+      /*  is_check = false;
+        acb = (AnimCheckBox) findViewById(R.id.acb);
+        acb.setOnCheckedChangeListener(new AnimCheckBox.OnCheckedChangeListener() {
+            @Override
+            public void onChange(AnimCheckBox view, boolean checked) {
+                is_check = checked;
+            }
+        });
+
+        MyTextView tv_read = (MyTextView) findViewById(R.id.tv_read);
+        tv_read.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                pd.show();
+                new Connection2().execute("");
+            }
+        }); */
+
+      new Connection2().execute();
 
     }
 
@@ -219,6 +241,8 @@ public class NewUser extends Activity {
             nameValuePairs.add(new Pair<>("param11", APP.base64Encode(APP.version != null ? APP.version : "")));
             nameValuePairs.add(new Pair<>("param17", APP.base64Encode("A")));
             nameValuePairs.add(new Pair<>("param18", APP.base64Encode(APP.language_id)));
+            nameValuePairs.add(new Pair<>("param19", APP.base64Encode("skin type")));
+
 
             String xml = APP.post1(nameValuePairs, APP.path + "/account_panel/send_new_account_request.php");
 

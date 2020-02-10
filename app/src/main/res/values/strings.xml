@@ -125,6 +125,15 @@
     <string name="s_done_process">İŞLEMİ TAMAMLA</string>
     <string name="s_profile_photo_desc">Yeni profil görseliniz eklenecek, onaylıyor musunuz?</string>
     <string name="s_add">Ekle</string>
+
+    <string name="s_order_code">Sipariş Kodu:</string>
+    <string name="s_order_type">Sipariş Türü:</string>
+    <string name="s_order_total">Sipariş Tutarı:</string>
+    <string name="s_payment_type">Ödeme Şekli</string>
+
+
+
+    <string name="s_mobile_order"><u>Mobil Sipariş</u></string>
     <string name="s_no_data">. . .</string>
     <string name="s_play_store_must_be_insatalled">Play Store yükü olmalıdır...</string>
     <string name="s_loading">Yükleniyor...</string>
