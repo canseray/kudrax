@@ -128,7 +128,7 @@
     <string name="s_no_data">. . .</string>
     <string name="s_play_store_must_be_insatalled">Play Store yükü olmalıdır...</string>
     <string name="s_loading">Yükleniyor...</string>
-    <string name="s_feedback_desc">Bizi değerlendirirken dikkatinizi çeken\nfotoğrafları da paylaşabilirsiniz...</string>
+    <string name="s_feedback_desc">Lütfen mesajınızı yazın...</string>
     <string name="s_photo">Mevcut Görsel</string>
     <string name="s_photo_desc">Görseli görüntülemek mi yoksa yeni görsel eklemek mi istersiniz?</string>
     <string name="s_photo_view">Görüntüle</string>

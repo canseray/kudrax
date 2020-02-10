@@ -246,7 +246,7 @@ public class Main extends AppCompatActivity {
         img_left.setImageResource(R.drawable.hidden_menu_icon_k);
 
         ImageView img_right = findViewById(R.id.img_right);
-        img_right.setImageResource(R.drawable.qr_code_k);
+        img_right.setImageResource(R.drawable .qr_code_k);
 
         ImageView img_center = findViewById(R.id.img_center);
         img_center.setImageResource(R.drawable.header_text_k);
@@ -296,7 +296,7 @@ public class Main extends AppCompatActivity {
             @Override
             public void onClick(View arg0) {
 
-                startActivity(new Intent(m_activity, OrderHistory.class).putExtra("title", getString(R.string.s_order_history)));
+                startActivity(new Intent(m_activity, Cargo.class).putExtra("title", getString(R.string.s_order_history)));
             }
         });
 
@@ -547,7 +547,7 @@ public class Main extends AppCompatActivity {
                 MainItem item = results.get(i);
 
                 SimpleDraweeView img = findViewById(img_resources[i]);
-                img.setImageURI(item.getImage());
+               // img.setImageURI(item.getImage());
 
                 MyTextView title = findViewById(title_resources[i]);
                 title.setText(item.getTitle());

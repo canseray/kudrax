@@ -77,10 +77,10 @@ public class OrderHistory extends Activity {
 
         tv_baslik = (MyTextView) findViewById(R.id.tv_baslik);
         tv_baslik.setText(title);
-        tv_baslik.setTextColor(getResources().getColor(R.color.a_black11));
+        tv_baslik.setTextColor(getResources().getColor(R.color.a_brown11));
 
         img_left = (ImageView) findViewById(R.id.img_left);
-        img_left.setImageResource(R.drawable.b_ic_close_black);
+        img_left.setImageResource(R.drawable.left_k);
 
         refreshLayout = (RefreshLayout) findViewById(R.id.refreshLayout);
         refreshLayout.setRefreshHeader(new WaterDropHeader(this));

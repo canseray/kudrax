@@ -4,28 +4,32 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
-    android:orientation="horizontal"
-    android:padding="@dimen/dp5">
+    android:orientation="vertical"
+    android:padding="@dimen/dp8">
 
-    <LinearLayout
+    <TextView
+        android:text="çok iyi"
+        android:padding="@dimen/dp5"
+        android:textAlignment="textStart"
+        android:layout_marginLeft="@dimen/dp5"
+        android:layout_marginRight="@dimen/dp5"
+        android:id="@+id/title"
+        android:layout_gravity="bottom"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/back_rnd_white"
+        android:layout_weight="2"
+        android:fontFamily="@font/comfortaa"
+        android:gravity="left"
+        android:textColor="@color/a_brown11"
+        android:textSize="@dimen/dp15" />
+
+    <LinearLayout
+        android:background="@drawable/but_oval_str_brown1_tra2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="@dimen/dp5">
-
-        <TextView
-            android:layout_marginLeft="@dimen/dp5"
-            android:layout_marginRight="@dimen/dp5"
-            android:id="@+id/title"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/comfortaa"
-            android:gravity="center_vertical|left"
-            android:textColor="@color/a_black11"
-            android:textSize="@dimen/dp15" />
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -41,10 +45,27 @@
                 android:layout_height="fill_parent"
                 android:rating="0"
                 android:stepSize="1"
-                app:mrb_progressTint="@color/a_main21"
-                app:mrb_secondaryProgressTint="@color/a_main21" />
+                app:mrb_progressTint="@color/a_brown11"
+                app:mrb_secondaryProgressTint="@color/a_brown11" />
 
         </LinearLayout>
+
+        <TextView
+            android:text="çok iyi"
+            android:textAlignment="center"
+            android:textColor="@color/a_gray22"
+            android:layout_gravity="bottom"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:fontFamily="@font/comfortaa"/>
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/img"
+            android:background="@drawable/emoji_k"
+            android:layout_weight="0"
+            android:layout_width="@dimen/dp40"
+            android:layout_height="@dimen/dp40"/>
 
     </LinearLayout>
 

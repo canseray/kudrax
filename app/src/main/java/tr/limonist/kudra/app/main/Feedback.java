@@ -79,28 +79,31 @@ public class Feedback extends ActivityManagePermission {
         setContentView(R.layout.z_feedback);
 
         ViewStub stub = (ViewStub) findViewById(R.id.lay_stub);
-        stub.setLayoutResource(R.layout.b_top_txt_txt_emp);
+        stub.setLayoutResource(R.layout.b_top_img_txt_img);
         stub.inflate();
 
         ezPhotoPickStorage = new EZPhotoPickStorage(m_activity);
 
         MyTextView tv_baslik = (MyTextView) findViewById(R.id.tv_baslik);
-        tv_baslik.setTextColor(getResources().getColor(R.color.a_black11));
+        tv_baslik.setTextColor(getResources().getColor(R.color.a_brown11));
         tv_baslik.setText(title);
         rating = "";
         message = "";
 
-        MyTextView tv_left = (MyTextView) findViewById(R.id.tv_left);
-        tv_left.setText(getString(R.string.s_done));
-        tv_left.setTextColor(getResources().getColor(R.drawable.text_black));
-        tv_left.setTextSize((int)getResources().getDimension(R.dimen.dp15));
-        tv_left.setOnClickListener(new OnClickListener() {
+        ImageView img_left = (ImageView) findViewById(R.id.img_left);
+        img_left.setImageResource(R.drawable.left_k);
+        img_left.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
+
+
+
                 Intent returnIntent = new Intent();
                 setResult(RESULT_CANCELED, returnIntent);
                 finish();
+
+
             }
 
         });
