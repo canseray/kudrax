@@ -50,7 +50,7 @@ public class APP extends Application {
 
     public static String language_id = "1";
     public static String package_name = "tr.limonist.barley";
-    public static String path = "https://limonistcustomer.com/BARLEY/mobil";
+    public static String path = "https://www.kudraciltbesinleri.com/mobil/";
     public static SharedPreferences myPrefs;
     public static SharedPreferences.Editor e;
     public static USER main_user;

@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/a_white11"
+    android:paddingHorizontal="@dimen/dp10"
     android:orientation="vertical">
 
     <LinearLayout
@@ -16,6 +16,11 @@
             android:id="@+id/lay_stub"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
+
+        <View
+            android:background="@color/a_brown11"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp1"/>
 
     </LinearLayout>
 
@@ -49,6 +54,14 @@
                 app:strokeColor="@color/a_white11" />
 
         </RelativeLayout>
+
+        <tr.limonist.extras.MyTextView
+            android:text="DUYURU BAŞLIĞI"
+            android:textColor="@color/a_brown11"
+            android:fontFamily="@font/comfortaa"
+            android:textSize="@dimen/dp18"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <WebView
             android:id="@+id/webView1"

@@ -39,7 +39,7 @@ public class MyAnnouncementDialog extends Dialog {
         tv_baslik.setTextColor(mContext.getResources().getColor(R.color.a_black11));
 
         ImageView img_left = (ImageView) findViewById(R.id.img_left);
-        img_left.setImageResource(R.drawable.b_ic_prew_black);
+        img_left.setImageResource(R.drawable.left_k);
 
         LinearLayout top_left = (LinearLayout) findViewById(R.id.top_left);
         top_left.setOnClickListener(new View.OnClickListener() {
