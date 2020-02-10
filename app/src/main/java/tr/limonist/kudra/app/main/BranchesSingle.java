@@ -82,10 +82,11 @@ public class BranchesSingle extends FragmentActivity implements OnMapReadyCallba
         indicator = findViewById(R.id.indicator);
 
         MyTextView tv_baslik = findViewById(R.id.tv_baslik);
+        tv_baslik.setTextColor(getResources().getColor(R.color.a_brown11));
         tv_baslik.setText(getString(R.string.s_contact));
 
         ImageView img_left = findViewById(R.id.img_left);
-        img_left.setImageResource(R.drawable.b_ic_prew_black);
+        img_left.setImageResource(R.drawable.left_k);
 
         LinearLayout top_left = findViewById(R.id.top_left);
         top_left.setOnClickListener(new OnClickListener() {

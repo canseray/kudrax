@@ -16,7 +16,6 @@
         android:visibility="gone" />
 
     <LinearLayout
-        android:background="@color/a_black11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -25,10 +24,11 @@
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/img"
-            android:layout_width="@dimen/dp30"
-            android:layout_height="@dimen/dp30"
+            android:layout_gravity="center_vertical"
+            android:layout_width="@dimen/dp40"
+            android:layout_height="@dimen/dp40"
             app:actualImageScaleType="fitCenter"
-            app:placeholderImage="@mipmap/place_holder" />
+            android:background="@drawable/notification_inmenu_k" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,7 +42,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical|left"
-                android:textColor="@drawable/text_white"
+                android:textColor="@color/a_brown11"
                 android:textSize="@dimen/dp12"
                 android:textStyle="bold" />
 
@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp5"
                 android:gravity="center_vertical|left"
-                android:textColor="@drawable/text_white"
+                android:textColor="@color/a_brown11"
                 android:textSize="@dimen/dp12" />
 
             <TextView
@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp5"
                 android:gravity="center_vertical|right"
-                android:textColor="@color/a_white12"
+                android:textColor="@color/a_gray21"
                 android:textSize="@dimen/dp10" />
         </LinearLayout>
     </LinearLayout>

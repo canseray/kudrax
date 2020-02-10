@@ -4,8 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/a_back"
-    android:orientation="vertical"
-    android:paddingTop="@dimen/dp25">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,6 +16,10 @@
             android:id="@+id/lay_stub"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
+        <View
+            android:background="@color/a_brown11"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp1"/>
 
     </LinearLayout>
 

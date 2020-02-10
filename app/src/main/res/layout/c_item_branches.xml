@@ -7,7 +7,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp90"
-        android:background="@drawable/but_rnd_str_black3_white"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="@dimen/dp5">
@@ -16,7 +15,7 @@
             android:layout_width="@dimen/dp50"
             android:layout_height="@dimen/dp50"
             android:layout_weight="0"
-            android:src="@drawable/b_ic_placeholder_branch" />
+            android:src="@drawable/malls_inmenu_k" />
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -33,7 +32,7 @@
                 android:layout_height="@dimen/dp30"
                 android:fontFamily="@font/comfortaa"
                 android:gravity="center_vertical|left"
-                android:textColor="@drawable/text_black"
+                android:textColor="@color/a_brown11"
                 android:textSize="@dimen/dp20"
                 android:textStyle="bold" />
 
@@ -45,7 +44,7 @@
                 android:gravity="center_vertical|left"
                 android:maxLines="2"
                 android:minLines="2"
-                android:textColor="@drawable/text_black2"
+                android:textColor="@color/a_gray21"
                 android:textSize="@dimen/dp15" />
 
         </LinearLayout>
@@ -54,7 +53,7 @@
             android:layout_width="@dimen/dp40"
             android:layout_height="@dimen/dp40"
             android:layout_weight="0"
-            android:src="@drawable/ic_info3" />
+            android:src="@drawable/right_k" />
 
     </LinearLayout>
 

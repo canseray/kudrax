@@ -32,6 +32,7 @@ import java.util.Locale;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import tr.limonist.extras.MyTextView;
 import tr.limonist.kudra.APP;
 import tr.limonist.kudra.R;
 import tr.limonist.classes.NotificationsItem;
@@ -59,16 +60,8 @@ public class MyNotificationDialog extends Dialog {
 
 		pd = new TransparentProgressDialog(m_activity, "", true);
 
-		ImageView img_right = (ImageView) findViewById(R.id.img_right);
-		img_right.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				dismiss();
-			}
-		});
-		ImageView img_right2 = (ImageView) findViewById(R.id.img_right2);
-		img_right2.setOnClickListener(new View.OnClickListener() {
+		MyTextView tv_edit = (MyTextView) findViewById(R.id.tv_edit);
+		tv_edit.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {

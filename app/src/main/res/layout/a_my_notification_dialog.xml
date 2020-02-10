@@ -39,11 +39,13 @@
 
                 <LinearLayout
                     android:layout_width="fill_parent"
-                    android:layout_height="@dimen/dp30"
+                    android:layout_height="@dimen/dp40"
                     android:paddingLeft="@dimen/dp10"
                     android:paddingRight="@dimen/dp10" >
 
                     <View
+                        android:id="@+id/img_right"
+                        android:background="@drawable/left_k"
                         android:layout_width="@dimen/dp30"
                         android:layout_height="@dimen/dp30"
                         android:layout_weight="0" />
@@ -65,24 +67,26 @@
                         android:gravity="center"
                         android:text="@string/s_notifications"
                         android:textAllCaps="true"
-                        android:textColor="@color/a_black11"
-                        android:textSize="@dimen/dp18" />
+                        android:textColor="@color/a_brown11"
+                        android:textSize="@dimen/dp20" />
 
-                    <ImageView
-                        android:id="@+id/img_right2"
-                        android:layout_width="@dimen/dp30"
-                        android:layout_height="@dimen/dp30"
-                        android:layout_marginRight="@dimen/dp15"
-                        android:layout_weight="0"
-                        android:src="@drawable/b_ic_edit" />
-
-                    <ImageView
-                        android:id="@+id/img_right"
-                        android:layout_width="@dimen/dp30"
+                    <tr.limonist.extras.MyTextView
+                        android:id="@+id/tv_edit"
+                        android:layout_width="wrap_content"
                         android:layout_height="@dimen/dp30"
                         android:layout_weight="0"
+                        android:text="Düzenle"
+                        android:fontFamily="@font/comfortaa"
+                        android:textColor="@color/a_brown11"
+                        android:gravity="center_vertical"
+                        android:layout_gravity="center_vertical"
                         android:src="@drawable/b_ic_close_black" />
                 </LinearLayout>
+
+                <View
+                    android:background="@color/a_brown11"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp1"/>
 
                 <FrameLayout
                     android:layout_width="fill_parent"
@@ -95,10 +99,11 @@
 
                         <com.twotoasters.jazzylistview.JazzyListView
                             android:id="@+id/list"
+                            android:paddingHorizontal="@dimen/dp20"
                             android:layout_width="match_parent"
                             android:layout_height="fill_parent"
-                            android:divider="@android:color/transparent"
-                            android:dividerHeight="@dimen/dp5"
+                            android:divider="@color/a_brown11"
+                            android:dividerHeight="@dimen/dp1"
                             android:scrollbars="none" />
                     </android.support.v4.widget.SwipeRefreshLayout>
 

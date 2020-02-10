@@ -59,13 +59,15 @@ public class Branches extends Activity {
         ViewStub stub = (ViewStub) findViewById(R.id.lay_stub);
         stub.setLayoutResource(R.layout.b_top_img_txt_emp);
         stub.setBackgroundColor(getResources().getColor(R.color.a_white11));
+
         stub.inflate();
 
         MyTextView tv_baslik = (MyTextView) findViewById(R.id.tv_baslik);
+        tv_baslik.setTextColor(getResources().getColor(R.color.a_brown11));
         tv_baslik.setText(title);
 
         ImageView img_left = (ImageView) findViewById(R.id.img_left);
-        img_left.setImageResource(R.drawable.b_ic_prew_black);
+        img_left.setImageResource(R.drawable.left_k);
 
         LinearLayout top_left = (LinearLayout) findViewById(R.id.top_left);
         top_left.setOnClickListener(new View.OnClickListener() {
