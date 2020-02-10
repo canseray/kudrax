@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <com.github.mmin18.widget.RealtimeBlurView
+        android:id="@+id/alert_blur_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:realtimeBlurRadius="5dp"
+        app:realtimeOverlayColor="#8000" />
+
+    <LinearLayout
+        android:elevation="@dimen/dp10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="@dimen/dp300"
+            android:layout_height="@dimen/dp200"
+            android:background="@drawable/background_white"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <tr.limonist.extras.MyTextView
+                android:fontFamily="@font/comfortaa"
+                android:id="@+id/title_my"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp10"
+                android:layout_marginRight="@dimen/dp10"
+                android:textAllCaps="true"
+                android:textColor="@color/a_brown11"
+                android:textSize="@dimen/dp25" />
+
+            <tr.limonist.extras.MyTextView
+                android:layout_marginBottom="@dimen/dp15"
+                android:fontFamily="@font/comfortaa"
+                android:id="@+id/content_my"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp10"
+                android:layout_marginRight="@dimen/dp10"
+                android:gravity="center"
+                android:textColor="@color/a_brown11"
+                android:textSize="@dimen/dp15" />
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp50"
+                android:layout_marginBottom="@dimen/dp5"
+                android:weightSum="100">
+
+                <tr.limonist.extras.MyTextView
+                    android:background="@drawable/but_oval_str_brown1_tra"
+                    android:textAllCaps="true"
+                    android:fontFamily="@font/comfortaa"
+                    android:id="@+id/positive_my"
+                    android:layout_width="150dp"
+                    android:layout_height="fill_parent"
+                    android:gravity="center"
+                    android:textColor="@color/a_brown11"
+                    android:textSize="@dimen/dp20"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

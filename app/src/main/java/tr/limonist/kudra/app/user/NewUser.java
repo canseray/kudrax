@@ -81,6 +81,12 @@ public class NewUser extends Activity {
 
         });
 
+        et_mail = (EditText) findViewById(R.id.et_mail);
+        et_pass = (EditText) findViewById(R.id.et_pass);
+        et_name = (EditText) findViewById(R.id.et_name);
+        et_surname = (EditText) findViewById(R.id.et_surname);
+        et_phone = (EditText) findViewById(R.id.et_phone);
+
         tv_done = (MyTextView) findViewById(R.id.tv_done);
         tv_done.setOnClickListener(new OnClickListener() {
 
@@ -102,7 +108,12 @@ public class NewUser extends Activity {
                                 if (s_pass.length() > 5 && s_pass.length() < 21) {
                                          pd.show();
                                        // new Connection().execute("");
-                                        startActivity(new Intent(m_activity, UserAggrement.class).putExtra("contract",part1));
+                                        startActivity(new Intent(m_activity, UserAggrement.class)
+                                        .putExtra("s_name",s_name)
+                                        .putExtra("s_surname",s_surname)
+                                        .putExtra("s_mail",s_mail)
+                                        .putExtra("s_phone",s_phone)
+                                        .putExtra("s_pass",s_pass));
 
                                 } else {
                                     APP.show_status(m_activity, 2,
@@ -127,182 +138,9 @@ public class NewUser extends Activity {
             }
         });
 
-        et_mail = (EditText) findViewById(R.id.et_mail);
-        et_pass = (EditText) findViewById(R.id.et_pass);
-        et_name = (EditText) findViewById(R.id.et_name);
-        et_surname = (EditText) findViewById(R.id.et_surname);
-        et_phone = (EditText) findViewById(R.id.et_phone);
-
-      /*  is_check = false;
-        acb = (AnimCheckBox) findViewById(R.id.acb);
-        acb.setOnCheckedChangeListener(new AnimCheckBox.OnCheckedChangeListener() {
-            @Override
-            public void onChange(AnimCheckBox view, boolean checked) {
-                is_check = checked;
-            }
-        });
-
-        MyTextView tv_read = (MyTextView) findViewById(R.id.tv_read);
-        tv_read.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                pd.show();
-                new Connection2().execute("");
-            }
-        }); */
-
-      new Connection2().execute();
-
-    }
-
-    private class Connection2 extends AsyncTask<String, Void, String> {
-
-        @Override
-        protected String doInBackground(String... params) {
-
-            List<Pair<String, String>> nameValuePairs = new ArrayList<>();
-
-            nameValuePairs.add(new Pair<>("param1", APP.base64Encode("0")));
-            nameValuePairs.add(new Pair<>("param2", APP.base64Encode("1")));
-            nameValuePairs.add(new Pair<>("param3", APP.base64Encode(APP.language_id)));
-            nameValuePairs.add(new Pair<>("param4", APP.base64Encode("A")));
-
-            String xml = APP.post1(nameValuePairs, APP.path + "/get_contract_data.php");
-
-            if (xml != null && !xml.contentEquals("fail")) {
-
-                try {
-
-                    DocumentBuilder newDocumentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-                    Document parse = newDocumentBuilder.parse(new ByteArrayInputStream(xml.getBytes()));
-
-                    for (int i = 0; i < parse.getElementsByTagName("row").getLength(); i++) {
-
-                        part1 = APP.base64Decode(APP.getElement(parse,"part1"));
-
-                    }
-                    if (!part1.contentEquals("")) {
-                        return "true";
-                    } else {
-                        return "false";
-                    }
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return "false";
-                }
-
-            } else {
-                return "false";
-            }
-
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-
-            if (pd != null)
-                pd.dismiss();
-            if (result.contentEquals("true")) {
-                new MyContractDialog(m_activity, part1,getString(R.string.s_contract));
-            } else {
-                APP.show_status(m_activity, 1,getResources().getString(R.string.s_unexpected_connection_error_has_occured));
-            }
-        }
-    }
-
-    class Connection extends AsyncTask<String, Void, String> {
-
-        protected String doInBackground(String... args) {
-
-            List<Pair<String, String>> nameValuePairs = new ArrayList<>();
-
-            String device_model = "";
-            String os_version = "";
-            try {
-                device_model = Build.MANUFACTURER + " " + Build.MODEL;
-                os_version = Build.VERSION.RELEASE;
-            } catch (Exception e1) {
-                e1.printStackTrace();
-
-            }
-
-            nameValuePairs.add(new Pair<>("param1", APP.base64Encode(s_name)));
-            nameValuePairs.add(new Pair<>("param2", APP.base64Encode(s_surname)));
-            nameValuePairs.add(new Pair<>("param3", APP.base64Encode(s_mail)));
-            nameValuePairs.add(new Pair<>("param4", APP.base64Encode(s_phone)));
-            nameValuePairs.add(new Pair<>("param5", APP.base64Encode(s_pass)));
-            nameValuePairs.add(new Pair<>("param6", APP.base64Encode(APP.android_id)));
-            nameValuePairs.add(new Pair<>("param7", APP.base64Encode(device_model)));
-            nameValuePairs.add(new Pair<>("param9", APP.base64Encode(os_version)));
-            nameValuePairs.add(new Pair<>("param10", APP.base64Encode(APP.android_id)));
-            nameValuePairs.add(new Pair<>("param11", APP.base64Encode(APP.version != null ? APP.version : "")));
-            nameValuePairs.add(new Pair<>("param17", APP.base64Encode("A")));
-            nameValuePairs.add(new Pair<>("param18", APP.base64Encode(APP.language_id)));
-            nameValuePairs.add(new Pair<>("param19", APP.base64Encode("skin type")));
 
 
-            String xml = APP.post1(nameValuePairs, APP.path + "/account_panel/send_new_account_request.php");
 
-            if (xml != null && !xml.contentEquals("fail")) {
-                try {
-
-                    DocumentBuilder newDocumentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-                    Document parse = newDocumentBuilder.parse(new ByteArrayInputStream(xml.getBytes()));
-
-                    for (int i = 0; i < parse.getElementsByTagName("row").getLength(); i++) {
-
-                        respPart1 = APP.base64Decode(APP.getElement(parse,"part1"));
-                        respPart2 = APP.base64Decode(APP.getElement(parse,"part2"));
-                        respPart3 = APP.base64Decode(APP.getElement(parse,"part3"));
-
-                    }
-
-                    if (respPart1.contentEquals("OK")) {
-
-                        USER user = new USER(respPart3, s_name, s_surname, s_mail,"", s_phone,s_pass);
-                        APP.main_user = user;
-                        Gson gson = new Gson();
-                        String json = gson.toJson(user);
-                        APP.e.putString("USER", json);
-                        APP.e.putString("welcome", "no");
-                        APP.e.commit();
-
-                        return "true";
-                    } else {
-                        APP.main_user = null;
-                        APP.e.putString("USER", null);
-                        APP.e.commit();
-                        return "error";
-                    }
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return "false";
-                }
-            } else {
-                return "false";
-            }
-        }
-
-        protected void onPostExecute(String result) {
-            if (pd != null)
-                pd.dismiss();
-            if (result.contentEquals("true")) {
-
-                Intent returnIntent = new Intent();
-                returnIntent.putExtra("result", "OK");
-                setResult(Activity.RESULT_OK, returnIntent);
-                finish();
-
-            } else if (result.contentEquals("error")) {
-                APP.show_status(m_activity, 2, respPart2);
-            } else {
-                APP.show_status(m_activity, 1, getResources().getString(R.string.s_unexpected_connection_error_has_occured));
-            }
-        }
     }
 
 }
