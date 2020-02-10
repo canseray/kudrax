@@ -7,7 +7,8 @@
     android:orientation="vertical"
     android:padding="@dimen/dp10">
 
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/dp220">
 
@@ -16,7 +17,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             app:actualImageScaleType="centerCrop"
-            app:placeholderImage="@mipmap/place_holder"
+            app:placeholderImage="@drawable/app_logo_k"
             app:roundBottomLeft="true"
             app:roundBottomRight="true"
             app:roundTopLeft="true"
@@ -30,13 +31,12 @@
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="@dimen/dp10"
             android:gravity="center"
-            android:shadowColor="@color/a_black11"
             android:shadowDx="5"
             android:shadowDy="5"
             android:shadowRadius="5"
-            android:textColor="@drawable/text_white"
+            android:textColor="@color/a_brown11"
             android:textSize="18dp"
             android:textStyle="bold" />
 
-    </RelativeLayout>
+    </LinearLayout>
 </LinearLayout>

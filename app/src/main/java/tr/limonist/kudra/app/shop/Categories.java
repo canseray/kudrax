@@ -81,12 +81,12 @@ public class Categories extends Activity {
         stub.inflate();
 
         MyTextView tv_baslik = findViewById(R.id.tv_baslik);
-        tv_baslik.setTextColor(getResources().getColor(R.color.a_black11));
+        tv_baslik.setTextColor(getResources().getColor(R.color.a_brown11));
         tv_baslik.setText(title);
 
         ImageView img_left = findViewById(R.id.img_left);
-        img_left.setImageResource(R.drawable.b_ic_prew_black);
-
+        img_left.setImageResource(R.drawable.left_k);
+/*
         ImageView img_right = findViewById(R.id.img_right);
         img_right.setImageResource(R.drawable.b_ic_add_cart_black);
 
@@ -100,7 +100,7 @@ public class Categories extends Activity {
             public void onClick(View v) {
                 startActivity(new Intent(m_activity, Cart.class));
             }
-        });
+        }); */
 
         LinearLayout top_left = findViewById(R.id.top_left);
         top_left.setOnClickListener(new OnClickListener() {
@@ -111,14 +111,14 @@ public class Categories extends Activity {
             }
         });
 
-        LinearLayout top_right2 = findViewById(R.id.top_right2);
+      /*  LinearLayout top_right2 = findViewById(R.id.top_right2);
         top_right2.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(m_activity, Search.class));
             }
-        });
+        }); */
 
         badge_right = findViewById(R.id.badge_right);
 

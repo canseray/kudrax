@@ -17,10 +17,15 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
 
+        <View
+            android:background="@color/a_brown11"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp1"/>
+
     </LinearLayout>
 
     <LinearLayout
-        android:background="@color/a_back"
+        android:background="@drawable/buy_mobile_background_k"
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
