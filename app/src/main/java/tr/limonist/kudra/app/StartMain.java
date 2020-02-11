@@ -294,7 +294,10 @@ public class StartMain extends ActivityManagePermission {
 
 						for (int i = 0; i < welcome_part1.length; i++) {
 							String[] temp = welcome_part1[i].split("\\[#\\]");
-							WelcomeItem wi = new WelcomeItem("", "", temp.length > 0 ? temp[0] : "", "");
+							WelcomeItem wi = new WelcomeItem(temp.length > 0 ? temp[0] : "",
+									temp.length > 1 ? temp[1] : "",
+									temp.length > 2 ? temp[2] : "",
+									temp.length > 3 ? temp[3] : "");
 							results_welcome.add(wi);
 						}
 

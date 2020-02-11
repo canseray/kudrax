@@ -65,7 +65,7 @@ public class UserAggrement extends AppCompatActivity {
         s_mail = getIntent().getStringExtra("s_mail");
         s_phone = getIntent().getStringExtra("s_phone");
         s_pass = getIntent().getStringExtra("s_pass");
-        s_skin_type = "1";
+        //s_skin_type = "1";
         s_skin_type = getIntent().getStringExtra("s_skin_type");
 
         pd.show();
@@ -166,7 +166,6 @@ public class UserAggrement extends AppCompatActivity {
                 os_version = Build.VERSION.RELEASE;
             } catch (Exception e1) {
                 e1.printStackTrace();
-
             }
 
             nameValuePairs.add(new Pair<>("param1", APP.base64Encode(s_name)));
@@ -182,7 +181,6 @@ public class UserAggrement extends AppCompatActivity {
             nameValuePairs.add(new Pair<>("param17", APP.base64Encode("A")));
             nameValuePairs.add(new Pair<>("param18", APP.base64Encode(APP.language_id)));
             nameValuePairs.add(new Pair<>("param19", APP.base64Encode(s_skin_type)));
-
 
             String xml = APP.post1(nameValuePairs, APP.path + "/account_panel/send_new_account_request.php");
 

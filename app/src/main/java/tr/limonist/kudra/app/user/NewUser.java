@@ -49,8 +49,6 @@ public class NewUser extends Activity {
     private String[] part_skin_type;
     String selected_id = "";
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,7 +84,6 @@ public class NewUser extends Activity {
 
         });
 
-
         et_mail = (EditText) findViewById(R.id.et_mail);
         et_pass = (EditText) findViewById(R.id.et_pass);
         et_name = (EditText) findViewById(R.id.et_name);
@@ -95,15 +92,11 @@ public class NewUser extends Activity {
         spinner = (BetterSpinner) findViewById(R.id.spinner);
         spinner.setCompoundDrawables(null,null,null,null);
 
-
-
-
         tv_done = (MyTextView) findViewById(R.id.tv_done);
         tv_done.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-
 
                 s_mail = et_mail.getText().toString();
                 s_pass = et_pass.getText().toString();
@@ -151,7 +144,6 @@ public class NewUser extends Activity {
         });
         results_skin_type = new ArrayList<>();
 
-
         pd.show();
         new Connection0().execute("");
 
@@ -161,14 +153,12 @@ public class NewUser extends Activity {
 
         protected String doInBackground(String... args) {
 
-
-
             List<Pair<String, String>> nameValuePairs = new ArrayList<>();
 
             nameValuePairs.add(new Pair<>("param1", APP.base64Encode("A")));
             nameValuePairs.add(new Pair<>("param2", APP.base64Encode(APP.language_id)));
 
-            String xml = APP.post1(nameValuePairs, APP.path + "/get_skin_type.php");
+            String xml = APP.post1(nameValuePairs, APP.path + "/account_panel/get_skin_type.php");
 
             if (xml != null && !xml.contentEquals("fail")) {
 
@@ -205,9 +195,15 @@ public class NewUser extends Activity {
         }
 
         protected void onPostExecute(String result) {
+            if (pd != null)
+                pd.dismiss();
+
             if (result.contentEquals("true")) {
                 addView();
 
+            } else {
+                APP.show_status(m_activity, 1,
+                        getResources().getString(R.string.s_unexpected_connection_error_has_occured));
             }
         }
     }

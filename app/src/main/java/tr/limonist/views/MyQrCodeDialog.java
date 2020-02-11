@@ -152,11 +152,11 @@ public class MyQrCodeDialog extends Dialog {
 			nameValuePairs.add(new Pair<>("param1", APP.base64Encode(APP.main_user.id)));
 			nameValuePairs.add(new Pair<>("param2", APP.base64Encode(APP.android_id)));
 			nameValuePairs.add(new Pair<>("param3", APP.base64Encode("A")));
-			nameValuePairs.add(new Pair<>("param6", APP.base64Encode(APP.android_id)));
-			nameValuePairs.add(new Pair<>("param7", APP.base64Encode(APP.android_id)));
-			nameValuePairs.add(new Pair<>("param8", APP.base64Encode(APP.language_id)));
+			nameValuePairs.add(new Pair<>("param4", APP.base64Encode(APP.android_id)));
+			nameValuePairs.add(new Pair<>("param5", APP.base64Encode(APP.android_id)));
+			nameValuePairs.add(new Pair<>("param6", APP.base64Encode(APP.language_id)));
 
-			String xml = APP.post1(nameValuePairs, APP.path + "/account_panel/set_user_qrcode.php");
+			String xml = APP.post1(nameValuePairs, APP.path + "/set_user_qrcode.php");
 
 			if (xml != null && !xml.contentEquals("fail")) {
 

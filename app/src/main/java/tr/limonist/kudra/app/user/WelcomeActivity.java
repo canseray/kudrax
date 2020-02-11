@@ -46,7 +46,7 @@ public class WelcomeActivity extends AppCompatActivity {
         tv_skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivityForResult(new Intent(m_activity, NewUser.class), 1);
+                startActivityForResult(new Intent(m_activity, LoginOptions.class), 1);
             }
         });
         mJazzy = (AutoScrollViewPager) findViewById(R.id.jazzy_pager);
@@ -89,15 +89,13 @@ public class WelcomeActivity extends AppCompatActivity {
             vi = new View(m_activity);
             vi = inflater.inflate(R.layout.c_item_welcome_dialog_row, null);
 
-            SimpleDraweeView img = (SimpleDraweeView ) vi.findViewById(R.id.img);
+            SimpleDraweeView img = (SimpleDraweeView ) vi.findViewById(R.id.img_front);
             SimpleDraweeView img_back = (SimpleDraweeView) vi.findViewById(R.id.img_back);
-            MyTextView title = (MyTextView) vi.findViewById(R.id.title);
-            MyTextView content = (MyTextView) vi.findViewById(R.id.content);
 
             img.setImageURI(Uri.parse(results.get(position).getImage()));
             img_back.setImageURI(Uri.parse(results.get(position).getBack()));
-            title.setText(results.get(position).getTitle());
-            content.setText(results.get(position).getDesc());
+           // title.setText(results.get(position).getTitle());
+           // content.setText(results.get(position).getDesc());
 
             container.addView(vi);
 
@@ -107,7 +105,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
         @Override
         public void destroyItem(ViewGroup container, int position, Object obj) {
-            container.removeView((RelativeLayout) obj);
+            container.removeView((LinearLayout) obj);
         }
 
         @Override
