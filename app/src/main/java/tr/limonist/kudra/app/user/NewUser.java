@@ -9,6 +9,8 @@ import android.support.v4.util.Pair;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewStub;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -16,6 +18,7 @@ import android.widget.TextView;
 
 import com.github.lguipeng.library.animcheckbox.AnimCheckBox;
 import com.google.gson.Gson;
+import com.weiwangcn.betterspinner.library.BetterSpinner;
 
 import org.w3c.dom.Document;
 
@@ -26,6 +29,7 @@ import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import tr.limonist.classes.SkinType;
 import tr.limonist.kudra.APP;
 import tr.limonist.kudra.R;
 import tr.limonist.classes.USER;
@@ -37,14 +41,15 @@ public class NewUser extends Activity {
 
     MyTextView tv_done;
     EditText et_mail, et_pass, et_name, et_surname, et_phone;
-    TextView et_skin_type;
-    String s_mail, s_pass, s_name, s_surname, s_phone, s_skin_type;
+    BetterSpinner spinner;
+    String s_mail, s_pass, s_name, s_surname, s_phone;
     private TransparentProgressDialog pd;
-    private boolean is_check;
     private Activity m_activity;
-    private String part1;
-    AnimCheckBox acb;
-    private String respPart1,respPart2,respPart3;
+    ArrayList<SkinType> results_skin_type;
+    private String[] part_skin_type;
+    String selected_id = "";
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,11 +86,17 @@ public class NewUser extends Activity {
 
         });
 
+
         et_mail = (EditText) findViewById(R.id.et_mail);
         et_pass = (EditText) findViewById(R.id.et_pass);
         et_name = (EditText) findViewById(R.id.et_name);
         et_surname = (EditText) findViewById(R.id.et_surname);
         et_phone = (EditText) findViewById(R.id.et_phone);
+        spinner = (BetterSpinner) findViewById(R.id.spinner);
+        spinner.setCompoundDrawables(null,null,null,null);
+
+
+
 
         tv_done = (MyTextView) findViewById(R.id.tv_done);
         tv_done.setOnClickListener(new OnClickListener() {
@@ -137,10 +148,78 @@ public class NewUser extends Activity {
                 }
             }
         });
+        results_skin_type = new ArrayList<>();
 
 
-
+        pd.show();
+        new Connection0().execute("");
 
     }
 
+    private class Connection0 extends AsyncTask<String, Void, String> {
+
+        protected String doInBackground(String... args) {
+
+
+
+            List<Pair<String, String>> nameValuePairs = new ArrayList<>();
+
+            nameValuePairs.add(new Pair<>("param1", APP.base64Encode("A")));
+            nameValuePairs.add(new Pair<>("param2", APP.base64Encode(APP.language_id)));
+
+            String xml = APP.post1(nameValuePairs, APP.path + "/get_skin_type.php");
+
+            if (xml != null && !xml.contentEquals("fail")) {
+
+                try {
+                    DocumentBuilder newDocumentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+                    Document parse = newDocumentBuilder.parse(new ByteArrayInputStream(xml.getBytes()));
+                    List<String> dataList = new ArrayList<String>();
+
+                    for (int i = 0; i < parse.getElementsByTagName("row").getLength(); i++) {
+                        part_skin_type = APP.base64Decode(APP.getElement(parse, "part1")).split("\\[##\\]");
+                    }
+                    if (!part_skin_type[0].contentEquals("")) {
+
+                            for (int i = 0; i < part_skin_type.length; i++) {
+                                String[] temp = part_skin_type[i].split("\\[#\\]");
+                                SkinType ai = new SkinType(temp.length > 0 ? temp[0] : "",
+                                        temp.length > 1 ? temp[1] : "");
+                                results_skin_type.add(ai);
+
+                            }
+
+                        return "true";
+                    } else
+                        return "false";
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    return "false";
+                }
+
+            } else {
+                return "false";
+            }
+        }
+
+        protected void onPostExecute(String result) {
+            if (result.contentEquals("true")) {
+                addView();
+
+            }
+        }
+    }
+
+    private void addView(){
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(m_activity, R.layout.simple_dropdown_item_1line, part_skin_type);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                selected_id = String.valueOf(results_skin_type.get(position).getId());
+            }
+        });
+    }
 }

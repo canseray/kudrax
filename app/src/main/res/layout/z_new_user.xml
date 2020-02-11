@@ -301,8 +301,8 @@
                         android:layout_weight="0"
                         android:src="@drawable/skin_type_k" />
 
-                    <TextView
-                        android:id="@+id/et_skin_type"
+                    <com.weiwangcn.betterspinner.library.BetterSpinner
+                        android:id="@+id/spinner"
                         android:layout_width="match_parent"
                         android:layout_height="fill_parent"
                         android:layout_marginLeft="@dimen/dp15"

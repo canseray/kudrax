@@ -132,7 +132,6 @@
     <string name="s_payment_type">Ödeme Şekli</string>
 
 
-
     <string name="s_mobile_order"><u>Mobil Sipariş</u></string>
     <string name="s_no_data">. . .</string>
     <string name="s_play_store_must_be_insatalled">Play Store yükü olmalıdır...</string>
@@ -172,7 +171,6 @@
     <string name="s_must_enter_as_many_point_as_your_cart_amount">Sepet miktarınız kadar puan girmelisiniz</string>
     <string name="s_used_point_amount_x">Kullanılan Puan Miktarı : %s</string>
     <string name="s_amount">miktar*</string>
-
 
 
 </resources>

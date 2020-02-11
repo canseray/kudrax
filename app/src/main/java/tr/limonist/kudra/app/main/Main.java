@@ -49,7 +49,11 @@ import tr.limonist.kudra.APP;
 import tr.limonist.kudra.MyVideoDialog;
 import tr.limonist.kudra.R;
 import tr.limonist.kudra.app.SelfAd;
+import tr.limonist.kudra.app.profile.Help;
+import tr.limonist.kudra.app.profile.MyInvoices;
+import tr.limonist.kudra.app.profile.MyNotifications;
 import tr.limonist.kudra.app.profile.OrderHistory;
+import tr.limonist.kudra.app.profile.PraticalSolves;
 import tr.limonist.kudra.app.shop.Categories;
 import tr.limonist.kudra.app.shop.Favorites;
 import tr.limonist.kudra.app.user.LoginMain;
@@ -147,27 +151,41 @@ public class Main extends AppCompatActivity {
                                     public void run() {
                                         if (position > 0) {
                                             SlideMenuItem smi = results_slide_menu.get(position - 1);
-                                            if (smi.getPrep().contentEquals("PRESENTMODALFORPROFILESETTINGSVIEW")) {
-                                                startActivity(new Intent(m_activity, ProfileSettings.class));
+                                            if (smi.getPrep().contentEquals("PRESENTMODALFORMYINVOICESVIEW")) {
+                                                startActivity(new Intent(m_activity, MyInvoices.class).putExtra("title", smi.getTitle()));
+
                                             } else if (smi.getPrep().contentEquals("PRESENTMODALFORORDERHISTORYVIEW")) {
                                                 startActivity(new Intent(m_activity, OrderHistory.class).putExtra("title", smi.getTitle()));
+
+
                                             } else if (smi.getPrep().contentEquals("PRESENTMODALFORQRCODEVIEW")) {
                                                 new MyQrCodeDialog(m_activity);
-                                            } else if (smi.getPrep().contentEquals("PRESENTFORABOUTUSVIEW") || smi.getPrep().contentEquals("PRESENTFORFAQVIEW")) {
-                                                pd.show();
-                                                new Connection4().execute(smi.getPrep());
+
+
+                                            } else if (smi.getPrep().contentEquals("SEGUEFORHELPVIEW")) {
+                                                startActivity(new Intent(m_activity, PraticalSolves.class).putExtra("title", smi.getTitle()));
+
+
+                                            } else if (smi.getPrep().contentEquals("SEGUEFORNOTIFICATIONSETTINGSVIEW")) {
+                                                startActivity(new Intent(m_activity, MyNotifications.class).putExtra("title", smi.getTitle()));
+
                                             } else if (smi.getPrep().contentEquals("PRESENTFORCONTRACTVIEW")) {
                                                 pd.show();
                                                 new Connection5().execute(smi.getPrep());
+
                                             } else if (smi.getPrep().contentEquals("PRESENTSENDMAILVIEW")) {
 
-                                                String[] emails = new String[1];
+                                                startActivity(new Intent(m_activity, Help.class).putExtra("title", smi.getTitle()));
+
+                                               /* String[] emails = new String[1];
                                                 emails[0] = part_user_informaiton[2];
                                                 Intent intent = new Intent(Intent.ACTION_SENDTO);
                                                 intent.setData(Uri.parse("mailto:"));
                                                 intent.putExtra(Intent.EXTRA_EMAIL, emails);
                                                 intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name) + " Mobile");
-                                                startActivity(Intent.createChooser(intent, getString(R.string.s_select)));
+                                                startActivity(Intent.createChooser(intent, getString(R.string.s_select))); */
+
+
 
                                             } else if (smi.getPrep().contentEquals("PRESENTMODALFORAPPSETTINGS")) {
 
@@ -700,13 +718,15 @@ public class Main extends AppCompatActivity {
                 new MyPromotionDialog(m_activity,smi.getTitle(),false,"0");
             } else
                 startActivity(new Intent(m_activity, LoginMain.class));
-        } else if (smi.getPrep().contentEquals("SEGUEFORFAVORITESVIEW")) {
+        } else if (smi.getPrep().contentEquals("PRESENTFORFAVORITIES")) {
 
             if (APP.main_user != null) {
                 startActivity(new Intent(m_activity, Favorites.class).putExtra("title", smi.getTitle()));
             } else
                 startActivity(new Intent(m_activity, LoginMain.class));
-        } else if (smi.getPrep().contentEquals("SEGEUFORCATEGORYVIEW")) {
+
+
+        } else if (smi.getPrep().contentEquals("PRESENTFORBUYITEMS")) {
 
             if (APP.main_user != null) {
                 startActivity(new Intent(m_activity, Categories.class).putExtra("title", smi.getTitle()));
