@@ -32,11 +32,14 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import tr.limonist.classes.USER;
+import tr.limonist.classes.WelcomeItem;
+import tr.limonist.kudra.R;
 import tr.limonist.kudra.app.main.Main;
 import tr.limonist.extras.TransparentProgressDialog;
 import tr.limonist.kudra.APP;
 import tr.limonist.kudra.app.user.LoginMain;
 import tr.limonist.kudra.app.user.LoginOptions;
+import tr.limonist.kudra.app.user.WelcomeActivity;
 
 @SuppressLint("NewApi")
 public class StartMain extends ActivityManagePermission {
@@ -47,6 +50,10 @@ public class StartMain extends ActivityManagePermission {
 	public String part1;
 	private Activity m_activity;
 	String call_type = "0";
+	ArrayList<WelcomeItem> results_welcome;
+	public String[] welcome_part1;
+
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -140,8 +147,17 @@ public class StartMain extends ActivityManagePermission {
 
 	public void start() {
 
+		APP.android_id = APP.getDeviceId(m_activity);
+		boolean welcome = (boolean) APP.myPrefs.getBoolean("welcome",true);
+		if (welcome){
+			pd.show();
+			new Connection3().execute("");
+
+		} else {
+
 		startActivity(new Intent(m_activity, LoginOptions.class).putExtra("call_type",call_type));
 		finish();
+		}
 	}
 
 	private class Connection2 extends AsyncTask<String, Void, String> {
@@ -246,4 +262,72 @@ public class StartMain extends ActivityManagePermission {
 		finish();
 
 	}
+
+	private class Connection3 extends AsyncTask<String, Void, String> {
+
+		@Override
+		protected String doInBackground(String... params) {
+
+			List<Pair<String, String>> nameValuePairs = new ArrayList<>();
+
+			results_welcome = new ArrayList<>();
+
+			nameValuePairs.add(new Pair<>("param1", APP.base64Encode(APP.android_id)));
+			nameValuePairs.add(new Pair<>("param2", APP.base64Encode(APP.language_id)));
+			nameValuePairs.add(new Pair<>("param3", APP.base64Encode("A")));
+			String xml = APP.post1(nameValuePairs, APP.path + "/get_intro_screen_items.php");
+
+			if (xml != null && !xml.contentEquals("fail")) {
+
+				try {
+
+					DocumentBuilder newDocumentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+					Document parse = newDocumentBuilder.parse(new ByteArrayInputStream(xml.getBytes()));
+
+					for (int i = 0; i < parse.getElementsByTagName("row").getLength(); i++) {
+
+						welcome_part1 = APP.base64Decode(APP.getElement(parse,"part1")).split("\\[##\\]");
+
+					}
+
+					if (!welcome_part1[0].contentEquals("")) {
+
+						for (int i = 0; i < welcome_part1.length; i++) {
+							String[] temp = welcome_part1[i].split("\\[#\\]");
+							WelcomeItem wi = new WelcomeItem("", "", temp.length > 0 ? temp[0] : "", "");
+							results_welcome.add(wi);
+						}
+
+						return "true";
+					} else
+						return "false";
+
+				} catch (Exception e) {
+					e.printStackTrace();
+					return "false";
+				}
+
+			} else {
+				return "false";
+			}
+
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+
+			if (pd != null)
+				pd.dismiss();
+
+			if (result.contentEquals("true")) {
+				startActivityForResult(new Intent(m_activity, WelcomeActivity.class).putExtra("results",results_welcome), 1);
+			} else {
+				APP.show_status(m_activity, 1,
+						getResources().getString(R.string.s_unexpected_connection_error_has_occured));
+			}
+
+		}
+
+	}
+
 }

@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.viewpagerindicator.CirclePageIndicator;
@@ -74,6 +75,9 @@ public class WelcomeActivity extends AppCompatActivity {
         mJazzy.setAdapter(new pageAdapter());
         circleIndicator.setViewPager(mJazzy);
 
+        APP.e.putBoolean("welcome", false);
+        APP.e.commit();
+
     }
 
     private class pageAdapter extends PagerAdapter {
@@ -86,8 +90,14 @@ public class WelcomeActivity extends AppCompatActivity {
             vi = inflater.inflate(R.layout.c_item_welcome_dialog_row, null);
 
             SimpleDraweeView img = (SimpleDraweeView ) vi.findViewById(R.id.img);
+            SimpleDraweeView img_back = (SimpleDraweeView) vi.findViewById(R.id.img_back);
+            MyTextView title = (MyTextView) vi.findViewById(R.id.title);
+            MyTextView content = (MyTextView) vi.findViewById(R.id.content);
 
             img.setImageURI(Uri.parse(results.get(position).getImage()));
+            img_back.setImageURI(Uri.parse(results.get(position).getBack()));
+            title.setText(results.get(position).getTitle());
+            content.setText(results.get(position).getDesc());
 
             container.addView(vi);
 
@@ -97,7 +107,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
         @Override
         public void destroyItem(ViewGroup container, int position, Object obj) {
-            container.removeView((LinearLayout) obj);
+            container.removeView((RelativeLayout) obj);
         }
 
         @Override
