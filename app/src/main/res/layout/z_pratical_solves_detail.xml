@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ViewStub
+            android:id="@+id/lay_stub"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:background="@color/a_brown11"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:padding="@dimen/dp10"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <TextView
+            android:id="@+id/solve_title"
+            android:padding="@dimen/dp5"
+            android:textSize="@dimen/dp18"
+            android:textColor="@color/a_brown11"
+            android:fontFamily="@font/comfortaa"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:textColor="@color/a_brown11"
+            android:textSize="@dimen/dp15"
+            android:fontFamily="@font/comfortaa"
+            android:id="@+id/solve_detail"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+</LinearLayout>

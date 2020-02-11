@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:padding="@dimen/dp10"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <LinearLayout
+        android:padding="@dimen/dp10"
+        android:gravity="center_vertical"
+        android:foregroundGravity="center_vertical"
+        android:orientation="horizontal"
+        android:background="@drawable/but_oval_str_brown1_tra"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp60">
+
+        <TextView
+            android:layout_weight="1"
+            android:id="@+id/notif_text"
+            android:text="blabla"
+            android:textColor="@color/a_brown11"
+            android:textSize="@dimen/dp15"
+            android:fontFamily="@font/comfortaa"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:foregroundGravity="center_vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"/>
+
+        <com.akash.RevealSwitch
+            android:layout_weight="0"
+            android:id="@+id/notif_switch"
+            app:borderColor="@color/a_brown11"
+            app:showBorder="true"
+            app:setEnabledTrackColor="@color/a_brown11"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:foregroundGravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>
