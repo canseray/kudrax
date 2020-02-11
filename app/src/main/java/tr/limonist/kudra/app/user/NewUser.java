@@ -42,7 +42,7 @@ public class NewUser extends Activity {
     MyTextView tv_done;
     EditText et_mail, et_pass, et_name, et_surname, et_phone;
     BetterSpinner spinner;
-    String s_mail, s_pass, s_name, s_surname, s_phone;
+    String s_mail, s_pass, s_name, s_surname, s_phone, s_skin_type;
     private TransparentProgressDialog pd;
     private Activity m_activity;
     ArrayList<SkinType> results_skin_type;
@@ -110,7 +110,7 @@ public class NewUser extends Activity {
                 s_name = et_name.getText().toString();
                 s_surname = et_surname.getText().toString();
                 s_phone = et_phone.getText().toString();
-               // s_skin_type = et_skin_type.getText().toString();
+                s_skin_type = selected_id;
 
                 if (s_name.length() > 0) {
                     if (s_surname.length() > 0) {
@@ -124,7 +124,8 @@ public class NewUser extends Activity {
                                         .putExtra("s_surname",s_surname)
                                         .putExtra("s_mail",s_mail)
                                         .putExtra("s_phone",s_phone)
-                                        .putExtra("s_pass",s_pass));
+                                        .putExtra("s_pass",s_pass)
+                                        .putExtra("s_skin_type",selected_id));
 
                                 } else {
                                     APP.show_status(m_activity, 2,

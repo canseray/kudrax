@@ -66,6 +66,7 @@ public class UserAggrement extends AppCompatActivity {
         s_phone = getIntent().getStringExtra("s_phone");
         s_pass = getIntent().getStringExtra("s_pass");
         s_skin_type = "1";
+        s_skin_type = getIntent().getStringExtra("s_skin_type");
 
         pd.show();
         new Connection2().execute();
