@@ -49,9 +49,11 @@ public class MyNotifications extends AppCompatActivity {
     RefreshLayout refreshLayout;
     JazzyListView list;
     String title;
+    int selected_toggle_pos;
     String selected_toggle_type, selection;
     ArrayList<NotificationsSettingsItem> results;
     String[] Part1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -171,12 +173,12 @@ public class MyNotifications extends AppCompatActivity {
             if (result.contentEquals("true")) {
                 if(results.size()>0) {
 
-                   /* list.setAdapter(null);
+                    list.setAdapter(null);
                     lazy adapter = new lazy();
-                    list.setAdapter(adapter); */
+                    list.setAdapter(adapter);
                 }
                 else {
-                   // list.setVisibility(View.GONE);
+                    //list.setVisibility(View.GONE);
                    // emptyView.setVisibility(View.VISIBLE);
                 }
             } else {
@@ -187,8 +189,6 @@ public class MyNotifications extends AppCompatActivity {
         }
 
     }
-
-
 
     public class lazy extends BaseAdapter {
         private LayoutInflater inflater = null;
@@ -222,7 +222,7 @@ public class MyNotifications extends AppCompatActivity {
 
             if (view == null) {
                 holder = new ViewHolder();
-                view = inflater.inflate(R.layout.item_notification_settings, null);
+                view = inflater.inflate(R.layout.c_item_notifications_setting, null);
                 holder.title = view.findViewById(R.id.notif_text);
                 holder.toggle = view.findViewById(R.id.notif_switch);
 
@@ -269,5 +269,5 @@ public class MyNotifications extends AppCompatActivity {
         }
     }
 
-
+    
 }
