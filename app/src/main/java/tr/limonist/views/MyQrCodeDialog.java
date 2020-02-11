@@ -78,7 +78,8 @@ public class MyQrCodeDialog extends Dialog {
 
 			@Override
 			public void onClick(View arg0) {
-				m_activity.finish();
+				dismiss();
+
 			}
 
 		});

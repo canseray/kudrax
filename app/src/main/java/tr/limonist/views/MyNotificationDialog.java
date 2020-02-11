@@ -58,6 +58,7 @@ public class MyNotificationDialog extends Dialog {
 		getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 		setContentView(R.layout.a_my_notification_dialog);
 
+
 		pd = new TransparentProgressDialog(m_activity, "", true);
 
 		MyTextView tv_edit = (MyTextView) findViewById(R.id.tv_edit);
@@ -115,7 +116,7 @@ public class MyNotificationDialog extends Dialog {
 			nameValuePairs.add(new Pair<>("param2", APP.base64Encode("A")));
 			nameValuePairs.add(new Pair<>("param3", APP.base64Encode(APP.android_id)));
 
-			String xml = APP.post1(nameValuePairs, APP.path + "/get_notifications.php");
+			String xml = APP.post1(nameValuePairs, APP.path + "/notifications/get_notifications.php");
 
 			if (xml != null && !xml.contentEquals("fail")) {
 
@@ -279,7 +280,7 @@ public class MyNotificationDialog extends Dialog {
 			nameValuePairs.add(new Pair<>("param3", APP.base64Encode(APP.android_id)));
 			nameValuePairs.add(new Pair<>("param4", APP.base64Encode("A")));
 
-			String xml = APP.post1(nameValuePairs, APP.path + "/send_remove_notification_request.php");
+			String xml = APP.post1(nameValuePairs, APP.path + "/notifications/send_remove_notification_request.php");
 
 			if (xml != null && !xml.contentEquals("fail")) {
 

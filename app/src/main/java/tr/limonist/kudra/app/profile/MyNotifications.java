@@ -53,6 +53,7 @@ public class MyNotifications extends AppCompatActivity {
     String selected_toggle_type, selection;
     ArrayList<NotificationsSettingsItem> results;
     String[] Part1;
+    String sendPart1, sendPart2;
 
 
     @Override
@@ -147,7 +148,6 @@ public class MyNotifications extends AppCompatActivity {
 
                             }
                         }
-
 
                         return "true";
                     } else
@@ -259,7 +259,7 @@ public class MyNotifications extends AppCompatActivity {
                             selection = b?"1":"0";
 
                             pd.show();
-                           // new Connection2().execute();
+                            new Connection2().execute();
                         }
                     });
                 }
@@ -269,5 +269,83 @@ public class MyNotifications extends AppCompatActivity {
         }
     }
 
-    
+    class Connection2 extends AsyncTask<String, Void, String> {
+
+        protected String doInBackground(String... args) {
+
+            List<Pair<String, String>> nameValuePairs = new ArrayList<>();
+
+            nameValuePairs.add(new Pair<>("param1", APP.base64Encode(APP.main_user != null ? APP.main_user.id : "0")));
+            nameValuePairs.add(new Pair<>("param2", APP.base64Encode(selected_toggle_type)));
+            nameValuePairs.add(new Pair<>("param3", APP.base64Encode(selection)));
+            nameValuePairs.add(new Pair<>("param4", APP.base64Encode(APP.language_id)));
+            nameValuePairs.add(new Pair<>("param5", APP.base64Encode("A")));
+
+            String xml = APP.post1(nameValuePairs, APP.path + "/notifications/send_notification_setting_option_request.php");
+
+            if (xml != null && !xml.contentEquals("fail")) {
+
+                try {
+
+                    DocumentBuilder newDocumentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+                    Document parse = newDocumentBuilder.parse(new ByteArrayInputStream(xml.getBytes()));
+                    List<String> dataList = new ArrayList<String>();
+
+                    for (int i = 0; i < parse.getElementsByTagName("row").getLength(); i++) {
+
+                        sendPart1 = APP.base64Decode(APP.getElement(parse,"part1"));
+                        sendPart2 = APP.base64Decode(APP.getElement(parse,"part2"));
+
+                    }
+
+                    if (sendPart1.contentEquals("OK")) {
+                        return "true";
+                    } else if (sendPart1.contentEquals("FAIL")) {
+                        return "error";
+                    } else
+                        return "false";
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    return "false";
+                }
+
+            } else {
+                return "false";
+            }
+
+        }
+
+        protected void onPostExecute(String result) {
+            if (pd != null)
+                pd.dismiss();
+            if (result.contentEquals("true")) {
+
+                NotificationsSettingsItem item = results.get(selected_toggle_pos);
+                item.setValue(selection);
+                results.set(selected_toggle_pos, item);
+
+            } else if (result.contentEquals("error")) {
+
+                NotificationsSettingsItem item = results.get(selected_toggle_pos);
+                item.setValue(selection.contentEquals("1") ? "0" : "1");
+                results.set(selected_toggle_pos, item);
+
+                APP.show_status(m_activity, 2, sendPart2);
+
+            } else {
+
+                NotificationsSettingsItem item = results.get(selected_toggle_pos);
+                item.setValue(selection.contentEquals("1") ? "0" : "1");
+                results.set(selected_toggle_pos, item);
+
+                APP.show_status(m_activity, 1, getResources().getString(R.string.s_unexpected_connection_error_has_occured));
+            }
+            list.setAdapter(null);
+            lazy adapter = new lazy();
+            list.setAdapter(adapter);
+        }
+    }
+
+
 }
