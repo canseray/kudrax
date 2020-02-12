@@ -210,12 +210,19 @@ public class NewUser extends Activity {
 
     private void addView(){
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(m_activity, R.layout.simple_dropdown_item_1line, part_skin_type);
+
+        String[] skintypes = {results_skin_type.get(0).getTitle(),
+                results_skin_type.get(1).getTitle(),
+                results_skin_type.get(2).getTitle()};
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(m_activity, R.layout.simple_dropdown_item_1line, skintypes);
         spinner.setAdapter(adapter);
         spinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 selected_id = String.valueOf(results_skin_type.get(position).getId());
+
+
             }
         });
     }
