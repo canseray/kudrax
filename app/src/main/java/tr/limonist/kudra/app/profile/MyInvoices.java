@@ -217,14 +217,16 @@ public class MyInvoices extends AppCompatActivity {
 
 
             date.setText(item.getDate());
-            name.setText(item.getName());
-            total_title.setText(item.getTotalTitle());
+            name.setText(item.getId());
+            total_title.setText(item.getName());
             amount.setText(item.getAmount());
 
 
              e_invoice.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
+
+                  new MyContractDialog(m_activity, item.getInvoiceData(),"E-Fatura Detayı");
 
               }
           });

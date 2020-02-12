@@ -160,6 +160,13 @@
     <string name="s_amount">amount*</string>
     <string name="s_cargo_confirm">Do you confirm receiving your order by cargo?</string>
 
+    <string name="s_name_surname">Name Surname</string>
+    <string name="s_e_mail">E-Mail Address</string>
+    <string name="s_phone_number_e">Phone Number</string>
+    <string name="s_date_of_birth">Date of Birth</string>
+    <string name="s_gender">Gender</string>
+    <string name="s_country">Country</string>
+
 
     <string-array name="profile_titles">
         <item>First Name</item>

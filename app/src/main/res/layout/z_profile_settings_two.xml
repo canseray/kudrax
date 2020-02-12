@@ -1,0 +1,284 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/a_back"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/dp25">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ViewStub
+                        android:id="@+id/lay_stub"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/a_brown11"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dp10">
+
+                    <RelativeLayout
+                        android:layout_width="@dimen/dp100"
+                        android:layout_height="@dimen/dp120"
+                        android:layout_marginTop="@dimen/dp20"
+                        android:layout_marginBottom="@dimen/dp20">
+
+                        <com.facebook.drawee.view.SimpleDraweeView
+                            android:id="@+id/img"
+                            android:layout_width="@dimen/dp100"
+                            android:layout_height="@dimen/dp100"
+                            android:layout_alignParentTop="true"
+                            app:placeholderImage="@mipmap/name_surname_k"
+                            app:placeholderImageScaleType="fitCenter"
+                            app:actualImageScaleType="fitCenter"
+                            app:roundAsCircle="true"
+                            app:roundingBorderColor="@color/a_brown11"
+                            app:roundingBorderWidth="@dimen/dp1" />
+
+                        <ImageView
+                            android:id="@+id/img_camera"
+                            android:layout_width="@dimen/dp40"
+                            android:layout_height="@dimen/dp40"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/but_circle_black1"
+                            android:padding="@dimen/dp2"
+                            android:src="@drawable/add_photo_k" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:padding="@dimen/dp2"
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="vertical" >
+
+
+                    <LinearLayout
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:foregroundGravity="center_vertical"
+                        android:weightSum="100"
+                        android:padding="@dimen/dp2"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <com.facebook.drawee.view.SimpleDraweeView
+                            android:background="@drawable/name_surname_k"
+                            android:layout_width="@dimen/dp40"
+                            android:layout_height="@dimen/dp40"/>
+
+                        <EditText
+                            android:hint="@string/s_name_surname"
+                            android:background="@null"
+                            android:textColorHint="@color/a_brown12"
+                            android:textColor="@color/a_brown11"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_marginStart="@dimen/dp30"
+                        android:background="@color/a_brown13"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp1"/>
+
+                    <LinearLayout
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:foregroundGravity="center_vertical"
+                        android:weightSum="100"
+                        android:padding="@dimen/dp2"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <com.facebook.drawee.view.SimpleDraweeView
+                            android:background="@drawable/email_dark_k"
+                            android:layout_width="@dimen/dp40"
+                            android:layout_height="@dimen/dp40"/>
+
+                        <EditText
+                            android:hint="@string/s_e_mail"
+                            android:background="@null"
+                            android:textColorHint="@color/a_brown12"
+                            android:textColor="@color/a_brown11"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_marginStart="@dimen/dp30"
+                        android:background="@color/a_brown13"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp1"/>
+
+                    <LinearLayout
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:foregroundGravity="center_vertical"
+                        android:weightSum="100"
+                        android:padding="@dimen/dp2"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <com.facebook.drawee.view.SimpleDraweeView
+                            android:background="@drawable/name_surname_k"
+                            android:layout_width="@dimen/dp40"
+                            android:layout_height="@dimen/dp40"/>
+
+                        <EditText
+                            android:hint="@string/s_phone_number_e"
+                            android:background="@null"
+                            android:textColorHint="@color/a_brown12"
+                            android:textColor="@color/a_brown11"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_marginStart="@dimen/dp30"
+                        android:background="@color/a_brown13"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp1"/>
+
+                    <LinearLayout
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:foregroundGravity="center_vertical"
+                        android:weightSum="100"
+                        android:padding="@dimen/dp2"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <com.facebook.drawee.view.SimpleDraweeView
+                            android:background="@drawable/date_of_birth_k"
+                            android:layout_width="@dimen/dp40"
+                            android:layout_height="@dimen/dp40"/>
+
+                        <EditText
+                            android:hint="@string/s_date_of_birth"
+                            android:background="@null"
+                            android:textColorHint="@color/a_brown12"
+                            android:textColor="@color/a_brown11"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_marginStart="@dimen/dp30"
+                        android:background="@color/a_brown13"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp1"/>
+
+                    <LinearLayout
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:foregroundGravity="center_vertical"
+                        android:weightSum="100"
+                        android:padding="@dimen/dp2"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <com.facebook.drawee.view.SimpleDraweeView
+                            android:background="@drawable/gender_k"
+                            android:layout_width="@dimen/dp40"
+                            android:layout_height="@dimen/dp40"/>
+
+                        <Spinner
+                            android:text="@string/s_gender"
+                            android:background="@null"
+                            android:textColorHint="@color/a_brown12"
+                            android:textColor="@color/a_brown11"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_marginStart="@dimen/dp30"
+                        android:background="@color/a_brown13"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp1"/>
+
+                    <LinearLayout
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:foregroundGravity="center_vertical"
+                        android:weightSum="100"
+                        android:padding="@dimen/dp2"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <com.facebook.drawee.view.SimpleDraweeView
+                            android:background="@drawable/country_k"
+                            android:layout_width="@dimen/dp40"
+                            android:layout_height="@dimen/dp40"/>
+
+                        <Spinner
+                            android:text="@string/s_country"
+                            android:background="@null"
+                            android:textColorHint="@color/a_brown12"
+                            android:textColor="@color/a_brown11"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_marginStart="@dimen/dp30"
+                        android:background="@color/a_brown13"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp1"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:padding="@dimen/dp20"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <Button
+                    android:background="@drawable/but_oval_str_brown1_tra"
+                    android:text="@string/s_change_password"
+                    android:textColor="@color/a_brown11"
+                    android:textSize="@dimen/dp20"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

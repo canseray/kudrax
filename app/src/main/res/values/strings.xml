@@ -175,4 +175,12 @@
     <string name="s_amount">miktar*</string>
 
 
+    <string name="s_name_surname">Ad Soyad</string>
+    <string name="s_e_mail">E-Posta Adresi</string>
+    <string name="s_phone_number_e">Telefon Numarası</string>
+    <string name="s_date_of_birth">Doğum Tarihi</string>
+    <string name="s_gender">Cinsiyet</string>
+    <string name="s_country">Şehir</string>
+
+
 </resources>

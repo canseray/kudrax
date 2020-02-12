@@ -5,5 +5,7 @@
     android:textAppearance="?android:attr/textAppearanceLargePopupMenu"
     android:singleLine="true"
     android:layout_width="match_parent"
+    android:textColor="@color/a_brown11"
+    android:fontFamily="@font/comfortaa"
     android:layout_height="?android:attr/listPreferredItemHeight"
     android:ellipsize="marquee" />
