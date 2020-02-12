@@ -36,7 +36,7 @@ public class MyAnnouncementDialog extends Dialog {
 
         MyTextView tv_baslik = (MyTextView) findViewById(R.id.tv_baslik);
         tv_baslik.setText(item.getTitle());
-        tv_baslik.setTextColor(mContext.getResources().getColor(R.color.a_black11));
+        tv_baslik.setTextColor(mContext.getResources().getColor(R.color.a_brown11));
 
         ImageView img_left = (ImageView) findViewById(R.id.img_left);
         img_left.setImageResource(R.drawable.left_k);
