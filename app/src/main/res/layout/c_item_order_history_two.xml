@@ -21,14 +21,15 @@
                 android:paddingLeft="@dimen/dp10">
 
                 <LinearLayout
+                    android:paddingVertical="@dimen/dp2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:layout_gravity="center_vertical"
-                        android:layout_width="@dimen/dp20"
-                        android:layout_height="@dimen/dp20"
+                        android:layout_width="@dimen/dp30"
+                        android:layout_height="@dimen/dp30"
                         android:background="@drawable/box_k"/>
 
                     <tr.limonist.extras.MyTextView
@@ -39,6 +40,7 @@
                         android:foregroundGravity="center_vertical"
                         android:layout_gravity="center_vertical"
                         android:text="@string/s_mobile_order"
+                        android:textSize="@dimen/dp18"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
@@ -50,6 +52,7 @@
                     android:orientation="horizontal">
 
                     <tr.limonist.extras.MyTextView
+                        android:textSize="@dimen/dp12"
                         android:fontFamily="@font/comfortaa"
                         android:textColor="@color/a_brown12"
                         android:gravity="center_vertical"
@@ -89,6 +92,7 @@
                         android:layout_height="wrap_content"/>
 
                     <tr.limonist.extras.MyTextView
+                        android:id="@+id/ca"
                         android:layout_marginStart="@dimen/dp2"
                         android:fontFamily="@font/comfortaa"
                         android:textColor="@color/a_brown12"
@@ -177,6 +181,7 @@
                     android:layout_height="wrap_content"/>
 
                 <tr.limonist.extras.MyTextView
+                    android:id="@+id/tv_payment_method"
                     android:fontFamily="@font/comfortaa"
                     android:textColor="@color/a_brown12"
                     android:gravity="center_vertical"
@@ -188,7 +193,19 @@
                     android:layout_height="wrap_content"/>
 
 
+                <ImageView
+                    android:id="@+id/img_delivery"
+                    android:layout_width="@dimen/dp30"
+                    android:layout_height="@dimen/dp30"
+                    android:layout_marginLeft="@dimen/dp5"
+                    android:layout_marginRight="@dimen/dp5"
+                    android:layout_weight="0"
+                    android:src="@drawable/b_ic_delivery"
+                    android:visibility="visible" />
 
             </LinearLayout>
+
+
         </LinearLayout>
+
 </LinearLayout>

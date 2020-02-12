@@ -32,4 +32,14 @@ public class OrderHistoryProductItem implements Serializable {
     public String getTotal() {
         return total;
     }
+
+
+    //$request_id."[#]"
+    // .$request_date."[#]".
+    // $request_order_id."[#]"
+    // .$request_total."[#]".
+    // $request_status_name."[#]"
+    //            .$request_order_details."[#]"
+    //            .$request_status_id."[#]".
+    //            $request_order_payment_method;
 }

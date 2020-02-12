@@ -104,8 +104,8 @@ public class OrderHistory extends Activity {
         list = (JazzyListView) findViewById(R.id.list);
         list.setTransitionEffect(JazzyHelper.TILT);
         list.setEmptyView(findViewById(android.R.id.empty));
-        list.setDivider(new ColorDrawable(Color.BLACK));
-        list.setDividerHeight(0);
+        list.setDivider(new ColorDrawable(getResources().getColor(R.color.a_brown11)));
+        list.setDividerHeight(1);
 
         LayoutInflater layoutInflater = LayoutInflater.from(m_activity);
         View head = layoutInflater.inflate(R.layout.c_item_head_order_history, null);
@@ -126,8 +126,8 @@ public class OrderHistory extends Activity {
 
             results = new ArrayList<>();
 
-            nameValuePairs.add(new Pair<>("param1", APP.base64Encode(APP.main_user != null ? APP.main_user.id : "0")));
-
+           // nameValuePairs.add(new Pair<>("param1", APP.base64Encode(APP.main_user != null ? APP.main_user.id : "0")));
+            nameValuePairs.add(new Pair<>("param1", APP.base64Encode("0")));
             nameValuePairs.add(new Pair<>("param2", APP.base64Encode(APP.language_id)));
             nameValuePairs.add(new Pair<>("param3", APP.base64Encode("A")));
 
@@ -155,7 +155,8 @@ public class OrderHistory extends Activity {
                                     temp.length > 1 ? temp[1] : "", temp.length > 2 ? temp[2] : "",
                                     temp.length > 3 ? temp[3] : "", temp.length > 4 ? temp[4] : "",
                                     temp.length > 5 ? temp[5] : "",temp.length > 6 ? temp[6] : "",
-                                    temp.length > 7 ? temp[7] : "",temp.length > 8 ? temp[8] : "");
+                                    temp.length > 7 ? temp[7] : "",temp.length > 8 ? temp[8] : "",
+                                    temp.length > 9 ? temp[9] : "");
                             results.add(ai);
                         }
                     }
@@ -222,7 +223,7 @@ public class OrderHistory extends Activity {
             final OrderHistoryItem item = data.get(position);
 
             if (view == null) {
-                view = inflater.inflate(R.layout.c_item_order_history, null);
+                view = inflater.inflate(R.layout.c_item_order_history_two, null);
                 view.setTag("" + position);
             }
 
@@ -231,6 +232,7 @@ public class OrderHistory extends Activity {
             MyTextView number = (MyTextView) view.findViewById(R.id.number);
             MyTextView total = (MyTextView) view.findViewById(R.id.total);
             MyTextView status = (MyTextView) view.findViewById(R.id.status);
+            MyTextView tv_payment_method = (MyTextView) view.findViewById(R.id.tv_payment_method);
 
             ImageView img_delivery = (ImageView) view.findViewById(R.id.img_delivery);
             img_delivery.setOnClickListener(new View.OnClickListener() {
@@ -251,6 +253,7 @@ public class OrderHistory extends Activity {
             number.setText(item.getOrder_id());
             status.setText(item.getStatus());
             total.setText(item.getTotal());
+            tv_payment_method.setText(item.getOrder_payment_method());
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override

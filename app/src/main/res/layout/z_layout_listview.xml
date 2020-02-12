@@ -41,12 +41,11 @@
 
                 <com.twotoasters.jazzylistview.JazzyListView
                     android:id="@+id/list"
-                    android:paddingHorizontal="@dimen/dp20"
+                    android:paddingHorizontal="@dimen/dp10"
                     android:layout_width="match_parent"
                     android:layout_height="fill_parent"
                     android:dividerHeight="@dimen/dp1"
-                    android:divider="@color/a_brown11"
-                    android:scrollbars="none" />
+                    android:divider="@color/a_brown11" />
             </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
             <TextView
