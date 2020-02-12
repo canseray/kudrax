@@ -24,6 +24,7 @@ public class MyContractDialog extends Dialog {
 		setContentView(R.layout.a_my_contract_dialog);
 
 		tv_title = (MyTextView) findViewById(R.id.tv_title);
+		tv_title.setTextColor(m_activity.getResources().getColor(R.color.a_brown11));
 		tv_title.setText(title);
 
 		img_right = (ImageView) findViewById(R.id.img_right);

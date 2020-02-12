@@ -1,16 +1,22 @@
 package tr.limonist.kudra.app.profile;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewStub;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.scwang.smartrefresh.header.WaterDropHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -21,18 +27,23 @@ import com.twotoasters.jazzylistview.JazzyListView;
 import org.w3c.dom.Document;
 
 import java.io.ByteArrayInputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import tr.limonist.classes.HelpChatItem;
 import tr.limonist.classes.MyInvoicesItem;
 import tr.limonist.classes.OrderHistoryItem;
 import tr.limonist.extras.MyTextView;
 import tr.limonist.extras.TransparentProgressDialog;
 import tr.limonist.kudra.APP;
 import tr.limonist.kudra.R;
+import tr.limonist.views.MyContractDialog;
 
 public class MyInvoices extends AppCompatActivity {
     Activity m_activity;
@@ -44,6 +55,7 @@ public class MyInvoices extends AppCompatActivity {
     JazzyListView list;
     String title;
     String[] part1;
+    private lazy adapter;
     ArrayList<MyInvoicesItem> results;
 
 
@@ -152,13 +164,9 @@ public class MyInvoices extends AppCompatActivity {
                 refreshLayout.finishRefresh();
             if (result.contentEquals("true")) {
 
-              /*  title1.setText(part2.length>0?part2[0]:"");
-                title2.setText(part2.length>1?part2[1]:"");
-                title3.setText(part2.length>2?part2[2]:"");
-
-                adapter = new OrderHistory.lazy(results);
+                adapter = new lazy(results);
                 list.setAdapter(adapter);
-                adapter.notifyDataSetChanged(); */
+                adapter.notifyDataSetChanged();
 
             } else {
                 APP.show_status(m_activity, 1,
@@ -166,5 +174,65 @@ public class MyInvoices extends AppCompatActivity {
             }
         }
     }
+
+    public class lazy extends BaseAdapter {
+        private ArrayList<MyInvoicesItem> data;
+        private LayoutInflater inflater = null;
+
+        public lazy(ArrayList<MyInvoicesItem> d) {
+            this.data = d;
+            inflater = LayoutInflater.from(m_activity);
+
+        }
+
+        @Override
+        public int getCount() {
+            return data.size();
+        }
+
+        @Override
+        public MyInvoicesItem getItem(int position) {
+            return data.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        public View getView(final int position, View view, ViewGroup parent) {
+            final MyInvoicesItem item = data.get(position);
+
+            if (view == null) {
+                view = inflater.inflate(R.layout.c_item_invoice, null);
+                view.setTag("" + position);
+            }
+
+
+            MyTextView date = (MyTextView) view.findViewById(R.id.date);
+            MyTextView name = (MyTextView) view.findViewById(R.id.name);
+            MyTextView total_title = (MyTextView) view.findViewById(R.id.total_title);
+            MyTextView amount = (MyTextView) view.findViewById(R.id.amount);
+            LinearLayout e_invoice = (LinearLayout) view.findViewById(R.id.e_invoice);
+
+
+            date.setText(item.getDate());
+            name.setText(item.getName());
+            total_title.setText(item.getTotalTitle());
+            amount.setText(item.getAmount());
+
+
+             e_invoice.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+
+              }
+          });
+
+            return view;
+        }
+
+    }
+
 
 }

@@ -150,7 +150,7 @@ public class ProfileSettings extends ActivityManagePermission {
 
                 if (all_field) {
 
-                    pd.show();
+                   // pd.show();
                     new Connection().execute("");
 
                 } else {
@@ -518,7 +518,7 @@ public class ProfileSettings extends ActivityManagePermission {
                                 @Override
                                 public void onClick(View v) {
                                     alert.dismiss();
-                                    pd.show();
+                                   // pd.show();
                                     new Connection2().execute("");
 
                                 }
@@ -547,7 +547,7 @@ public class ProfileSettings extends ActivityManagePermission {
             multipartRequest.addString("param3", APP.base64Encode("A"));
             multipartRequest.addFile("file", new_image_path, new_image_name);
 
-            String xml = multipartRequest.execute(APP.path + "/account_panel/set_profile_image.php");
+            String xml = multipartRequest.execute(APP.path + "/account_panel/profile_photos/set_profile_image.php");
             if (xml != null && !xml.contentEquals("fail")) {
                 try {
                     DocumentBuilder newDocumentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
