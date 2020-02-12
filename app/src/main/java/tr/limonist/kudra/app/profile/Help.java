@@ -69,7 +69,7 @@ public class Help extends Activity {
     String message, part2, part3;
     public String sendPart1;
     public String sendPart2;
-    GradientTextView tv_call_number;
+    MyTextView tv_call_number;
     ArrayList<HelpChatItem> results;
     LinearLayout top_left;
     MyTextView tv_baslik;
@@ -370,8 +370,8 @@ public class Help extends Activity {
 
     private void fillCallCenterInfo() {
 
-      /*  tv_desc.setText(part2.length>0?part2[0]:"");
-        tv_call_number.setText(part2.length>1?part2[1]:""); */
+        tv_desc.setText(part3);
+        tv_call_number.setText(part2);
 
     }
 
@@ -383,7 +383,8 @@ public class Help extends Activity {
 
             nameValuePairs.add(new Pair<>("param1", APP.base64Encode(APP.device_id)));
             nameValuePairs.add(new Pair<>("param2", APP.base64Encode(APP.device_id)));
-            nameValuePairs.add(new Pair<>("param3", APP.base64Encode(APP.base64Encode(APP.base64Encode(message)))));
+            //nameValuePairs.add(new Pair<>("param3", APP.base64Encode(APP.base64Encode(APP.base64Encode(message)))));
+            nameValuePairs.add(new Pair<>("param3", APP.base64Encode(APP.base64Encode(message))));
             nameValuePairs.add(new Pair<>("param4", APP.base64Encode(APP.main_user.id)));
             nameValuePairs.add(new Pair<>("param5", APP.base64Encode("A")));
             nameValuePairs.add(new Pair<>("param6", APP.base64Encode(APP.language_id)));

@@ -52,18 +52,8 @@
                     android:orientation="horizontal">
 
                     <tr.limonist.extras.MyTextView
-                        android:textSize="@dimen/dp12"
-                        android:fontFamily="@font/comfortaa"
-                        android:textColor="@color/a_brown12"
-                        android:gravity="center_vertical"
-                        android:foregroundGravity="center_vertical"
-                        android:layout_gravity="center_vertical"
-                        android:text="@string/s_order_code"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                    <tr.limonist.extras.MyTextView
                         android:id="@+id/number"
+                        android:textSize="@dimen/dp15"
                         android:layout_marginStart="@dimen/dp2"
                         android:fontFamily="@font/comfortaa"
                         android:textColor="@color/a_brown12"
@@ -84,6 +74,7 @@
                     <tr.limonist.extras.MyTextView
                         android:fontFamily="@font/comfortaa"
                         android:textColor="@color/a_brown12"
+                        android:textSize="@dimen/dp15"
                         android:gravity="center_vertical"
                         android:foregroundGravity="center_vertical"
                         android:layout_gravity="center_vertical"
@@ -93,6 +84,7 @@
 
                     <tr.limonist.extras.MyTextView
                         android:id="@+id/ca"
+                        android:textSize="@dimen/dp15"
                         android:layout_marginStart="@dimen/dp2"
                         android:fontFamily="@font/comfortaa"
                         android:textColor="@color/a_brown12"
@@ -114,6 +106,7 @@
                         android:fontFamily="@font/comfortaa"
                         android:textColor="@color/a_brown12"
                         android:gravity="center_vertical"
+                        android:textSize="@dimen/dp15"
                         android:foregroundGravity="center_vertical"
                         android:layout_gravity="center_vertical"
                         android:text="@string/s_order_total"
@@ -122,7 +115,7 @@
 
                     <tr.limonist.extras.MyTextView
                         android:id="@+id/total"
-                        android:textSize="@dimen/dp20"
+                        android:textSize="@dimen/dp25"
                         android:fontFamily="@font/comfortaa"
                         android:textColor="@color/a_brown11"
                         android:gravity="center_vertical"
@@ -163,6 +156,7 @@
                 <tr.limonist.extras.MyTextView
                     android:id="@+id/date"
                     android:layout_weight="40"
+                    android:textSize="@dimen/dp15"
                     android:fontFamily="@font/comfortaa"
                     android:textColor="@color/a_brown11"
                     android:text="@string/s_order_total"
@@ -170,6 +164,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
                 <tr.limonist.extras.MyTextView
+                    android:textSize="@dimen/dp15"
                     android:fontFamily="@font/comfortaa"
                     android:textColor="@color/a_brown11"
                     android:gravity="center_vertical"
@@ -181,6 +176,7 @@
                     android:layout_height="wrap_content"/>
 
                 <tr.limonist.extras.MyTextView
+                    android:textSize="@dimen/dp15"
                     android:id="@+id/tv_payment_method"
                     android:fontFamily="@font/comfortaa"
                     android:textColor="@color/a_brown12"

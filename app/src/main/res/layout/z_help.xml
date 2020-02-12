@@ -33,9 +33,9 @@
             android:layout_weight="1"
             android:background="@null"
             android:divider="@null"
-            android:padding="@dimen/dp5"
+            android:paddingVertical="@dimen/dp5"
+            android:paddingHorizontal="@dimen/dp10"
             android:scrollbars="none"
-            android:stackFromBottom="true"
             android:transcriptMode="alwaysScroll"/>
 
         <View
@@ -58,27 +58,30 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:hint="mesaj yaz"
+                android:hint="Mesaj Yaz"
+                android:textSize="@dimen/dp18"
+                android:textAlignment="textEnd"
                 android:padding="@dimen/dp5"
-                android:textColor="@color/a_main11"
-                android:textColorHint="@color/a_main13" />
+                android:fontFamily="@font/comfortaa"
+                android:textColor="@color/a_brown11"
+                android:textColorHint="@color/a_brown14" />
 
             <ImageView
                 android:id="@+id/img_send"
-                android:layout_width="@dimen/dp40"
-                android:layout_height="@dimen/dp40"
-                android:src="@drawable/but_oval_str_brown1_tra"
+                android:layout_width="@dimen/dp60"
+                android:layout_height="@dimen/dp60"
+                android:src="@drawable/send_message_k"
                 android:layout_weight="0"
                 android:padding="@dimen/dp5" />
 
         </LinearLayout>
 
         <View
-            android:layout_marginLeft="@dimen/dp5"
-            android:layout_marginRight="@dimen/dp5"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginRight="@dimen/dp15"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/dp1"
-            android:background="@drawable/but_oval_str_brown1_tra" />
+            android:background="@color/a_brown11" />
 
         <LinearLayout
             android:orientation="vertical"
@@ -90,14 +93,19 @@
             android:padding="@dimen/dp8">
 
             <TextView
-                android:layout_marginTop="@dimen/dp10"
+                android:layout_marginTop="@dimen/dp5"
+                android:layout_marginBottom="@dimen/dp5"
                 android:padding="@dimen/dp3"
+                android:textAlignment="center"
+                android:layout_gravity="center"
+                android:foregroundGravity="center"
                 android:id="@+id/tv_desc"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="@color/a_black13"
-                android:textSize="@dimen/dp12" />
+                android:fontFamily="@font/comfortaa"
+                android:textColor="@color/a_brown12"
+                android:textSize="@dimen/dp15" />
 
             <LinearLayout
                 android:duplicateParentState="true"
@@ -109,7 +117,7 @@
 
                 <LinearLayout
                     android:duplicateParentState="true"
-                    android:background="@drawable/but_oval_str_main2_tra"
+                    android:background="@drawable/but_oval_str_brown1_tra"
                     android:layout_weight="60"
                     android:orientation="horizontal"
                     android:layout_width="0dp"
@@ -123,18 +131,16 @@
                         android:duplicateParentState="true" />
 
 
-                    <tr.limonist.extras.GradientTextView
+                    <tr.limonist.extras.MyTextView
+                        android:fontFamily="@font/comfortaa"
                         android:layout_marginLeft="@dimen/dp8"
+                        android:textColor="@color/a_brown11"
                         android:id="@+id/tv_call_number"
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
                         android:gravity="center"
                         android:duplicateParentState="true"
-                        android:textSize="@dimen/dp20"
-                        android:autoSizeTextType="uniform"
-                        android:autoSizeMinTextSize="@dimen/dp8"
-                        android:autoSizeMaxTextSize="@dimen/dp20"
-                        android:autoSizeStepGranularity="@dimen/dp2" />
+                        android:textSize="@dimen/dp20" />
 
                 </LinearLayout>
 

@@ -252,6 +252,9 @@ public class OrderHistory extends Activity {
             date.setText(item.getDate());
             number.setText(item.getOrder_id());
             status.setText(item.getStatus());
+
+            //getStatus color red green
+
             total.setText(item.getTotal());
             tv_payment_method.setText(item.getOrder_payment_method());
 

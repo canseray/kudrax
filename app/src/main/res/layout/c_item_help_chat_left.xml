@@ -12,19 +12,21 @@
 
         <TextView
             android:id="@+id/text"
+            android:fontFamily="@font/comfortaa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/dp50"
-            android:background="@drawable/chat_left_k"
+            android:background="@drawable/cell_tye1"
             android:paddingBottom="@dimen/dp15"
             android:paddingLeft="@dimen/dp20"
             android:paddingRight="@dimen/dp20"
             android:paddingTop="@dimen/dp15"
-            android:textColor="@color/a_main22"
+            android:textColor="@color/a_brown11"
             android:textSize="@dimen/dp15" />
 
         <TextView
             android:id="@+id/date"
+            android:fontFamily="@font/comfortaa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/dp3"
