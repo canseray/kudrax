@@ -1,8 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@color/a_white11"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
     <LinearLayout
@@ -24,71 +22,128 @@
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:gravity="center">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <FrameLayout
+        <ListView
+            android:id="@+id/list"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:divider="@null"
+            android:padding="@dimen/dp5"
+            android:scrollbars="none"
+            android:stackFromBottom="true"
+            android:transcriptMode="alwaysScroll"/>
 
-            <com.scwang.smartrefresh.layout.SmartRefreshLayout
-                android:id="@+id/refreshLayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <com.twotoasters.jazzylistview.JazzyListView
-                    android:id="@+id/list"
-                    android:paddingHorizontal="@dimen/dp20"
-                    android:layout_width="match_parent"
-                    android:layout_height="fill_parent"
-                    android:dividerHeight="@dimen/dp1"
-                    android:divider="@color/a_brown11"
-                    android:scrollbars="none" />
-            </com.scwang.smartrefresh.layout.SmartRefreshLayout>
-
-            <TextView
-                android:id="@android:id/empty"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:gravity="center"
-                android:padding="@dimen/dp20"
-                android:text="@string/s_no_data"
-                android:textColor="@color/a_black12"
-                android:textSize="@dimen/dp25"
-                android:textStyle="bold"
-                android:visibility="gone" />
-        </FrameLayout>
+        <View
+            android:layout_marginLeft="@dimen/dp5"
+            android:layout_marginRight="@dimen/dp5"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dp1"
+            android:background="@drawable/but_oval_str_brown1_tra" />
 
         <LinearLayout
-            android:visibility="gone"
-            android:id="@+id/lay_close"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp40"
-            android:layout_marginTop="@dimen/dp10"
-            android:layout_marginBottom="@dimen/dp10"
-            android:layout_weight="0"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingLeft="@dimen/dp5"
-            android:paddingRight="@dimen/dp5"
-            android:weightSum="100">
+            android:id="@+id/lay_compose"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dp40"
+            android:orientation="horizontal">
 
-            <tr.limonist.extras.MyTextView
-                android:id="@+id/tv_close"
-                android:duplicateParentState="true"
-                android:layout_width="0dp"
+            <EditText
+                android:id="@+id/et_message"
+                android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_weight="60"
-                android:background="@drawable/but_oval_main"
-                android:gravity="center"
-                android:textAllCaps="true"
-                android:textColor="@drawable/text_white"
-                android:textSize="@dimen/dp15"
-                android:textStyle="bold" />
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:hint="mesaj yaz"
+                android:padding="@dimen/dp5"
+                android:textColor="@color/a_main11"
+                android:textColorHint="@color/a_main13" />
+
+            <ImageView
+                android:id="@+id/img_send"
+                android:layout_width="@dimen/dp40"
+                android:layout_height="@dimen/dp40"
+                android:src="@drawable/but_oval_str_brown1_tra"
+                android:layout_weight="0"
+                android:padding="@dimen/dp5" />
+
         </LinearLayout>
 
+        <View
+            android:layout_marginLeft="@dimen/dp5"
+            android:layout_marginRight="@dimen/dp5"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dp1"
+            android:background="@drawable/but_oval_str_brown1_tra" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/lay_call"
+            android:layout_weight="0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/dp8">
+
+            <TextView
+                android:layout_marginTop="@dimen/dp10"
+                android:padding="@dimen/dp3"
+                android:id="@+id/tv_desc"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/a_black13"
+                android:textSize="@dimen/dp12" />
+
+            <LinearLayout
+                android:duplicateParentState="true"
+                android:weightSum="100"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dp35"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:duplicateParentState="true"
+                    android:background="@drawable/but_oval_str_main2_tra"
+                    android:layout_weight="60"
+                    android:orientation="horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="@dimen/dp25"
+                        android:layout_height="@dimen/dp25"
+                        android:src="@drawable/but_oval_str_brown1_tra"
+                        android:duplicateParentState="true" />
+
+
+                    <tr.limonist.extras.GradientTextView
+                        android:layout_marginLeft="@dimen/dp8"
+                        android:id="@+id/tv_call_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:gravity="center"
+                        android:duplicateParentState="true"
+                        android:textSize="@dimen/dp20"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="@dimen/dp8"
+                        android:autoSizeMaxTextSize="@dimen/dp20"
+                        android:autoSizeStepGranularity="@dimen/dp2" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
     </LinearLayout>
+
 </LinearLayout>

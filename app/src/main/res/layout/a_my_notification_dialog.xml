@@ -50,11 +50,6 @@
                         android:layout_height="@dimen/dp30"
                         android:layout_weight="0" />
 
-                    <View
-                        android:layout_width="@dimen/dp30"
-                        android:layout_height="@dimen/dp30"
-                        android:layout_marginLeft="@dimen/dp15"
-                        android:layout_weight="0" />
 
                     <tr.limonist.extras.MyTextView
                         android:layout_width="fill_parent"

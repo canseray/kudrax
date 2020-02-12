@@ -56,7 +56,7 @@
                             android:layout_width="@dimen/dp100"
                             android:layout_height="@dimen/dp100"
                             android:layout_alignParentTop="true"
-                            app:placeholderImage="@drawable/name_surname_k"
+                            app:placeholderImage="@mipmap/name_surname_k"
                             app:placeholderImageScaleType="fitCenter"
                             app:actualImageScaleType="fitCenter"
                             app:roundAsCircle="true"

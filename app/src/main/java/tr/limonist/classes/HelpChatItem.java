@@ -5,14 +5,14 @@ import java.io.Serializable;
 public class HelpChatItem implements Serializable {
     private String sendertype;
     private String date;
-    private String text;
-    private String id;
+    private String message;
+    private String messageid;
 
-    public HelpChatItem(String sendertype, String date, String text, String id) {
+    public HelpChatItem(String sendertype, String date, String message, String messageid) {
         this.sendertype = sendertype;
         this.date = date;
-        this.text = text;
-        this.id = id;
+        this.message = message;
+        this.messageid = messageid;
     }
 
     public String getSendertype() {
@@ -31,19 +31,19 @@ public class HelpChatItem implements Serializable {
         this.date = date;
     }
 
-    public String getText() {
-        return text;
+    public String getMessage() {
+        return message;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public String getId() {
-        return id;
+    public String getMessageid() {
+        return messageid;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setMessageid(String messageid) {
+        this.messageid = messageid;
     }
 }

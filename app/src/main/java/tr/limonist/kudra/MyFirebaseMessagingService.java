@@ -45,7 +45,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     public void onMessageReceived(RemoteMessage remoteMessage) {
         Map<String, String> data = remoteMessage.getData();
         String message = data.get("message");
+
+
         showNotification(message, data);
+
     }
 
     public String base64Encode(String text) {

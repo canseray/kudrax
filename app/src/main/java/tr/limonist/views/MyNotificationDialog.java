@@ -285,7 +285,6 @@ public class MyNotificationDialog extends Dialog {
 			if (xml != null && !xml.contentEquals("fail")) {
 
 				try {
-
 					DocumentBuilder newDocumentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 					Document parse = newDocumentBuilder.parse(new ByteArrayInputStream(xml.getBytes()));
 					List<String> dataList = new ArrayList<String>();
@@ -311,10 +310,11 @@ public class MyNotificationDialog extends Dialog {
 			} else {
 				return "false";
 			}
-
 		}
 
 		protected void onPostExecute(String result) {
+			if (pd != null)
+				pd.dismiss();
 			if (result.contentEquals("true")) {
 				new Connection2().execute("");
 			} else if (result.contentEquals("error")) {

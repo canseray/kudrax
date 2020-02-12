@@ -12,7 +12,8 @@
     <string name="s_order_total">Sipariş Tutarı:</string>
     <string name="s_payment_type">Payment Type</string>
 
-
+    <string name="s_today">Bugün</string>
+    <string name="s_yesterday">Dün</string>
     <string name="s_log_in_exp">Please enter your e-mail address and password to log in.</string>
     <string name="s_pass_recovery_exp">If you don\'t remember your password, please enter a valid e-mail address to recover your password.</string>
     <string name="s_new_user_desc">Please fill all fields below for registration.</string>

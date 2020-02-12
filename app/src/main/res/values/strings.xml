@@ -11,7 +11,8 @@
     <string name="s_unexpected_connection_error_has_occured">Beklenmedik bir hata oluştu.Lütfen tekrar deneyiniz.</string>
     <string name="s_cargo_confirm">Siparişinizi kargo ile teslim almayı onaylıyor musunuz?</string>
 
-
+    <string name="s_today">Bugün</string>
+    <string name="s_yesterday">Dün</string>
     <string name="s_log_in">GİRİŞ YAP</string>
     <string name="s_new_account">Yeni Hesap Oluştur</string>
     <string name="s_user_information">KULLANICI BİLGİLERİ</string>
@@ -67,7 +68,6 @@
     <string name="s_count">-Sipariş Adedi-</string>
 
     <string name="s_send_request">Talebi Gönder</string>
-    <string name="s_contract">Sözleşme</string>
     <string name="s_use_point">Kudra Puan Kullan</string>
     <string name="s_my_account">HESAP BİLGİLERİM</string>
     <string name="s_select">Seçiniz</string>
@@ -159,6 +159,8 @@
     <string name="s_option_qr_vale_title">Vale Kod Tarayıcı</string>
     <string name="s_option_qr_vale">Aracınızı valeden teslim almak için VALE kartınızda bulunan VALE QR kodunu taratabilirsiniz</string>
     <string name="s_contact">İletişim</string>
+    <string name="s_contract">Sözleşme</string>
+
     <string name="s_my_promotion_desc">Kullanabileceğiniz toplam <b>Kudra Puan</b></string>
     <string name="s_total_usable_point">Toplam Kullanılabilir Puan Tutarı</string>
     <string name="s_earned_point">Kazanılan Puanlar</string>

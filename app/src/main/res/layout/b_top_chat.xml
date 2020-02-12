@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp40"
+        android:paddingLeft="@dimen/dp5"
+        android:gravity="center"
+        android:paddingRight="@dimen/dp5">
+
+        <LinearLayout
+            android:id="@+id/top_left"
+            android:layout_width="@dimen/dp40"
+            android:layout_height="@dimen/dp40"
+            android:layout_weight="0"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/img_left"
+                android:layout_width="@dimen/dp30"
+                android:layout_height="@dimen/dp30"
+                android:duplicateParentState="true" />
+        </LinearLayout>
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_marginLeft="@dimen/dp5"
+            android:id="@+id/img"
+            android:layout_width="@dimen/dp35"
+            android:layout_height="@dimen/dp35"
+            app:actualImageScaleType="centerCrop"
+            app:placeholderImage="@mipmap/ic_placeholder_profile_black2"
+            app:placeholderImageScaleType="centerCrop"
+            app:roundAsCircle="true"
+            app:roundingBorderColor="@color/a_main21"
+            app:roundingBorderWidth="@dimen/dp1" />
+
+        <LinearLayout
+            android:paddingTop="@dimen/dp3"
+            android:paddingBottom="@dimen/dp3"
+            android:paddingLeft="@dimen/dp5"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_weight="1"
+                android:id="@+id/tv_name"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center_vertical|left"
+                android:textColor="@color/a_main21"
+                android:textStyle="bold"
+                android:textSize="@dimen/dp15"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="@dimen/dp8"
+                android:autoSizeMaxTextSize="@dimen/dp15"
+                android:autoSizeStepGranularity="@dimen/dp2" />
+
+            <TextView
+                android:layout_marginTop="@dimen/dp2"
+                android:layout_weight="1"
+                android:id="@+id/tv_title"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center_vertical|left"
+                android:textColor="@color/a_main22"
+                android:textSize="@dimen/dp12"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="@dimen/dp6"
+                android:autoSizeMaxTextSize="@dimen/dp12"
+                android:autoSizeStepGranularity="@dimen/dp2" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>
