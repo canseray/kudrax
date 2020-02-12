@@ -127,6 +127,7 @@ public class OrderHistory extends Activity {
             results = new ArrayList<>();
 
             nameValuePairs.add(new Pair<>("param1", APP.base64Encode(APP.main_user != null ? APP.main_user.id : "0")));
+
             nameValuePairs.add(new Pair<>("param2", APP.base64Encode(APP.language_id)));
             nameValuePairs.add(new Pair<>("param3", APP.base64Encode("A")));
 
