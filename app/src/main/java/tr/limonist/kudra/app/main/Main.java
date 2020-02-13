@@ -697,7 +697,9 @@ public class Main extends AppCompatActivity {
         if (smi.getPrep().contentEquals("PRESENTFORNOTIFICATIONSVIEW")) {
 
             if (APP.main_user != null) {
-                new MyNotificationDialog(m_activity);
+               // new MyNotificationDialog(m_activity);
+                startActivity(new Intent(m_activity,Notifications.class).putExtra("title",smi.getTitle()));
+
             } else
                 startActivity(new Intent(m_activity, LoginMain.class));
 
@@ -1118,6 +1120,9 @@ public class Main extends AppCompatActivity {
                 pd.dismiss();
             if (result.contentEquals("true")) {
                 new MyContractDialog(m_activity, contPart1, getString(R.string.s_contract));
+
+
+                //activity
             } else {
                 APP.show_status(m_activity, 1, getResources().getString(R.string.s_unexpected_connection_error_has_occured));
             }
