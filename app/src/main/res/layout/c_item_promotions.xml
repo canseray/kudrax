@@ -1,6 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp150"
+    android:paddingVertical="@dimen/dp5"
+    android:weightSum="100"
+    android:padding="@dimen/dp10"
+    android:orientation="horizontal">
 
-</android.support.constraint.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_weight="40"
+        android:gravity="center"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:background="@drawable/qr_code_black"
+            android:layout_width="@dimen/dp60"
+            android:layout_height="@dimen/dp60"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="30"
+        android:weightSum="10"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <tr.limonist.extras.MyTextView
+            android:id="@+id/promotion_product_name"
+            android:text="ürün adı"
+            android:layout_weight="6"
+            android:textSize="@dimen/dp15"
+            android:gravity="center_vertical"
+            android:textColor="@color/a_brown11"
+            android:fontFamily="@font/comfortaa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <tr.limonist.extras.MyTextView
+            android:id="@+id/show_code"
+            android:layout_weight="1"
+            android:paddingHorizontal="@dimen/dp8"
+            android:textColor="@color/a_brown11"
+            android:text="kodu göster"
+            android:textAllCaps="true"
+            android:background="@drawable/but_oval_str_brown1_tra"
+            android:gravity="center"
+            android:textSize="@dimen/dp18"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:weightSum="10"
+        android:gravity="end"
+        android:layout_weight="30"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+
+        <LinearLayout
+            android:layout_weight="8"
+            android:layout_gravity="end"
+            android:gravity="end"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+        <LinearLayout
+            android:paddingVertical="@dimen/dp2"
+            android:paddingHorizontal="@dimen/dp8"
+            android:background="@drawable/but_circle_black1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <tr.limonist.extras.MyTextView
+                android:id="@+id/promotion_count"
+                android:text="1"
+                android:textColor="@color/a_white11"
+                android:textSize="@dimen/dp18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        </LinearLayout>
+
+        <tr.limonist.extras.MyTextView
+            android:layout_weight="1"
+            android:text="Tarih"
+            android:textAlignment="textEnd"
+            android:textColor="@color/a_gray22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <tr.limonist.extras.MyTextView
+            android:id="@+id/date"
+            android:layout_weight="1"
+            android:text="2367 tarih"
+            android:textAlignment="textEnd"
+            android:textColor="@color/a_brown11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

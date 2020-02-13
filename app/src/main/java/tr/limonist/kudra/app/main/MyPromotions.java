@@ -244,8 +244,7 @@ public class MyPromotions extends AppCompatActivity {
 
         public class ViewHolder {
 
-            MyTextView title, desc, date, action;
-            SimpleDraweeView img;
+            MyTextView promotion_product_name, show_code, promotion_count, date;
 
         }
 
@@ -257,22 +256,21 @@ public class MyPromotions extends AppCompatActivity {
                 holder = new ViewHolder();
                 view = inflater.inflate(R.layout.c_item_promotions, null);
 
-                holder.title = (MyTextView) view.findViewById(R.id.title);
-                holder.desc = (MyTextView) view.findViewById(R.id.desc);
+                holder.promotion_product_name = (MyTextView) view.findViewById(R.id.promotion_product_name);
+                holder.show_code = (MyTextView) view.findViewById(R.id.show_code);
+                holder.promotion_count = (MyTextView) view.findViewById(R.id.promotion_count);
                 holder.date = (MyTextView) view.findViewById(R.id.date);
-                holder.action = (MyTextView) view.findViewById(R.id.action);
 
-                holder.img = (SimpleDraweeView) view.findViewById(R.id.img);
 
                 view.setTag(holder);
             } else {
                 holder = (ViewHolder) view.getTag();            }
 
-            holder.title.setText(item.getTitle());
-            holder.desc.setText(item.getDetail());
+            holder.promotion_product_name.setText(item.getTitle());
+            holder.promotion_count.setText(item.getDetail());
             holder.date.setText(item.getDate());
 
-            holder.action.setOnClickListener(new View.OnClickListener() {
+            holder.show_code.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
@@ -281,25 +279,12 @@ public class MyPromotions extends AppCompatActivity {
             });
 
             if (is_usable && selected_page == 0 && item.getActivation_status().contentEquals("2"))
-                holder.action.setVisibility(View.VISIBLE);
+                holder.show_code.setVisibility(View.VISIBLE);
             else
-                holder.action.setVisibility(View.GONE);
-
-            holder.img.setImageURI(item.getImage());
+                holder.show_code.setVisibility(View.GONE);
 
             return view;
         }
     }
-
-
-    private void select_main_category(int position) {
-        selected_promotion_status = position;
-        selected_page = 0;
-        pd.show();
-        new Connection().execute();
-    }
-
-
-
 
 }
