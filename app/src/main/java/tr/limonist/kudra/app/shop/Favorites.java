@@ -115,7 +115,7 @@ public class Favorites extends Activity {
             nameValuePairs.add(new Pair<>("param2", APP.base64Encode(APP.language_id)));
             nameValuePairs.add(new Pair<>("param3", APP.base64Encode("A")));
 
-            String xml = APP.post1(nameValuePairs, APP.path + "/get_favorites_data_list.php");
+            String xml = APP.post1(nameValuePairs, APP.path + "/favorities/get_favorites_data_list.php");
 
             if (xml != null && !xml.contentEquals("fail")) {
 
@@ -135,7 +135,7 @@ public class Favorites extends Activity {
                             FavoriteItem pi = new FavoriteItem(
                                     temp.length > 0 ? temp[0] : "", temp.length > 1 ? temp[1] : "",
                                     temp.length > 2 ? temp[2] : "", temp.length > 3 ? temp[3] : "",
-                                    temp.length > 4 ? temp[4] : ""
+                                    temp.length > 4 ? temp[4] : "", temp.length > 5 ? temp[5] : ""
                             );
                             results.add(pi);
                         }
@@ -207,7 +207,6 @@ public class Favorites extends Activity {
                 holder.img = view.findViewById(R.id.img);
                 holder.img_play = view.findViewById(R.id.img_play);
                 holder.title = view.findViewById(R.id.title);
-                holder.price = view.findViewById(R.id.price);
 
                 view.setTag(holder);
             } else {
@@ -216,7 +215,6 @@ public class Favorites extends Activity {
 
             holder.img.setImageURI(item.getImage());
             holder.title.setText(item.getName());
-            holder.price.setText(item.getPrice());
 
 
             holder.img_play.setOnClickListener(new View.OnClickListener() {
@@ -229,7 +227,7 @@ public class Favorites extends Activity {
             holder.img_favorite.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    selected_product_id = item.getProduct();
+                    selected_product_id = item.getProduct_id();
                     pd.show();
                     new Connection2().execute();
                 }
@@ -240,7 +238,7 @@ public class Favorites extends Activity {
                 public void onClick(View v) {
 
                     startActivity(new Intent(m_activity,ProductDetail.class)
-                            .putExtra("product_id",item.getProduct())
+                            .putExtra("product_id",item.getProduct_id())
                             .putExtra("product_title",item.getName())
                     );
                 }
@@ -262,7 +260,7 @@ public class Favorites extends Activity {
             nameValuePairs.add(new Pair<>("param3", APP.base64Encode(APP.language_id)));
             nameValuePairs.add(new Pair<>("param4", APP.base64Encode("A")));
 
-            String xml = APP.post1(nameValuePairs, APP.path + "/cart_controls/send_add_to_favorite_request.php");
+            String xml = APP.post1(nameValuePairs, APP.path + "/favorities/send_add_to_favorite_request.php");
 
             if (xml != null && !xml.contentEquals("fail")) {
 

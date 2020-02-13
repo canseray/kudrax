@@ -249,7 +249,8 @@ public class Search extends Activity {
 							String[] temp = part1[i].split("\\[#\\]");
 							FavoriteItem ai = new FavoriteItem(temp.length > 0 ? temp[0] : "",
 									temp.length > 1 ? temp[1] : "", temp.length > 2 ? temp[2] : "",
-									temp.length > 3 ? temp[3] : "",temp.length > 4 ? temp[4] : "");
+									temp.length > 3 ? temp[3] : "",temp.length > 4 ? temp[4] : "",
+									temp.length > 4 ? temp[4] : "");
 							results.add(ai);
 						}
 
@@ -333,14 +334,14 @@ public class Search extends Activity {
 
 			holder.title.setText(item.getName());
 
-			holder.price.setText(item.getPrice());
+			holder.price.setText(item.getNew_price());
 
-			holder.new_price.setText(item.getPrice());
+			holder.new_price.setText(item.getNew_price());
 
-			holder.old_price.setText(item.getOld());
+			holder.old_price.setText(item.getOld_price());
 			holder.old_price.setPaintFlags(holder.old_price.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 
-			if(!item.getOld().contentEquals(""))
+			if(!item.getOld_price().contentEquals(""))
 			{
 				holder.price.setVisibility(View.GONE);
 				holder.lay_price.setVisibility(View.VISIBLE);
@@ -357,16 +358,13 @@ public class Search extends Activity {
 				public void onClick(View v) {
 
 					startActivity(new Intent(m_activity,ProductDetail.class)
-							.putExtra("product_id",item.getProduct())
+							.putExtra("product_id",item.getProduct_id())
 							.putExtra("product_title",item.getName())
 					);
-
 				}
 			});
 
 			return view;
 		}
-
 	}
-
 }
