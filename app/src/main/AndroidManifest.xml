@@ -193,6 +193,7 @@
             android:screenOrientation="sensorPortrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+
     </application>
 
 </manifest>

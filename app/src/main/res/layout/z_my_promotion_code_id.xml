@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"/>
 
             <tr.limonist.extras.MyTextView
-                android:id="@+id/code"
+                android:id="@+id/code2"
                 android:gravity="center"
                 android:text="code2code2"
                 android:textSize="@dimen/dp20"

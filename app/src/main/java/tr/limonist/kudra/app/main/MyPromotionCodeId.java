@@ -47,7 +47,7 @@ public class MyPromotionCodeId extends AppCompatActivity {
 
 
         put_code_id = getIntent().getStringExtra("code_id");
-        code = findViewById(R.id.code);
+        code = findViewById(R.id.code2);
 
         ViewStub stub = (ViewStub) findViewById(R.id.lay_stub);
         stub.setLayoutResource(R.layout.b_top_img_txt_emp);
@@ -79,6 +79,8 @@ public class MyPromotionCodeId extends AppCompatActivity {
                 finish();
             }
         });
+
+        code.setText(put_code_id);
 
         pd.show();
         new Connection().execute();

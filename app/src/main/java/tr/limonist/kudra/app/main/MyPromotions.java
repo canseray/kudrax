@@ -264,10 +264,10 @@ public class MyPromotions extends AppCompatActivity {
                 holder = (ViewHolder) view.getTag();            }
 
             holder.promotion_product_name.setText(item.getTitle());
-            holder.promotion_count.setText(item.getDetail());
+            //holder.promotion_count.setText(item.getDetail());
             holder.date.setText(item.getDate());
 
-            holder.qr_code_img.setOnClickListener(new View.OnClickListener() {
+            view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
@@ -281,11 +281,11 @@ public class MyPromotions extends AppCompatActivity {
                 public void onClick(View v) {
 
                     String put_code =results.get(position).getCode();
-                    startActivity(new Intent(m_activity, MyPromotionDialog.class).putExtra("code",put_code));
+                    startActivity(new Intent(m_activity, MyPromotionQrCode.class).putExtra("code",put_code));
                 }
             });
 
-            if (is_usable && selected_page == 0 && item.getActivation_status().contentEquals("2"))
+            if (selected_promotion_status == 0 )
                 holder.show_code.setVisibility(View.VISIBLE);
             else
                 holder.show_code.setVisibility(View.GONE);
