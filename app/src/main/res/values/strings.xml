@@ -167,6 +167,10 @@
     <string name="s_used_point">Kullanılan Puanlar</string>
     <string name="s_point_history">Puan Geçmişi</string>
     <string name="s_promotions">Promosyonlar</string>
+    <string name="s_my_promotions">Promosyonlarım</string>
+    <string name="s_scan_qr_code">Qr Kod Tarat</string>
+
+
     <string name="s_kudra_points">Kudra Puan</string>
     <string name="s_total_cart_amount_x">Toplam Sepet Miktarı : %s</string>
     <string name="s_enter_point_amount_here">Kullanılacak puan miktarını buraya girin</string>

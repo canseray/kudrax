@@ -204,9 +204,12 @@ public class MyPromotionDialog extends Dialog {
             List<Pair<String, String>> nameValuePairs = new ArrayList<>();
 
             nameValuePairs.add(new Pair<>("param1", APP.base64Encode(APP.main_user != null ? APP.main_user.id : "0")));
-            nameValuePairs.add(new Pair<>("param2", APP.base64Encode("" + selected_page)));
-            nameValuePairs.add(new Pair<>("param3", APP.base64Encode(APP.language_id)));
-            nameValuePairs.add(new Pair<>("param4", APP.base64Encode("A")));
+            nameValuePairs.add(new Pair<>("param2", APP.base64Encode("0"))); //request_status
+            nameValuePairs.add(new Pair<>("param3", APP.base64Encode(APP.device_id)));
+            nameValuePairs.add(new Pair<>("param4", APP.base64Encode(APP.device_id)));
+            nameValuePairs.add(new Pair<>("param5", APP.base64Encode(APP.device_id)));
+            nameValuePairs.add(new Pair<>("param6", APP.base64Encode("A")));
+            nameValuePairs.add(new Pair<>("param7", APP.base64Encode(APP.language_id)));
 
             String xml = APP.post1(nameValuePairs, APP.path + "/promotions/get_promotions_data_list.php");
 
@@ -219,7 +222,6 @@ public class MyPromotionDialog extends Dialog {
                     for (int i = 0; i < parse.getElementsByTagName("row").getLength(); i++) {
 
                         part1 = APP.base64Decode(APP.getElement(parse, "part1")).split("\\[##\\]");
-                        part2 = APP.base64Decode(APP.getElement(parse, "part2"));
                     }
 
                     if (!part1[0].contentEquals("")) {
@@ -229,7 +231,9 @@ public class MyPromotionDialog extends Dialog {
                             PromotionItem ai = new PromotionItem(temp.length > 0 ? temp[0] : "",
                                     temp.length > 1 ? temp[1] : "", temp.length > 2 ? temp[2] : "",
                                     temp.length > 3 ? temp[3] : "", temp.length > 4 ? temp[4] : "",
-                                    temp.length > 5 ? temp[5] : "", temp.length > 6 ? temp[6] : ""
+                                    temp.length > 5 ? temp[5] : "", temp.length > 6 ? temp[6] : "",
+                                    temp.length > 7 ? temp[7] : "", temp.length > 8 ? temp[8] : "",
+                                    temp.length > 9 ? temp[9] : ""
                             );
                             results.add(ai);
                         }
@@ -253,7 +257,7 @@ public class MyPromotionDialog extends Dialog {
                 pd.dismiss();
             if (result.contentEquals("true")) {
 
-                point.setText(part2);
+              //  point.setText(part2);
                 adapter.notifyDataSetChanged();
             } else {
                 APP.show_status(m_activity, 1, m_activity.getResources().getString(R.string.s_unexpected_connection_error_has_occured));
@@ -383,7 +387,7 @@ public class MyPromotionDialog extends Dialog {
                 }
             });
 
-            if (is_usable && selected_page == 0 && item.getType().contentEquals("2"))
+            if (is_usable && selected_page == 0 && item.getActivation_status().contentEquals("2"))
                 holder.action.setVisibility(View.VISIBLE);
             else
                 holder.action.setVisibility(View.GONE);

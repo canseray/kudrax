@@ -715,7 +715,8 @@ public class Main extends AppCompatActivity {
         }  else if (smi.getPrep().contentEquals("PRESENTFORPROMOTIONSVIEW")) {
 
             if (APP.main_user != null) {
-                new MyPromotionDialog(m_activity,smi.getTitle(),false,"0");
+                //new MyPromotionDialog(m_activity,smi.getTitle(),false,"0");
+                startActivity(new Intent(m_activity,Promotions.class));
             } else
                 startActivity(new Intent(m_activity, LoginMain.class));
         } else if (smi.getPrep().contentEquals("PRESENTFORFAVORITIES")) {

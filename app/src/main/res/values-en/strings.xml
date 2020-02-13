@@ -167,6 +167,9 @@
     <string name="s_gender">Gender</string>
     <string name="s_country">Country</string>
 
+    <string name="s_my_promotions">My Promotions</string>
+    <string name="s_scan_qr_code">Scan QR Code</string>
+
 
     <string-array name="profile_titles">
         <item>First Name</item>

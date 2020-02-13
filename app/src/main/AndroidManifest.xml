@@ -21,7 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".app.profile.PraticalSolvesDetail"></activity>
+        <activity android:name=".app.main.MyPromotions"></activity>
+        <activity android:name=".app.main.Promotions" />
+        <activity android:name=".app.profile.PraticalSolvesDetail" />
         <activity android:name=".app.profile.Help" />
         <activity android:name=".app.profile.PraticalSolves" />
         <activity android:name=".app.profile.MyNotifications" />

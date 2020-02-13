@@ -1,0 +1,106 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ViewStub
+            android:id="@+id/lay_stub"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:background="@color/a_brown11"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:weightSum="100"
+        android:padding="@dimen/dp30"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:layout_weight="50"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dp30"/>
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_weight="30"
+            android:background="@drawable/pr_four_k"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/lay_my_promotions"
+            android:layout_weight="20"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+
+            <LinearLayout
+                android:background="@drawable/but_oval_str_brown1_tra"
+                android:duplicateParentState="true"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dp35"
+                android:gravity="center">
+
+
+                <tr.limonist.extras.MyTextView
+                    android:fontFamily="@font/comfortaa"
+                    android:layout_marginLeft="@dimen/dp8"
+                    android:textColor="@color/a_brown11"
+                    android:textAllCaps="true"
+                    android:text="@string/s_my_promotions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:gravity="center"
+                    android:textSize="@dimen/dp20" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_scan_qr_code"
+                android:layout_marginTop="@dimen/dp10"
+                android:background="@drawable/but_oval_str_brown1_tra"
+                android:duplicateParentState="true"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dp35"
+                android:gravity="center">
+
+
+                    <tr.limonist.extras.MyTextView
+                        android:fontFamily="@font/comfortaa"
+                        android:layout_marginLeft="@dimen/dp8"
+                        android:textColor="@color/a_brown11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:gravity="center"
+                        android:text="@string/s_scan_qr_code"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/dp20" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>
