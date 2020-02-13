@@ -22,6 +22,7 @@ import tr.limonist.kudra.R;
 
 public class MyAnnouncementDialog extends Dialog {
     AutoScrollViewPager mJazzyBanner;
+    MyTextView header;
     Context mContext;
     String[] dialog_images = {};
 
@@ -35,7 +36,7 @@ public class MyAnnouncementDialog extends Dialog {
         stub.inflate();
 
         MyTextView tv_baslik = (MyTextView) findViewById(R.id.tv_baslik);
-        tv_baslik.setText(item.getTitle());
+        tv_baslik.setText("DUYURULAR");
         tv_baslik.setTextColor(mContext.getResources().getColor(R.color.a_brown11));
 
         ImageView img_left = (ImageView) findViewById(R.id.img_left);
@@ -50,6 +51,9 @@ public class MyAnnouncementDialog extends Dialog {
             }
 
         });
+
+        header = findViewById(R.id.header);
+        header.setText(item.getTitle());
 
         dialog_images = item.getImage().split("\\[-\\]");
         mJazzyBanner = (AutoScrollViewPager) findViewById(R.id.jazzy_pager);
