@@ -81,7 +81,6 @@ public class ScannerActivity extends AppCompatActivity implements
             barcodeScannerView.setTorchOn();
             isFlashLightOn = true;
         }
-
     }
 
     @Override

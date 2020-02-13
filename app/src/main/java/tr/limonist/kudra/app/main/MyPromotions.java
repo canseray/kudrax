@@ -1,15 +1,11 @@
 package tr.limonist.kudra.app.main;
 
 import android.app.Activity;
-import android.graphics.Canvas;
-import android.graphics.Typeface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +13,6 @@ import android.view.ViewStub;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.scwang.smartrefresh.header.WaterDropHeader;
@@ -245,6 +240,7 @@ public class MyPromotions extends AppCompatActivity {
         public class ViewHolder {
 
             MyTextView promotion_product_name, show_code, promotion_count, date;
+            SimpleDraweeView qr_code_img;
 
         }
 
@@ -260,6 +256,7 @@ public class MyPromotions extends AppCompatActivity {
                 holder.show_code = (MyTextView) view.findViewById(R.id.show_code);
                 holder.promotion_count = (MyTextView) view.findViewById(R.id.promotion_count);
                 holder.date = (MyTextView) view.findViewById(R.id.date);
+                holder.qr_code_img = (SimpleDraweeView) view.findViewById(R.id.qr_code_img);
 
 
                 view.setTag(holder);
@@ -270,11 +267,21 @@ public class MyPromotions extends AppCompatActivity {
             holder.promotion_count.setText(item.getDetail());
             holder.date.setText(item.getDate());
 
+            holder.qr_code_img.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    String put_code_id = results.get(position).getId();
+                    startActivity(new Intent(m_activity, MyPromotionCodeId.class).putExtra("code_id",put_code_id));
+                }
+            });
+
             holder.show_code.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
-
+                    String put_code =results.get(position).getCode();
+                    startActivity(new Intent(m_activity, MyPromotionDialog.class).putExtra("code",put_code));
                 }
             });
 

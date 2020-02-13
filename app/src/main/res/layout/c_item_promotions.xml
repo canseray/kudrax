@@ -16,6 +16,7 @@
         android:layout_height="fill_parent">
 
         <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/qr_code_img"
             android:background="@drawable/qr_code_black"
             android:layout_width="@dimen/dp60"
             android:layout_height="@dimen/dp60"/>

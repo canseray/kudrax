@@ -16,7 +16,16 @@ public class PromotionItem implements Serializable {
 	private String date_title;
 
 
-	public PromotionItem(String id, String title, String detail, String date, String image, String status, String activation_status, String code, String promotion_date_title, String date_title) {
+	public PromotionItem(String id,
+						 String title,
+						 String detail,
+						 String date,
+						 String image,
+						 String status,
+						 String activation_status,
+						 String code,
+						 String promotion_date_title,
+						 String date_title) {
 		this.id = id;
 		this.title = title;
 		this.detail = detail;

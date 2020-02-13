@@ -257,7 +257,6 @@ public class MyQrCodeDialog extends Dialog {
 
 	}
 
-
 	CountDownTimer cdt;
 
 }
