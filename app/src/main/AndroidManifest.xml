@@ -21,7 +21,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".app.main.MyPromotionCodeId"></activity>
+        <activity android:name=".app.main.Notifications"></activity>
+        <activity android:name=".app.main.MyPromotionCodeId" />
         <activity android:name=".app.main.MyPromotionQrCode" />
         <activity android:name=".app.main.MyPromotions" />
         <activity android:name=".app.main.Promotions" />
@@ -193,7 +194,6 @@
             android:screenOrientation="sensorPortrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
-
     </application>
 
 </manifest>
