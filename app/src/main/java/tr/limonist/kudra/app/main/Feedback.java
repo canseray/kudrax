@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.thebrownarrow.permissionhelper.ActivityManagePermission;
 import com.thebrownarrow.permissionhelper.PermissionResult;
 import com.thebrownarrow.permissionhelper.PermissionUtils;
@@ -64,8 +65,9 @@ public class Feedback extends ActivityManagePermission {
     String title;
     EZPhotoPickStorage ezPhotoPickStorage;
     Uri new_image_uri;
-    String new_image_name="",new_image_path="";
+    String new_image_name="",new_image_path="", formPart2;
     private String sendPart1,sendPart2;
+
 
     @SuppressLint("ResourceType")
     @Override
@@ -212,10 +214,38 @@ public class Feedback extends ActivityManagePermission {
             final TextView title = (TextView) vi.findViewById(R.id.title);
             title.setText(results.get(i).getTitle());
 
+            final SimpleDraweeView img = (SimpleDraweeView) vi.findViewById(R.id.img);
+            final TextView txt = (TextView) vi.findViewById(R.id.txt);
+
             final MaterialRatingBar rate = (MaterialRatingBar) vi.findViewById(R.id.rating_bar);
             rate.setNumStars(5);
             rate.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+
+
                 public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+
+                    if (rating == 1){
+                        img.setImageResource(R.drawable.emoji_k);
+                        txt.setText("Çok Kötü");
+
+                    } else if(rating == 2) {
+                        img.setImageResource(R.drawable.logo);
+                        txt.setText("Kötü");
+
+                    } else if(rating == 3) {
+                        img.setImageResource(R.drawable.logo);
+                        txt.setText("İyi");
+
+                    } else if(rating == 4) {
+                        img.setImageResource(R.drawable.logo);
+                        txt.setText("Çok İyi");
+
+                    } else {
+                        img.setImageResource(R.drawable.logo);
+                        txt.setText("Harika");
+
+                    }
+
                     if (rating < 1.0f)
                         ratingBar.setRating(1.0f);
                     else {
@@ -256,6 +286,8 @@ public class Feedback extends ActivityManagePermission {
                     for (int i = 0; i < parse.getElementsByTagName("row").getLength(); i++) {
 
                         formPart1 = APP.base64Decode(APP.getElement(parse, "part1")).split("\\[##\\]");
+                        formPart2 = APP.base64Decode(APP.getElement(parse, "part2"));
+
                     }
                     if (!formPart1[0].contentEquals("")) {
 
@@ -308,6 +340,7 @@ public class Feedback extends ActivityManagePermission {
         protected String doInBackground(String... args) {
 
             MultipartRequest multipartRequest = new MultipartRequest(m_activity);
+
             multipartRequest.addString("param1",APP.base64Encode(APP.main_user.id));
             multipartRequest.addString("param2",APP.base64Encode(rating));
             multipartRequest.addString("param3",APP.base64Encode(message));

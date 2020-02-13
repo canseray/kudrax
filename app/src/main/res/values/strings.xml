@@ -153,7 +153,7 @@
     <string name="s_new_pass_again">Yeni Şifre ( Tekrar )</string>
     <string name="s_new_paswords_not_match">Yeni şifreler aynı değil</string>
     <string name="s_order_history">Sipariş Geçmişi</string>
-    <string name="s_write_your_comment">Yorumunuzu yazınız</string>
+    <string name="s_write_your_comment">Lütfen mesajınızı yazın...</string>
     <string name="s_option_qr_scan_title">Kod Tarayıcı</string>
     <string name="s_option_qr_code_title">Qr Kimlik Kodu</string>
     <string name="s_option_qr_vale_title">Vale Kod Tarayıcı</string>
@@ -177,6 +177,7 @@
     <string name="s_must_enter_as_many_point_as_your_cart_amount">Sepet miktarınız kadar puan girmelisiniz</string>
     <string name="s_used_point_amount_x">Kullanılan Puan Miktarı : %s</string>
     <string name="s_amount">miktar*</string>
+    <string name="s_send_message">Bize iletmek istediğiniz mesajınız nedir?</string>
 
 
     <string name="s_name_surname">Ad Soyad</string>

@@ -36,8 +36,18 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
+                <tr.limonist.extras.MyTextView
+                    android:paddingTop="@dimen/dp10"
+                    android:textSize="@dimen/dp15"
+                    android:text="@string/s_send_message"
+                    android:textColor="@color/a_brown11"
+                    android:fontFamily="@font/comfortaa"
+                    android:layout_marginStart="@dimen/dp10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
                 <LinearLayout
-                    android:padding="@dimen/dp10"
+                    android:paddingHorizontal="@dimen/dp10"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp120"
                     android:gravity="center"
@@ -72,6 +82,7 @@
 
 
                 <LinearLayout
+                    android:paddingHorizontal="@dimen/dp5"
                     android:layout_marginTop="@dimen/dp15"
                     android:id="@+id/lay_form"
                     android:layout_width="match_parent"
@@ -100,11 +111,11 @@
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_weight="60"
-                        android:background="@drawable/but_oval_main2"
+                        android:background="@drawable/but_oval_str_brown1_tra"
                         android:gravity="center"
                         android:fontFamily="@font/comfortaa"
                         android:text="@string/s_send"
-                        android:textColor="@drawable/text_white"
+                        android:textColor="@color/a_brown11"
                         android:textSize="@dimen/dp18"
                         android:textStyle="bold" />
                 </LinearLayout>

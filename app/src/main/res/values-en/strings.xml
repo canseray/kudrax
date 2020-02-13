@@ -166,6 +166,8 @@
     <string name="s_date_of_birth">Date of Birth</string>
     <string name="s_gender">Gender</string>
     <string name="s_country">Country</string>
+    <string name="s_send_message">Bize iletmek istediğiniz mesajınız nedir?</string>
+
 
     <string name="s_my_promotions">My Promotions</string>
     <string name="s_scan_qr_code">Scan QR Code</string>

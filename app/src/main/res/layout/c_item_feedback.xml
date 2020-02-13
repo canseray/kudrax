@@ -52,6 +52,7 @@
 
         <TextView
             android:text="çok iyi"
+            android:id="@+id/txt"
             android:textAlignment="center"
             android:textColor="@color/a_gray22"
             android:layout_gravity="bottom"
