@@ -133,8 +133,8 @@ public class PassRecovery extends Activity {
             List<Pair<String, String>> nameValuePairs = new ArrayList<>();
 
             nameValuePairs.add(new Pair<>("param1", APP.base64Encode(logEmail)));
-            nameValuePairs.add(new Pair<>("param2", APP.base64Encode("A")));
-            nameValuePairs.add(new Pair<>("param3", APP.base64Encode(APP.language_id)));
+            nameValuePairs.add(new Pair<>("param2", APP.base64Encode(APP.language_id)));
+            nameValuePairs.add(new Pair<>("param3", APP.base64Encode("A")));
 
             String xml = APP.post1(nameValuePairs, APP.path + "/account_panel/send_password_recovery_request.php");
 
