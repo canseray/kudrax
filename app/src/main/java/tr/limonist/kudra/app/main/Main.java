@@ -113,7 +113,6 @@ public class Main extends AppCompatActivity {
         new Connection2().execute("");
     }
 
-    //jazzy gridview  ile  z_circle_main_menu
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

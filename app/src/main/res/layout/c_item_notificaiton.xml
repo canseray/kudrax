@@ -19,18 +19,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:orientation="horizontal"
-        android:padding="@dimen/dp5" >
+        android:orientation="horizontal" >
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/img"
             android:layout_gravity="center_vertical"
-            android:layout_width="@dimen/dp40"
-            android:layout_height="@dimen/dp40"
+            android:layout_width="@dimen/dp60"
+            android:layout_height="@dimen/dp60"
             app:actualImageScaleType="fitCenter"
             android:background="@drawable/notification_inmenu_k" />
 
         <LinearLayout
+            android:layout_marginTop="@dimen/dp5"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp8"
@@ -43,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical|left"
                 android:textColor="@color/a_brown11"
-                android:textSize="@dimen/dp12"
+                android:textSize="@dimen/dp15"
                 android:textStyle="bold" />
 
             <TextView
@@ -51,20 +53,37 @@
                 android:id="@+id/text"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp5"
                 android:gravity="center_vertical|left"
                 android:textColor="@color/a_brown11"
                 android:textSize="@dimen/dp12" />
 
-            <TextView
-                android:fontFamily="@font/comfortaa"
-                android:id="@+id/date"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+
+            <LinearLayout
                 android:layout_marginTop="@dimen/dp5"
-                android:gravity="center_vertical|right"
-                android:textColor="@color/a_gray21"
-                android:textSize="@dimen/dp10" />
+                android:layout_gravity="end"
+                android:gravity="end"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@drawable/ic_time_j"
+                    android:layout_width="@dimen/dp20"
+                    android:layout_height="@dimen/dp20"/>
+
+                <TextView
+                    android:fontFamily="@font/comfortaa"
+                    android:id="@+id/date"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:gravity="center_vertical|right"
+                    android:textColor="@color/a_gray22"
+                    android:textSize="@dimen/dp10" />
+
+            </LinearLayout>
+
+
         </LinearLayout>
     </LinearLayout>
 

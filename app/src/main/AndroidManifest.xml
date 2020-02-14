@@ -21,7 +21,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".app.main.Notifications"></activity>
+        <activity android:name=".app.user.ProfileSettingsTwo"></activity>
+        <activity android:name=".app.main.Notifications" />
         <activity android:name=".app.main.MyPromotionCodeId" />
         <activity android:name=".app.main.MyPromotionQrCode" />
         <activity android:name=".app.main.MyPromotions" />

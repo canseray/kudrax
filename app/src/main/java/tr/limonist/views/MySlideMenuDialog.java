@@ -29,6 +29,7 @@ import tr.limonist.kudra.R;
 import tr.limonist.classes.SlideMenuItem;
 import tr.limonist.extras.MyTextView;
 import tr.limonist.kudra.app.user.ProfileSettings;
+import tr.limonist.kudra.app.user.ProfileSettingsTwo;
 
 public class MySlideMenuDialog extends Dialog {
 	boolean show_status = false;
@@ -99,7 +100,7 @@ public class MySlideMenuDialog extends Dialog {
 		edit_profile.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				m_activity.startActivity(new Intent(m_activity, ProfileSettings.class));
+				m_activity.startActivity(new Intent(m_activity, ProfileSettingsTwo.class));
 			}
 		});
 

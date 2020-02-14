@@ -271,8 +271,8 @@ public class MyPromotions extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
-                    String put_code_id = results.get(position).getId();
-                    startActivity(new Intent(m_activity, MyPromotionCodeId.class).putExtra("code_id",put_code_id));
+                    String put_code =results.get(position).getCode();
+                    startActivity(new Intent(m_activity, MyPromotionQrCode.class).putExtra("code",put_code));
                 }
             });
 
@@ -280,8 +280,8 @@ public class MyPromotions extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
-                    String put_code =results.get(position).getCode();
-                    startActivity(new Intent(m_activity, MyPromotionQrCode.class).putExtra("code",put_code));
+                    String put_code_id = results.get(position).getId();
+                    startActivity(new Intent(m_activity, MyPromotionCodeId.class).putExtra("code_id",put_code_id));
                 }
             });
 

@@ -1,35 +1,25 @@
 package tr.limonist.kudra.app.user;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.support.v4.util.Pair;
-import android.text.Editable;
-import android.text.InputType;
-import android.text.TextWatcher;
-import android.text.method.DigitsKeyListener;
-import android.view.LayoutInflater;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.view.ViewStub;
-import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 
 import com.baoyz.actionsheet.ActionSheet;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
-import com.thebrownarrow.permissionhelper.ActivityManagePermission;
-import com.thebrownarrow.permissionhelper.PermissionResult;
-import com.thebrownarrow.permissionhelper.PermissionUtils;
 
 import org.w3c.dom.Document;
 
@@ -55,9 +45,8 @@ import tr.limonist.kudra.APP;
 import tr.limonist.kudra.R;
 import tr.limonist.views.MyAlertDialog;
 import tr.limonist.views.MyCropImageDialog;
-import tr.limonist.views.MyZoomImageDialog;
 
-public class ProfileSettings extends ActivityManagePermission {
+public class ProfileSettingsTwo extends AppCompatActivity {
     String s_mail, s_name, s_surname, s_phone;
     int keyDel;
     private TransparentProgressDialog pd;
@@ -70,25 +59,37 @@ public class ProfileSettings extends ActivityManagePermission {
     String new_image_name = "", new_image_path = "";
     private String sendPart1, sendPart2, sendPart3;
     private LinearLayout lay_main;
-    private lazy adapter;
+    private ProfileSettings.lazy adapter;
     private String respPart1,respPart2;
-    LinearLayout lay_change_pass;
+    Button lay_change_pass;
+    EditText et_name, et_surname, et_email, et_phone, et_date_of_birth;
+    Spinner spinner_gender, spinner_country;
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
 
-    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        m_activity = ProfileSettings.this;
-        APP.setWindowsProperties(m_activity, true);
-        pd = new TransparentProgressDialog(m_activity, "", true);
+        m_activity = ProfileSettingsTwo.this;
+        pd = new TransparentProgressDialog(m_activity, "", false);
+        APP.setWindowsProperties(m_activity,false);
         ezPhotoPickStorage = new EZPhotoPickStorage(m_activity);
+        setContentView(R.layout.z_profile_settings_two);
 
-        setContentView(R.layout.z_profile_settings);
+        et_name = findViewById(R.id.et_name);
+        et_surname = findViewById(R.id.et_surname);
+        et_email = findViewById(R.id.et_email);
+        et_phone = findViewById(R.id.et_phone);
+        et_date_of_birth = findViewById(R.id.et_date_of_birth);
+        spinner_gender = findViewById(R.id.spinner_gender);
+        spinner_country = findViewById(R.id.spinner_country);
+
+        et_name.setText(APP.main_user.name );
+        et_surname.setText(APP.main_user.surname);
+        et_email.setText(APP.main_user.email);
+        et_phone.setText(APP.main_user.mobile);
+
+        img = (SimpleDraweeView) findViewById(R.id.img);
+        img.setImageURI(APP.main_user.image);
 
         ViewStub stub = (ViewStub) findViewById(R.id.lay_stub);
         stub.setLayoutResource(R.layout.b_top_img_txt_oval_txt_but);
@@ -99,7 +100,7 @@ public class ProfileSettings extends ActivityManagePermission {
         tv_baslik.setTextColor(getResources().getColor(R.color.a_brown11));
 
         LinearLayout top_left = (LinearLayout) findViewById(R.id.top_left);
-        top_left.setOnClickListener(new OnClickListener() {
+        top_left.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
@@ -117,7 +118,7 @@ public class ProfileSettings extends ActivityManagePermission {
         tv_right.setText(getString(R.string.s_save));
         tv_right.setBackgroundResource(R.drawable.but_oval_str_brown1_tra);
         tv_right.setTextColor(getResources().getColor(R.color.a_brown11));
-        tv_right.setOnClickListener(new OnClickListener() {
+        tv_right.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
@@ -125,33 +126,14 @@ public class ProfileSettings extends ActivityManagePermission {
                 String required_field = "";
                 boolean all_field = true;
 
-                for (int i = 0; i < results.size(); i++) {
-
-                    if (results.get(i).getRequire().contentEquals("1")
-                            && results.get(i).getValue().trim().contentEquals("")) {
-                        required_field = results.get(i).getTitle();
-                        all_field = false;
-                        break;
-                    }
-
-                    if (results.get(i).getType().contentEquals("1")) {
-                        if (i == 0)
-                            s_name = results.get(i).getValue();
-                        else
-                            s_surname = results.get(i).getValue();
-                    }
-
-                    else if (results.get(i).getType().contentEquals("2")) {
-                        s_mail = results.get(i).getValue();
-                    } else if (results.get(i).getType().contentEquals("3")) {
-                        s_phone = results.get(i).getValue();
-                    }
-
-                }
+                  s_name = et_name.getText().toString();
+                  s_surname = et_surname.getText().toString();
+                  s_mail = et_email.getText().toString();
+                  s_phone = et_phone.getText().toString();
 
                 if (all_field) {
 
-                   // pd.show();
+                     pd.show();
                     new Connection().execute("");
 
                 } else {
@@ -162,7 +144,7 @@ public class ProfileSettings extends ActivityManagePermission {
         });
 
         lay_change_pass = findViewById(R.id.lay_change_pass);
-        lay_change_pass.setOnClickListener(new OnClickListener() {
+        lay_change_pass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(m_activity, ChangePassword.class));
@@ -170,7 +152,7 @@ public class ProfileSettings extends ActivityManagePermission {
         });
 
         img_camera = (ImageView) findViewById(R.id.img_camera);
-        img_camera.setOnClickListener(new OnClickListener() {
+        img_camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -212,209 +194,6 @@ public class ProfileSettings extends ActivityManagePermission {
                         }).show();
             }
         });
-
-        img = (SimpleDraweeView) findViewById(R.id.img);
-        img.setImageURI(APP.main_user.image);
-        img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                MyZoomImageDialog alert = new MyZoomImageDialog(m_activity, APP.main_user.name + " " + APP.main_user.surname, APP.main_user.image, null, true);
-                alert.show();
-            }
-        });
-
-        lay_main = (LinearLayout) findViewById(R.id.lay_main);
-
-        results = new ArrayList<>();
-
-        String[] profile_titles = getResources().getStringArray(R.array.profile_titles);
-
-        results.add(new ProfileItem(APP.main_user.name, profile_titles[0], "1", "1"));
-        results.add(new ProfileItem(APP.main_user.surname, profile_titles[1], "1", "1"));
-        results.add(new ProfileItem(APP.main_user.email, profile_titles[2], "2", "1"));
-        results.add(new ProfileItem(APP.main_user.mobile, profile_titles[3], "3", "1"));
-        results.add(new ProfileItem(profile_titles[4], profile_titles[4], "6", "0"));
-
-        adapter = new lazy(results);
-
-        fillList();
-
-        askCompactPermission(PermissionUtils.Manifest_WRITE_EXTERNAL_STORAGE, new PermissionResult() {
-            @Override
-            public void permissionGranted() {
-
-            }
-
-            @Override
-            public void permissionDenied() {
-
-            }
-
-            @Override
-            public void permissionForeverDenied() {
-
-            }
-        });
-    }
-
-    private void fillList() {
-
-        lay_main.removeAllViews();
-        adapter.notifyDataSetChanged();
-        final int adapterCount = adapter.getCount();
-
-        for (int i = 0; i < adapterCount; i++) {
-            View item = adapter.getView(i, null, null);
-            lay_main.addView(item);
-        }
-
-    }
-
-    public class lazy extends BaseAdapter {
-        private ArrayList<ProfileItem> data;
-        private LayoutInflater inflater = null;
-
-        public lazy(ArrayList<ProfileItem> d) {
-            this.data = d;
-            inflater = LayoutInflater.from(m_activity);
-
-        }
-
-        @Override
-        public int getCount() {
-            return data.size();
-        }
-
-        @Override
-        public ProfileItem getItem(int position) {
-            return data.get(position);
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-        public View getView(final int position, View view, ViewGroup parent) {
-            final ProfileItem item = data.get(position);
-
-            final ViewHolder holder;
-            if (view == null) {
-                LayoutInflater inflater = (LayoutInflater) m_activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                view = inflater.inflate(R.layout.c_item_profile_setting, parent, false);
-                holder = new ViewHolder(view);
-                view.setTag(holder);
-            } else {
-                holder = (ViewHolder) view.getTag();
-            }
-
-
-            if (!(item.getType().contentEquals("6"))){
-                holder.title.setText(item.getTitle());
-
-
-            if (Integer.parseInt(item.getType()) > 3) {
-                holder.tv_value.setVisibility(View.VISIBLE);
-                holder.et_value.setVisibility(View.GONE);
-                holder.tv_value.setText(item.getValue());
-                holder.tv_value.setHint(item.getTitle());
-
-            } else {
-                holder.tv_value.setVisibility(View.GONE);
-                holder.et_value.setVisibility(View.VISIBLE);
-                holder.et_value.setText(item.getValue());
-                holder.et_value.setHint(item.getTitle());
-
-                if (item.getType().contentEquals("1")) {
-
-                    holder.et_value.setInputType(InputType.TYPE_TEXT_FLAG_CAP_WORDS);
-
-                } else if (item.getType().contentEquals("2")) {
-
-                    holder.et_value.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
-
-                } else if (item.getType().contentEquals("3")) {
-
-                    holder.et_value.setInputType(InputType.TYPE_CLASS_NUMBER);
-                    holder.et_value.setKeyListener(DigitsKeyListener.getInstance("+0123456789"));
-
-                }
-            }
-
-            }
-
-            holder.et_value.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-
-                @Override
-                public void onFocusChange(View v, boolean hasFocus) {
-
-                    if (!hasFocus)
-                        holder.title.setSelected(false);
-                    else
-                        holder.title.setSelected(true);
-                }
-            });
-
-            holder.et_value.addTextChangedListener(new TextWatcher() {
-
-                @Override
-                public void afterTextChanged(Editable s) {
-                }
-
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                    item.setValue(s.toString());
-                    results.set(position, item);
-                }
-            });
-
-            holder.tv_value.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-
-                @Override
-                public void onFocusChange(View v, boolean hasFocus) {
-
-                    if (!hasFocus)
-                        holder.title.setSelected(false);
-                    else
-                        holder.title.setSelected(true);
-                }
-            });
-
-            view.setOnClickListener(new OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-
-                    if (item.getType().contentEquals("6")) {
-                        startActivity(new Intent(m_activity, ChangePassword.class));
-                    }
-                }
-            });
-
-            return view;
-        }
-
-        private class ViewHolder {
-            protected MyTextView title, tv_value;
-            EditText et_value;
-
-            public ViewHolder(View convertView) {
-                title = (MyTextView) convertView.findViewById(R.id.title);
-                tv_value = (MyTextView) convertView.findViewById(R.id.tv_value);
-                tv_value.setFocusable(true);
-                tv_value.setFocusableInTouchMode(true);
-                et_value = (EditText) convertView.findViewById(R.id.et_value);
-                et_value.setFocusable(true);
-                et_value.setFocusableInTouchMode(true);
-            }
-        }
-
     }
 
     private class Connection extends AsyncTask<String, Void, String> {
@@ -530,7 +309,7 @@ public class ProfileSettings extends ActivityManagePermission {
                                 @Override
                                 public void onClick(View v) {
                                     alert.dismiss();
-                                   // pd.show();
+                                    // pd.show();
                                     new Connection2().execute("");
 
                                 }

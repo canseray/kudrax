@@ -92,10 +92,26 @@
                     </LinearLayout>
                 </LinearLayout>
 
+
+                <LinearLayout
+                    android:id="@+id/lay_change_pass"
+                    android:paddingVertical="@dimen/dp10"
+                    android:paddingHorizontal="@dimen/dp30"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp60">
+                <Button
+                    android:text="@string/s_change_password"
+                    android:textSize="@dimen/dp18"
+                    android:textColor="@color/a_brown11"
+                    android:fontFamily="@font/comfortaa"
+                    android:background="@drawable/but_oval_str_brown1_tra"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                </LinearLayout>
+
             </LinearLayout>
         </ScrollView>
 
     </LinearLayout>
-
 
 </RelativeLayout>

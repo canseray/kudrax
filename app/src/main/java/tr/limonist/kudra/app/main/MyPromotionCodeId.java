@@ -80,7 +80,7 @@ public class MyPromotionCodeId extends AppCompatActivity {
             }
         });
 
-        code.setText(put_code_id);
+     //   code.setText(put_code_id);
 
         pd.show();
         new Connection().execute();
