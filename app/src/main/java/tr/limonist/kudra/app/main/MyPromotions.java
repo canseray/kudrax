@@ -261,10 +261,14 @@ public class MyPromotions extends AppCompatActivity {
 
                 view.setTag(holder);
             } else {
-                holder = (ViewHolder) view.getTag();            }
+                holder = (ViewHolder) view.getTag();
+            }
+
+            for (int i=0; i< results.size(); i++ ){
+                holder.promotion_count.setText(i);
+            }
 
             holder.promotion_product_name.setText(item.getTitle());
-            //holder.promotion_count.setText(item.getDetail());
             holder.date.setText(item.getDate());
 
             view.setOnClickListener(new View.OnClickListener() {

@@ -72,6 +72,7 @@
         android:text="@string/s_done_process"
         android:gravity="center"
         android:textSize="@dimen/dp18"
+        android:textColor="@color/a_brown11"
         android:fontFamily="@font/comfortaa"
         android:background="@drawable/but_oval_str_brown1_tra"
         android:layout_width="match_parent"

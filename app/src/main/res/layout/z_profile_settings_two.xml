@@ -250,6 +250,37 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <com.facebook.drawee.view.SimpleDraweeView
+                            android:background="@drawable/all_skins_type_k"
+                            android:layout_width="@dimen/dp40"
+                            android:layout_height="@dimen/dp40"/>
+
+                        <Spinner
+                            android:id="@+id/spinner_skin_type"
+                            android:text="@string/s_gender"
+                            android:background="@null"
+                            android:textColorHint="@color/a_brown12"
+                            android:textColor="@color/a_brown11"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_marginStart="@dimen/dp30"
+                        android:background="@color/a_brown13"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp1"/>
+
+
+                    <LinearLayout
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:foregroundGravity="center_vertical"
+                        android:weightSum="100"
+                        android:padding="@dimen/dp2"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <com.facebook.drawee.view.SimpleDraweeView
                             android:background="@drawable/gender_k"
                             android:layout_width="@dimen/dp40"
                             android:layout_height="@dimen/dp40"/>

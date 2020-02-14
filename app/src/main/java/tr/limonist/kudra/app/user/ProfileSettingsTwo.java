@@ -47,7 +47,7 @@ import tr.limonist.views.MyAlertDialog;
 import tr.limonist.views.MyCropImageDialog;
 
 public class ProfileSettingsTwo extends AppCompatActivity {
-    String s_mail, s_name, s_surname, s_phone;
+    String s_mail, s_name, s_surname, s_phone, s_gender, s_country, s_skin_type;
     int keyDel;
     private TransparentProgressDialog pd;
     private Activity m_activity;
@@ -63,7 +63,8 @@ public class ProfileSettingsTwo extends AppCompatActivity {
     private String respPart1,respPart2;
     Button lay_change_pass;
     EditText et_name, et_surname, et_email, et_phone, et_date_of_birth;
-    Spinner spinner_gender, spinner_country;
+    Spinner spinner_gender, spinner_country, spinner_skin_type;
+
 
 
     @Override
@@ -82,6 +83,7 @@ public class ProfileSettingsTwo extends AppCompatActivity {
         et_date_of_birth = findViewById(R.id.et_date_of_birth);
         spinner_gender = findViewById(R.id.spinner_gender);
         spinner_country = findViewById(R.id.spinner_country);
+        spinner_skin_type = findViewById(R.id.spinner_skin_type);
 
         et_name.setText(APP.main_user.name );
         et_surname.setText(APP.main_user.surname);
@@ -130,6 +132,9 @@ public class ProfileSettingsTwo extends AppCompatActivity {
                   s_surname = et_surname.getText().toString();
                   s_mail = et_email.getText().toString();
                   s_phone = et_phone.getText().toString();
+                    //get gender
+                    // get country
+                    // get skin type
 
                 if (all_field) {
 
