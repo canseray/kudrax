@@ -11,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewStub;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -20,6 +22,7 @@ import android.widget.Spinner;
 import com.baoyz.actionsheet.ActionSheet;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
+import com.weiwangcn.betterspinner.library.BetterSpinner;
 
 import org.w3c.dom.Document;
 
@@ -37,6 +40,7 @@ import siclo.com.ezphotopicker.api.EZPhotoPickStorage;
 import siclo.com.ezphotopicker.api.models.EZPhotoPickConfig;
 import siclo.com.ezphotopicker.api.models.PhotoSource;
 import tr.limonist.classes.ProfileItem;
+import tr.limonist.classes.SkinType;
 import tr.limonist.classes.USER;
 import tr.limonist.extras.MultipartRequest;
 import tr.limonist.extras.MyTextView;
@@ -63,8 +67,12 @@ public class ProfileSettingsTwo extends AppCompatActivity {
     private String respPart1,respPart2;
     Button lay_change_pass;
     EditText et_name, et_surname, et_email, et_phone, et_date_of_birth;
-    Spinner spinner_gender, spinner_country, spinner_skin_type;
-
+    BetterSpinner spinner_gender, spinner_country, spinner_skin_type;
+    private String[] part_skin_type;
+    ArrayList<SkinType> results_skin_type;
+    String selected_skin_type_id = "";
+    String gender[] = {"Kadın", "Erkek"};
+    String country[] = {"İstanbul", "Ankara","Gaziantep"};
 
 
     @Override
@@ -81,14 +89,38 @@ public class ProfileSettingsTwo extends AppCompatActivity {
         et_email = findViewById(R.id.et_email);
         et_phone = findViewById(R.id.et_phone);
         et_date_of_birth = findViewById(R.id.et_date_of_birth);
-        spinner_gender = findViewById(R.id.spinner_gender);
-        spinner_country = findViewById(R.id.spinner_country);
-        spinner_skin_type = findViewById(R.id.spinner_skin_type);
+        spinner_gender =(BetterSpinner) findViewById(R.id.spinner_gender);
+        spinner_country =(BetterSpinner) findViewById(R.id.spinner_country);
+        spinner_skin_type =(BetterSpinner) findViewById(R.id.spinner_skin_type);
+
+
+        ArrayAdapter gender_adapter = new ArrayAdapter(m_activity,R.layout.item_gender_spinner, gender);
+        spinner_gender.setAdapter(gender_adapter);
+        spinner_gender.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                s_gender = gender[position];
+            }
+        });
+
+        ArrayAdapter country_adapter = new ArrayAdapter(m_activity,R.layout.item_country_spinner,country);
+        spinner_country.setAdapter(country_adapter);
+        spinner_country.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                s_country = country[position];
+            }
+        });
+
+
+
 
         et_name.setText(APP.main_user.name );
         et_surname.setText(APP.main_user.surname);
         et_email.setText(APP.main_user.email);
         et_phone.setText(APP.main_user.mobile);
+
+        //spinner_skin_type.setText(APP.main_user.skin_type);
 
         img = (SimpleDraweeView) findViewById(R.id.img);
         img.setImageURI(APP.main_user.image);
@@ -199,6 +231,12 @@ public class ProfileSettingsTwo extends AppCompatActivity {
                         }).show();
             }
         });
+
+        results_skin_type = new ArrayList<>();
+
+
+        pd.show();
+        new Connection0().execute();
     }
 
     private class Connection extends AsyncTask<String, Void, String> {
@@ -393,5 +431,83 @@ public class ProfileSettingsTwo extends AppCompatActivity {
             }
         }
     }
+
+
+    private class Connection0 extends AsyncTask<String, Void, String> {
+
+        protected String doInBackground(String... args) {
+
+            List<Pair<String, String>> nameValuePairs = new ArrayList<>();
+
+            nameValuePairs.add(new Pair<>("param1", APP.base64Encode("A")));
+            nameValuePairs.add(new Pair<>("param2", APP.base64Encode(APP.language_id)));
+
+            String xml = APP.post1(nameValuePairs, APP.path + "/account_panel/get_skin_type.php");
+
+            if (xml != null && !xml.contentEquals("fail")) {
+
+                try {
+                    DocumentBuilder newDocumentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+                    Document parse = newDocumentBuilder.parse(new ByteArrayInputStream(xml.getBytes()));
+                    List<String> dataList = new ArrayList<String>();
+
+                    for (int i = 0; i < parse.getElementsByTagName("row").getLength(); i++) {
+                        part_skin_type = APP.base64Decode(APP.getElement(parse, "part1")).split("\\[##\\]");
+                    }
+                    if (!part_skin_type[0].contentEquals("")) {
+
+                        for (int i = 0; i < part_skin_type.length; i++) {
+                            String[] temp = part_skin_type[i].split("\\[#\\]");
+                            SkinType ai = new SkinType(temp.length > 0 ? temp[0] : "",
+                                    temp.length > 1 ? temp[1] : "");
+                            results_skin_type.add(ai);
+
+                        }
+
+                        return "true";
+                    } else
+                        return "false";
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    return "false";
+                }
+
+            } else {
+                return "false";
+            }
+        }
+
+        protected void onPostExecute(String result) {
+            if (pd != null)
+                pd.dismiss();
+
+            if (result.contentEquals("true")) {
+                addView();
+
+            } else {
+                APP.show_status(m_activity, 1,
+                        getResources().getString(R.string.s_unexpected_connection_error_has_occured));
+            }
+        }
+    }
+
+    private void addView(){
+
+        String[] skintypes = {results_skin_type.get(0).getTitle(),
+                results_skin_type.get(1).getTitle(),
+                results_skin_type.get(2).getTitle()};
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(m_activity, R.layout.simple_dropdown_item_1line, skintypes);
+        spinner_skin_type.setAdapter(adapter);
+        spinner_skin_type.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                s_skin_type = String.valueOf(results_skin_type.get(position).getId());
+
+            }
+        });
+    }
+
 
 }

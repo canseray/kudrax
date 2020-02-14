@@ -220,10 +220,11 @@
                         android:layout_height="wrap_content">
                         <com.facebook.drawee.view.SimpleDraweeView
                             android:background="@drawable/date_of_birth_k"
-                            android:layout_width="@dimen/dp40"
-                            android:layout_height="@dimen/dp40"/>
+                            android:layout_width="@dimen/dp35"
+                            android:layout_height="@dimen/dp35"/>
 
                         <EditText
+                            android:layout_marginStart="@dimen/dp2"
                             android:id="@+id/et_date_of_birth"
                             android:hint="@string/s_date_of_birth"
                             android:fontFamily="@font/comfortaa"
@@ -254,14 +255,21 @@
                             android:layout_width="@dimen/dp40"
                             android:layout_height="@dimen/dp40"/>
 
-                        <Spinner
+                        <com.weiwangcn.betterspinner.library.BetterSpinner
                             android:id="@+id/spinner_skin_type"
-                            android:text="@string/s_gender"
-                            android:background="@null"
-                            android:textColorHint="@color/a_brown12"
-                            android:textColor="@color/a_brown11"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="fill_parent"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/comfortaa"
+                            android:gravity="center_vertical|left"
+                            android:text="@string/s_skin_type"
+                            android:imeOptions="actionGo"
+                            android:inputType="text"
+                            android:textAlignment="textStart"
+                            android:scrollHorizontally="true"
+                            android:textColor="@color/a_brown11"
+                            android:textSize="@dimen/dp15" />
+
                     </LinearLayout>
 
                     <View
@@ -285,14 +293,20 @@
                             android:layout_width="@dimen/dp40"
                             android:layout_height="@dimen/dp40"/>
 
-                        <Spinner
+                        <com.weiwangcn.betterspinner.library.BetterSpinner
                             android:id="@+id/spinner_gender"
-                            android:text="@string/s_gender"
-                            android:background="@null"
-                            android:textColorHint="@color/a_brown12"
-                            android:textColor="@color/a_brown11"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="fill_parent"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/comfortaa"
+                            android:gravity="center_vertical|left"
+                            android:text="@string/s_skin_type"
+                            android:imeOptions="actionGo"
+                            android:inputType="text"
+                            android:textAlignment="textStart"
+                            android:scrollHorizontally="true"
+                            android:textColor="@color/a_brown11"
+                            android:textSize="@dimen/dp15" />
                     </LinearLayout>
 
                     <View
@@ -315,14 +329,20 @@
                             android:layout_width="@dimen/dp40"
                             android:layout_height="@dimen/dp40"/>
 
-                        <Spinner
+                        <com.weiwangcn.betterspinner.library.BetterSpinner
                             android:id="@+id/spinner_country"
-                            android:text="@string/s_country"
-                            android:background="@null"
-                            android:textColorHint="@color/a_brown12"
-                            android:textColor="@color/a_brown11"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="fill_parent"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/comfortaa"
+                            android:gravity="center_vertical|left"
+                            android:text="@string/s_skin_type"
+                            android:imeOptions="actionGo"
+                            android:inputType="text"
+                            android:textAlignment="textStart"
+                            android:scrollHorizontally="true"
+                            android:textColor="@color/a_brown11"
+                            android:textSize="@dimen/dp15" />
                     </LinearLayout>
 
                     <View

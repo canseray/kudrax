@@ -16,8 +16,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.github.lguipeng.library.animcheckbox.AnimCheckBox;
-import com.google.gson.Gson;
 import com.weiwangcn.betterspinner.library.BetterSpinner;
 
 import org.w3c.dom.Document;
@@ -32,7 +30,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import tr.limonist.classes.SkinType;
 import tr.limonist.kudra.APP;
 import tr.limonist.kudra.R;
-import tr.limonist.classes.USER;
 import tr.limonist.extras.MyTextView;
 import tr.limonist.extras.TransparentProgressDialog;
 import tr.limonist.views.MyContractDialog;
@@ -91,6 +88,8 @@ public class NewUser extends Activity {
         et_phone = (EditText) findViewById(R.id.et_phone);
         spinner = (BetterSpinner) findViewById(R.id.spinner);
         spinner.setCompoundDrawables(null,null,null,null);
+
+
 
         tv_done = (MyTextView) findViewById(R.id.tv_done);
         tv_done.setOnClickListener(new OnClickListener() {
@@ -209,7 +208,6 @@ public class NewUser extends Activity {
     }
 
     private void addView(){
-
 
         String[] skintypes = {results_skin_type.get(0).getTitle(),
                 results_skin_type.get(1).getTitle(),
