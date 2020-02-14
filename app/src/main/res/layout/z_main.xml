@@ -1,8 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/main_background_k"
-    android:layout_height="fill_parent">
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/main_background_k">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -30,7 +30,7 @@
                 <View
                     android:layout_width="fill_parent"
                     android:layout_height="@dimen/dp_half"
-                    android:background="@color/a_white13"/>
+                    android:background="@color/a_white13" />
 
             </LinearLayout>
 
@@ -49,13 +49,20 @@
                 android:layout_weight="1">
 
                 <LinearLayout
-                    android:orientation="vertical"
                     android:id="@+id/lay_main"
-                    android:gravity="center"
+                    android:paddingTop="@dimen/dp5"
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
+                    android:layout_height="fill_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                    <include layout="@layout/z_layout_grid_menu"/>
+                    <com.twotoasters.jazzylistview.JazzyGridView
+                        android:id="@+id/list"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="fill_parent"
+                        android:gravity="center"
+                        android:verticalSpacing="@dimen/dp10" />
 
                 </LinearLayout>
 

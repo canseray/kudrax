@@ -6,6 +6,7 @@
     android:padding="@dimen/dp10">
 
     <RelativeLayout
+        android:padding="@dimen/dp5"
         android:duplicateParentState="true"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/dp250">

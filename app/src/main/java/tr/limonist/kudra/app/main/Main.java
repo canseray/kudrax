@@ -34,6 +34,7 @@ import com.google.zxing.integration.android.IntentResult;
 import com.scwang.smartrefresh.header.WaterDropHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+import com.twotoasters.jazzylistview.JazzyGridView;
 import com.viewpagerindicator.CirclePageIndicator;
 
 import org.w3c.dom.Document;
@@ -100,6 +101,9 @@ public class Main extends AppCompatActivity {
     LinearLayout lay_main;
     RelativeLayout lay_circle;
     CirclePageIndicator circleIndicator;
+    private lazy2 adapter2;
+    JazzyGridView list;
+    RelativeLayout bla;
 
 
     int[] rl_resources = {R.id.rl1,R.id.rl2,R.id.rl3,R.id.rl4,R.id.rl5,R.id.rl6};
@@ -323,11 +327,72 @@ public class Main extends AppCompatActivity {
             }
         });
 
+
+        list = (JazzyGridView) findViewById(R.id.list);
+        list.setNumColumns(2);
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+
+
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                MainItem item = results.get(position);
+                if (item.getPrep().contentEquals("PRESENTFORNOTIFICATIONSVIEW")) {
+
+                    if (APP.main_user != null) {
+                        // new MyNotificationDialog(m_activity);
+                        startActivity(new Intent(m_activity,Notifications.class).putExtra("title",item.getTitle()));
+
+                    } else
+                        startActivity(new Intent(m_activity, LoginMain.class));
+
+                } else if (item.getPrep().contentEquals("PRESENTFORFEEDBACKVIEW")) {
+
+                    if (APP.main_user != null) {
+                        startActivity(new Intent(m_activity, Feedback.class).putExtra("title", item.getTitle()));
+                    } else
+                        startActivity(new Intent(m_activity, LoginMain.class));
+
+                } else if (item.getPrep().contentEquals("SEGUEFORBRANCHESVIEW")) {
+
+                    startActivity(new Intent(m_activity, Branches.class).putExtra("title", item.getTitle()));
+
+                }  else if (item.getPrep().contentEquals("PRESENTFORPROMOTIONSVIEW")) {
+
+                    if (APP.main_user != null) {
+                        //new MyPromotionDialog(m_activity,smi.getTitle(),false,"0");
+                        startActivity(new Intent(m_activity,Promotions.class));
+                    } else
+                        startActivity(new Intent(m_activity, LoginMain.class));
+                } else if (item.getPrep().contentEquals("PRESENTFORFAVORITIES")) {
+
+                    if (APP.main_user != null) {
+                        startActivity(new Intent(m_activity, Favorites.class).putExtra("title", item.getTitle()));
+                    } else
+                        startActivity(new Intent(m_activity, LoginMain.class));
+
+                } else if (item.getPrep().contentEquals("PRESENTFORBUYITEMS")) {
+
+                    if (APP.main_user != null) {
+
+                        startActivity(new Intent(m_activity, Categories.class).putExtra("title", item.getTitle()));
+
+                    } else
+                        startActivity(new Intent(m_activity, LoginMain.class));
+                }
+            }
+        });
+
+
         circleIndicator = (CirclePageIndicator) findViewById(R.id.indicator);
         mJazzy = findViewById(R.id.jazzy_pager);
 
         lay_main = findViewById(R.id.lay_main);
         lay_circle = findViewById(R.id.lay_circle);
+
+        bla = findViewById(R.id.bla);
+
 
         /*list = findViewById(R.id.list);
         list.setNumColumns(3);
@@ -340,27 +405,27 @@ public class Main extends AppCompatActivity {
             }
         });*/
 
-        ViewTreeObserver vto = lay_main.getViewTreeObserver();
+        ViewTreeObserver vto = list.getViewTreeObserver();
         vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                lay_main.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                width = lay_main.getMeasuredWidth();
-                height = lay_main.getMeasuredHeight();
+                list.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                width = list.getMeasuredWidth();
+                height = list.getMeasuredHeight();
 
-                float temp_width = (float) width * (0.95f);
-                float temp_height = (float) height * (0.98f);
+                float temp_width = (float) width * (0.85f);
+                float temp_height = (float) height * (0.85f);
 
                 width = (int) temp_width;
                 height = (int) temp_height;
 
-                int new_value = Math.min(width, height);
-;
-                ViewGroup.LayoutParams params = lay_circle.getLayoutParams();
+           /*     int new_value = Math.min(width, height);
+
+                ViewGroup.LayoutParams params = bla.getLayoutParams();
                 params.height = new_value;
                 params.width = new_value;
-                lay_circle.setLayoutParams(params);
-
+                bla.setLayoutParams(params);
+*/
             }
         });
 
@@ -614,7 +679,7 @@ public class Main extends AppCompatActivity {
 
     private void fillCompoments() {
 
-        fillMainItems();
+       // fillMainItems();
 
         if (mJazzy != null) {
             mJazzy.startAutoScroll(3000);
@@ -643,8 +708,9 @@ public class Main extends AppCompatActivity {
     private void fillCompoments2() {
 
         results = results_temp;
-        fillMainItems();
+       // fillMainItems();
     }
+
     private void fillMainItems() {
 
         if(results.size()>0)
@@ -955,10 +1021,87 @@ public class Main extends AppCompatActivity {
 
         protected void onPostExecute(String result) {
             if (result.contentEquals("true")) {
-                fillCompoments2();
+               // fillCompoments2();
+
+                adapter2 = new lazy2();
+                list.setAdapter(adapter2);
             }
         }
     }
+
+    public class lazy2 extends BaseAdapter {
+        private LayoutInflater inflater = null;
+
+        public lazy2() {
+            inflater = LayoutInflater.from(m_activity);
+        }
+
+        @Override
+        public int getCount() {
+            return results.size();
+        }
+
+        @Override
+        public MainItem getItem(int position) {
+            return results.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        public class ViewHolder {
+
+            MyTextView title1, badge1;
+            SimpleDraweeView img1;
+
+        }
+
+        public View getView(final int position, View view, ViewGroup parent) {
+            final MainItem item = results.get(position);
+
+            final ViewHolder holder;
+            if (view == null) {
+                holder = new ViewHolder();
+                view = inflater.inflate(R.layout.c_circle_main_item, null);
+
+                holder.title1 = view.findViewById(R.id.title1);
+                holder.badge1 = view.findViewById(R.id.badge1);
+                holder.img1 = view.findViewById(R.id.img1);
+
+                view.setTag(holder);
+            } else {
+                holder = (ViewHolder) view.getTag();
+            }
+
+            int temp1 = width/2;
+            int temp2 = height/3;
+
+            view.setLayoutParams(new AbsListView.LayoutParams((temp1>=temp2?temp2:temp1), (temp1>=temp2?temp2:temp1)));
+
+            holder.title1.setText(item.getTitle());
+            holder.img1.setImageURI(item.getImage());
+
+
+            int count = 0;
+
+            try {
+                count = Integer.parseInt(item.getBadge());
+            } catch (Exception e) {
+                // TODO: handle exception
+            }
+
+            if (count > 0) {
+                holder.badge1.setVisibility(View.VISIBLE);
+                holder.badge1.setText(item.getBadge());
+            } else
+                holder.badge1.setVisibility(View.GONE);
+
+            return view;
+        }
+    }
+
 
     private class pageAdapter extends PagerAdapter {
 
