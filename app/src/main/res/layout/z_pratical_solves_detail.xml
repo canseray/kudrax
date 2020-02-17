@@ -38,6 +38,7 @@
             android:layout_height="wrap_content"/>
 
         <TextView
+            android:layout_marginTop="@dimen/dp10"
             android:textColor="@color/a_brown11"
             android:textSize="@dimen/dp15"
             android:fontFamily="@font/comfortaa"

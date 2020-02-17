@@ -57,6 +57,7 @@ import tr.limonist.kudra.app.profile.OrderHistory;
 import tr.limonist.kudra.app.profile.PraticalSolves;
 import tr.limonist.kudra.app.shop.Categories;
 import tr.limonist.kudra.app.shop.Favorites;
+import tr.limonist.kudra.app.shop.Products;
 import tr.limonist.kudra.app.user.LoginMain;
 import tr.limonist.kudra.app.user.ProfileSettings;
 import tr.limonist.classes.BannerItem;
@@ -906,11 +907,15 @@ public class Main extends AppCompatActivity {
 
             nameValuePairs.add(new Pair<>("param1", APP.base64Encode(APP.main_user != null ? APP.main_user.id : "0")));
             nameValuePairs.add(new Pair<>("param2", APP.base64Encode(result_code)));
-            nameValuePairs.add(new Pair<>("param3", APP.base64Encode("" + scanner_type)));
-            nameValuePairs.add(new Pair<>("param4", APP.base64Encode(APP.language_id)));
-            nameValuePairs.add(new Pair<>("param5", APP.base64Encode("A")));
+           // nameValuePairs.add(new Pair<>("param3", APP.base64Encode("" + scanner_type)));
+            nameValuePairs.add(new Pair<>("param3", APP.base64Encode(APP.device_id)));
+            nameValuePairs.add(new Pair<>("param4", APP.base64Encode(APP.device_id)));
+            nameValuePairs.add(new Pair<>("param5", APP.base64Encode(APP.device_id)));
+            nameValuePairs.add(new Pair<>("param6", APP.base64Encode("A")));
+            nameValuePairs.add(new Pair<>("param7", APP.base64Encode(APP.language_id)));
 
-            String xml = APP.post1(nameValuePairs, APP.path + "/check_scanned_qrcode.php");
+
+            String xml = APP.post1(nameValuePairs, APP.path + "/promotions/check_scanned_qrcode.php");
 
             if (xml != null && !xml.contentEquals("fail")) {
 

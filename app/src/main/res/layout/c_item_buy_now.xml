@@ -12,7 +12,7 @@
         android:gravity="center"
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="@dimen/dp220">
+        android:layout_height="@dimen/dp175">
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/img"

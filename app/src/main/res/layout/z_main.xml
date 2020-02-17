@@ -58,11 +58,13 @@
 
                     <com.twotoasters.jazzylistview.JazzyGridView
                         android:id="@+id/list"
+                        android:paddingHorizontal="@dimen/dp20"
+                        android:paddingTop="@dimen/dp10"
                         android:layout_weight="1"
                         android:layout_width="match_parent"
                         android:layout_height="fill_parent"
                         android:gravity="center"
-                        android:verticalSpacing="@dimen/dp10" />
+                        android:verticalSpacing="@dimen/dp20" />
 
                 </LinearLayout>
 

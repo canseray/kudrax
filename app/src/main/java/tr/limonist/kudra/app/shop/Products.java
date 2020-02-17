@@ -53,7 +53,7 @@ public class Products extends FragmentActivity {
     Activity m_activity;
     private TransparentProgressDialog pd;
     RecyclerView hl_main,hl_sub;
-    private int selected_page = 0, selected_main_page = 0;
+    private int selected_page = 0, selected_main_page = 0, selected_category_id;
     private String[] part1,part2;
     private String selected_sub_category_id="0";
     private String selected_product_id="0";
@@ -65,7 +65,8 @@ public class Products extends FragmentActivity {
         super.onCreate(savedInstanceState);
         m_activity = Products.this;
         APP.setWindowsProperties(m_activity, true);
-        selected_main_page = getIntent().getIntExtra("selected_main_page",0);
+        //selected_main_page = getIntent().getIntExtra("selected_main_page",0);
+       // selected_category_id = getIntent().getIntExtra("selected_category_id",0);
 
         pd = new TransparentProgressDialog(m_activity, "", true);
         setContentView(R.layout.z_layout_gridview_products);
@@ -234,13 +235,21 @@ public class Products extends FragmentActivity {
 
             List<Pair<String, String>> nameValuePairs = new ArrayList<>();
 
-            nameValuePairs.add(new Pair<>("param1", APP.base64Encode(APP.main_user != null ? APP.main_user.id : "0")));
+           /* nameValuePairs.add(new Pair<>("param1", APP.base64Encode(APP.main_user != null ? APP.main_user.id : "0")));
             nameValuePairs.add(new Pair<>("param2", APP.base64Encode(Categories.results.get(selected_main_page).getId())));
             nameValuePairs.add(new Pair<>("param3", APP.base64Encode(selected_sub_category_id)));
             nameValuePairs.add(new Pair<>("param4", APP.base64Encode(APP.language_id)));
-            nameValuePairs.add(new Pair<>("param5", APP.base64Encode("A")));
+            nameValuePairs.add(new Pair<>("param5", APP.base64Encode("A"))); */
 
-            String xml = APP.post1(nameValuePairs, APP.path + "/get_category_and_products_data_list.php");
+            nameValuePairs.add(new Pair<>("param1", APP.base64Encode(APP.main_user != null ? APP.main_user.id : "0")));
+           // nameValuePairs.add(new Pair<>("param2", APP.base64Encode(String.valueOf(selected_category_id))));
+            nameValuePairs.add(new Pair<>("param2", APP.base64Encode("59")));
+
+            nameValuePairs.add(new Pair<>("param3", APP.base64Encode(APP.language_id)));
+            nameValuePairs.add(new Pair<>("param4", APP.base64Encode("A")));
+
+
+            String xml = APP.post1(nameValuePairs, APP.path + "/get_product_list.php");
 
             if (xml != null && !xml.contentEquals("fail")) {
 

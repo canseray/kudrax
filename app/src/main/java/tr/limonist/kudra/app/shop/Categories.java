@@ -33,6 +33,7 @@ import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import tr.limonist.classes.CategoriesItem;
 import tr.limonist.kudra.APP;
 import tr.limonist.kudra.R;
 import tr.limonist.kudra.app.cart.Cart;
@@ -44,7 +45,7 @@ public class Categories extends Activity {
 
     public String[] part1;
     private lazy adapter;
-    public static ArrayList<MainItem> results;
+    public static ArrayList<CategoriesItem> results;
     JazzyListView list;
     RefreshLayout refreshLayout;
     private Activity m_activity;
@@ -173,10 +174,8 @@ public class Categories extends Activity {
 
                         for (int i = 0; i < part1.length; i++) {
                             String[] temp = part1[i].split("\\[#\\]");
-                            MainItem ai = new MainItem(temp.length > 0 ? temp[0] : "",
-                                    temp.length > 1 ? temp[1] : "", temp.length > 2 ? temp[2] : "",
-                                    temp.length > 3 ? temp[3] : "", temp.length > 4 ? temp[4] : "",
-                                    temp.length > 5 ? temp[5] : "");
+                            CategoriesItem ai = new CategoriesItem(temp.length > 0 ? temp[0] : "",
+                                    temp.length > 1 ? temp[1] : "", temp.length > 2 ? temp[2] : "");
                             results.add(ai);
                         }
 
@@ -241,7 +240,7 @@ public class Categories extends Activity {
         }
 
         @Override
-        public MainItem getItem(int position) {
+        public CategoriesItem getItem(int position) {
             return results.get(position);
         }
 
@@ -251,7 +250,7 @@ public class Categories extends Activity {
         }
 
         public View getView(final int position, View view, ViewGroup parent) {
-            final MainItem item = results.get(position);
+            final CategoriesItem item = results.get(position);
 
             if (view == null) {
                 view = inflater.inflate(R.layout.c_item_buy_now, null);
@@ -267,7 +266,12 @@ public class Categories extends Activity {
             view.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(m_activity,Products.class).putExtra("selected_main_page",position));
+
+                    String selected_category_id = results.get(position).getId();
+
+                   // startActivity(new Intent(m_activity,Products.class).putExtra("selected_main_page",position));
+                    startActivity(new Intent(m_activity,Products.class).putExtra("selected_category_id",selected_category_id));
+
                 }
             });
 
