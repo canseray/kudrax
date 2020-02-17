@@ -1,60 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="@drawable/but_rnd_str_black3_white"
-    android:orientation="vertical">
-
-    <TextView
-        android:id="@+id/txt_no"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="@dimen/dp15"
-        android:textColor="@color/a_black11"
-        android:textSize="@dimen/dp20"
-        android:textStyle="normal" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp1"
-        android:background="@color/a_black12" />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
         android:gravity="center"
-        android:weightSum="100">
+        android:minWidth="@dimen/dp400"
+        android:orientation="vertical"
+        android:padding="@dimen/dp20">
 
-        <TextView
-            android:id="@+id/tv_cancel"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="50"
+            android:background="@drawable/dialog_oval_str_white"
             android:gravity="center"
-            android:padding="@dimen/dp5"
-            android:text="@string/s_cancel"
-            android:textColor="@drawable/text_main1"
-            android:textSize="@dimen/dp20" />
+            android:orientation="vertical">
 
-        <View
-            android:layout_width="@dimen/dp1"
-            android:layout_height="match_parent"
-            android:background="@color/a_black12" />
 
-        <TextView
-            android:id="@+id/tv_call"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="50"
-            android:gravity="center"
-            android:padding="@dimen/dp5"
-            android:text="@string/s_call"
-            android:textColor="@drawable/text_main1"
-            android:textSize="@dimen/dp25"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/txt_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp5"
+                android:layout_marginTop="@dimen/dp15"
+                android:layout_marginRight="@dimen/dp5"
+                android:textAllCaps="true"
+                android:fontFamily="@font/comfortaa"
+                android:textColor="@color/a_brown11"
+                android:textSize="@dimen/dp18" />
+
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dp1"
+                android:layout_marginTop="@dimen/dp10"
+                android:background="@color/zxing_transparent" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp40"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <TextView
+                    android:id="@+id/tv_cancel"
+                    android:text="@string/s_cancel"
+                    android:textAllCaps="true"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="50"
+                    android:gravity="center"
+                    android:fontFamily="@font/comfortaa"
+                    android:textColor="@color/a_brown11"
+                    android:textSize="@dimen/dp15" />
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="@dimen/dp1"
+                    android:layout_marginBottom="@dimen/dp5"
+                    android:layout_height="fill_parent"
+                    android:background="@color/a_brown11" />
+
+                <TextView
+                    android:id="@+id/tv_call"
+                    android:text="@string/s_call"
+                    android:textAllCaps="true"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="50"
+                    android:gravity="center"
+                    android:fontFamily="@font/comfortaa"
+                    android:textColor="@color/a_brown11"
+                    android:textSize="@dimen/dp15"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
 
     </LinearLayout>
-
-
-</LinearLayout>
+</RelativeLayout>

@@ -179,7 +179,7 @@ public class ProductDetail extends Activity {
             nameValuePairs.add(new Pair<>("param3", APP.base64Encode(APP.language_id)));
             nameValuePairs.add(new Pair<>("param4", APP.base64Encode("A")));
 
-            String xml = APP.post1(nameValuePairs, APP.path + "/cart_controls/get_selected_product_details.php");
+            String xml = APP.post1(nameValuePairs, APP.path + "/get_selected_product_details.php");
 
             if (xml != null && !xml.contentEquals("fail")) {
 

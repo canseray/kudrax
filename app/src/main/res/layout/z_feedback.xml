@@ -31,6 +31,7 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:weightSum="100"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:gravity="center"
@@ -85,41 +86,37 @@
                     android:paddingHorizontal="@dimen/dp5"
                     android:layout_marginTop="@dimen/dp15"
                     android:id="@+id/lay_form"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
                     android:gravity="center"
                     android:orientation="vertical">
 
                 </LinearLayout>
 
 
+            </LinearLayout>
 
-                <LinearLayout
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp40"
+                android:layout_marginTop="@dimen/dp30"
+                android:layout_marginBottom="@dimen/dp10"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/dp30"
+                android:paddingLeft="@dimen/dp5">
+
+                <tr.limonist.extras.MyTextView
+                    android:id="@+id/tv_done"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp40"
-                    android:layout_marginTop="@dimen/dp10"
-                    android:layout_marginBottom="@dimen/dp10"
-                    android:layout_weight="0"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/but_oval_str_brown1_tra"
                     android:gravity="center"
-                    android:orientation="horizontal"
-                    android:paddingLeft="@dimen/dp5"
-                    android:paddingRight="@dimen/dp5"
-                    android:weightSum="100">
-
-                    <tr.limonist.extras.MyTextView
-                        android:id="@+id/tv_done"
-                        android:layout_width="0dp"
-                        android:layout_height="fill_parent"
-                        android:layout_weight="60"
-                        android:background="@drawable/but_oval_str_brown1_tra"
-                        android:gravity="center"
-                        android:fontFamily="@font/comfortaa"
-                        android:text="@string/s_send"
-                        android:textColor="@color/a_brown11"
-                        android:textSize="@dimen/dp18"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
+                    android:fontFamily="@font/comfortaa"
+                    android:text="@string/s_send"
+                    android:textColor="@color/a_brown11"
+                    android:textSize="@dimen/dp18"
+                    android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

@@ -36,6 +36,7 @@
             android:paddingVertical="@dimen/dp5"
             android:paddingHorizontal="@dimen/dp10"
             android:scrollbars="none"
+            android:stackFromBottom="true"
             android:transcriptMode="alwaysScroll"/>
 
         <View

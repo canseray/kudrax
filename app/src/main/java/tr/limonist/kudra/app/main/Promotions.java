@@ -16,6 +16,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 import org.w3c.dom.Document;
 
@@ -31,6 +33,7 @@ import tr.limonist.classes.PromotionItem;
 import tr.limonist.extras.MyTextView;
 import tr.limonist.extras.TransparentProgressDialog;
 import tr.limonist.kudra.APP;
+import tr.limonist.kudra.MyVideoDialog;
 import tr.limonist.kudra.R;
 import tr.limonist.kudra.app.profile.Help;
 import tr.limonist.views.MyQrCodeDialog;
@@ -38,18 +41,12 @@ import tr.limonist.views.MyQrCodeDialog;
 public class Promotions extends AppCompatActivity {
 
     Activity m_activity;
-    private ListView list;
     private TransparentProgressDialog pd;
     public Help.lazy adapter;
-    TextView tv_desc;
     LinearLayout lay_compose, lay_scan_qr_code, lay_my_promotions;
-    private EditText et_message;
-    private ImageView img_send;
-    String message, part2, part3;
-    public String sendPart1;
-    public String sendPart2;
-    MyTextView tv_call_number;
+    private String result_code = "";
     ArrayList<HelpChatItem> results;
+    private String qrPart1, qrPart2;
     LinearLayout top_left;
     MyTextView tv_baslik;
     ImageView img_left;
@@ -63,6 +60,7 @@ public class Promotions extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         m_activity = Promotions.this;
         APP.setWindowsProperties(m_activity,false);
+        pd = new TransparentProgressDialog(m_activity, "", true);
         setContentView(R.layout.z_promotions);
 
         ViewStub stub = (ViewStub) findViewById(R.id.lay_stub);
@@ -101,13 +99,38 @@ public class Promotions extends AppCompatActivity {
         lay_scan_qr_code.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(m_activity,ScannerActivity.class));
+                new IntentIntegrator(m_activity).setCaptureActivity(ScannerActivity.class).setCameraId(camera_type).initiateScan();
             }
         });
 
         img = findViewById(R.id.img);
 
+        pd.show();
         new Connection().execute();
+
+    }
+
+    int REQUEST_CODE = 0x0000c0de;
+    int camera_type = 0;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_FIRST_USER) {
+            camera_type = camera_type == 0 ? 1 : 0;
+            new IntentIntegrator(m_activity).setCaptureActivity(ScannerActivity.class).setCameraId(camera_type).initiateScan();
+        } else {
+            IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+            if (result != null) {
+                if (result.getContents() != null) {
+                    result_code = result.getContents();
+                    pd.show();
+                    new Connection3().execute("");
+                }
+            } else {
+                super.onActivityResult(requestCode, resultCode, data);
+            }
+        }
 
     }
 
@@ -168,5 +191,72 @@ public class Promotions extends AppCompatActivity {
             }
         }
     }
+
+    private class Connection3 extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            List<Pair<String, String>> nameValuePairs = new ArrayList<>();
+
+            nameValuePairs.add(new Pair<>("param1", APP.base64Encode(APP.main_user != null ? APP.main_user.id : "0")));
+            nameValuePairs.add(new Pair<>("param2", APP.base64Encode(result_code)));
+            // nameValuePairs.add(new Pair<>("param3", APP.base64Encode("" + scanner_type)));
+            nameValuePairs.add(new Pair<>("param3", APP.base64Encode(APP.device_id)));
+            nameValuePairs.add(new Pair<>("param4", APP.base64Encode(APP.device_id)));
+            nameValuePairs.add(new Pair<>("param5", APP.base64Encode(APP.device_id)));
+            nameValuePairs.add(new Pair<>("param6", APP.base64Encode("A")));
+            nameValuePairs.add(new Pair<>("param7", APP.base64Encode(APP.language_id)));
+
+
+            String xml = APP.post1(nameValuePairs, APP.path + "/promotions/check_scanned_qrcode.php");
+
+            if (xml != null && !xml.contentEquals("fail")) {
+
+                try {
+
+                    DocumentBuilder newDocumentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+                    Document parse = newDocumentBuilder.parse(new ByteArrayInputStream(xml.getBytes()));
+                    List<String> dataList = new ArrayList<String>();
+
+                    for (int i = 0; i < parse.getElementsByTagName("row").getLength(); i++) {
+                        qrPart1 = APP.base64Decode(APP.getElement(parse, "part1"));
+                        qrPart2 = APP.base64Decode(APP.getElement(parse, "part2"));
+                    }
+                    if (qrPart1.contentEquals("OK")) {
+                        return "true";
+                    } else if (qrPart1.contentEquals("VIDEO")) {
+                        return "video";
+                    } else if (qrPart1.contentEquals("FAIL")) {
+                        return "error";
+                    } else
+                        return "false";
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    return "false";
+                }
+            } else {
+                return "false";
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            if (pd != null)
+                pd.dismiss();
+            if (result.contentEquals("true")) {
+                APP.show_status(m_activity, 3, qrPart2);
+            } else if (result.contentEquals("video")) {
+                startActivity(new Intent(m_activity, MyVideoDialog.class).putExtra("url", qrPart2));
+            } else if (result.contentEquals("error")) {
+                APP.show_status(m_activity, 1, qrPart2);
+            } else {
+                APP.show_status(m_activity, 1, getString(R.string.s_unexpected_connection_error_has_occured));
+            }
+
+        }
+
+    }
+
 
 }

@@ -140,7 +140,7 @@ public class Help extends Activity {
             @Override
             public void onClick(View v) {
 
-              //  new MyCallDialog(m_activity, part2[1]);
+                new MyCallDialog(m_activity, part2);
 
             }
         });

@@ -82,7 +82,7 @@
                         app:roundAsCircle="true"
                         app:roundingBorderColor="@color/a_brown11"
                         app:roundingBorderWidth="@dimen/dp1"
-                        app:placeholderImage="@mipmap/share_k"
+                        app:placeholderImage="@mipmap/new_share_k"
                         android:layout_width="@dimen/dp40"
                         android:layout_height="@dimen/dp40"
                         android:layout_alignParentBottom="true"

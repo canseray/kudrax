@@ -19,6 +19,7 @@ import android.view.ViewStub;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -43,14 +44,17 @@ import tr.limonist.classes.ProductItem;
 import tr.limonist.classes.MainItem;
 import tr.limonist.extras.MyTextView;
 import tr.limonist.extras.TransparentProgressDialog;
+import tr.limonist.kudra.app.cart.Cart;
+import tr.limonist.views.MyNotificationDialog;
 
 public class Products extends FragmentActivity {
 
-    ArrayList<MainItem> results_categories,results_categories_temp;
+    ArrayList<MainItem> results_categories;
     ArrayList<ProductItem> results;
     RefreshLayout refreshLayout;
     JazzyGridView list;
     Activity m_activity;
+    MyTextView badge_right;
     private TransparentProgressDialog pd;
     RecyclerView hl_main,hl_sub;
     private int selected_page = 0, selected_main_page = 0, selected_category_id;
@@ -72,7 +76,7 @@ public class Products extends FragmentActivity {
         setContentView(R.layout.z_layout_gridview_products);
 
         ViewStub stub = findViewById(R.id.lay_stub);
-        stub.setLayoutResource(R.layout.b_top_img_txt_img);
+        stub.setLayoutResource(R.layout.b_top_img_txt_img_with_badge);
         stub.inflate();
 
         MyTextView tv_baslik = (MyTextView) findViewById(R.id.tv_baslik);
@@ -81,6 +85,15 @@ public class Products extends FragmentActivity {
 
         ImageView img_left = (ImageView) findViewById(R.id.img_left);
         img_left.setImageResource(R.drawable.left_k);
+
+        RelativeLayout top_right = findViewById(R.id.top_right);
+        top_right.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                startActivity(new Intent(m_activity, Cart.class));
+            }
+        });
 
         ImageView img_right = findViewById(R.id.img_right);
         img_right.setImageResource(R.drawable.box_k);
@@ -95,6 +108,10 @@ public class Products extends FragmentActivity {
 
         });
 
+        badge_right = findViewById(R.id.badge_right);
+        badge_right.setBackgroundResource(R.drawable.but_circle_black1);
+        badge_right.setTextColor(getResources().getColor(R.color.a_white11));
+
         refreshLayout = findViewById(R.id.refreshLayout);
         refreshLayout.setRefreshHeader(new WaterDropHeader(this));
         refreshLayout.setOnRefreshListener(new OnRefreshListener() {
@@ -107,45 +124,12 @@ public class Products extends FragmentActivity {
         list = (JazzyGridView) findViewById(R.id.list);
         list.setNumColumns(2);
 
-        hl_main = (RecyclerView) findViewById(R.id.hl_main);
-        hl_sub = (RecyclerView) findViewById(R.id.hl_sub);
 
         selected_page = 0;
         selected_sub_category_id = "0";
 
         results = new ArrayList<>();
         results_categories = new ArrayList<>();
-
-        hl_main.addItemDecoration(new DividerItemDecoration(m_activity, LinearLayoutManager.HORIZONTAL) {
-            @Override
-            public void onDraw(Canvas canvas, RecyclerView parent, RecyclerView.State state) {
-
-            }
-        });
-        adapter_main = new rvMainCategoryAdapter();
-        LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(m_activity, LinearLayoutManager.HORIZONTAL, false);
-        hl_main.setLayoutManager(horizontalLayoutManager);
-        hl_main.setAdapter(adapter_main);
-
-        hl_sub.addItemDecoration(new DividerItemDecoration(m_activity, LinearLayoutManager.HORIZONTAL) {
-            @Override
-            public void onDraw(Canvas canvas, RecyclerView parent, RecyclerView.State state) {
-
-            }
-        });
-        adapter_sub = new rvSubCategoryAdapter();
-        LinearLayoutManager horizontalLayoutManager2 = new LinearLayoutManager(m_activity, LinearLayoutManager.HORIZONTAL, false);
-        hl_sub.setLayoutManager(horizontalLayoutManager2);
-        hl_sub.setAdapter(adapter_sub);
-        adapter_sub.notifyDataSetChanged();
-
-        adapter_main.notifyDataSetChanged();
-        hl_main.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                hl_main.smoothScrollToPosition(selected_main_page);
-            }
-        }, 250);
 
         results = new ArrayList<>();
         adapter = new lazy();
@@ -156,95 +140,17 @@ public class Products extends FragmentActivity {
 
     }
 
-    rvMainCategoryAdapter adapter_main;
-    rvSubCategoryAdapter adapter_sub;
-
-    class rvMainCategoryAdapter extends RecyclerView.Adapter<rvMainCategoryAdapter.GroceryViewHolder> {
-
-        public rvMainCategoryAdapter() {
-        }
-
-        @Override
-        public rvMainCategoryAdapter.GroceryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View groceryProductView = LayoutInflater.from(parent.getContext()).inflate(R.layout.c_item_hl_main, parent, false);
-            rvMainCategoryAdapter.GroceryViewHolder gvh = new rvMainCategoryAdapter.GroceryViewHolder(groceryProductView);
-            return gvh;
-        }
-
-        @Override
-        public void onBindViewHolder(rvMainCategoryAdapter.GroceryViewHolder holder, final int position) {
-
-            holder.ll_root.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    select_main_category(position);
-                }
-            });
-            holder.title.setText(Categories.results.get(position).getTitle());
-            if (selected_main_page == position) {
-                holder.ll_root.setSelected(true);
-                holder.title.setTypeface(null,Typeface.BOLD_ITALIC);
-            } else {
-                holder.ll_root.setSelected(false);
-                holder.title.setTypeface(null,Typeface.NORMAL);
-            }
-        }
-
-        @Override
-        public int getItemCount() {
-            return Categories.results.size();
-        }
-
-        public class GroceryViewHolder extends RecyclerView.ViewHolder {
-            LinearLayout ll_root;
-            TextView title;
-
-            public GroceryViewHolder(View view) {
-                super(view);
-                ll_root = view.findViewById(R.id.ll_root);
-                title = view.findViewById(R.id.title);
-            }
-        }
-    }
-
-    private void select_main_category(int position) {
-        selected_main_page = position;
-        selected_page = 0;
-        selected_sub_category_id ="0";
-        adapter_main.notifyDataSetChanged();
-        adapter_sub.notifyDataSetChanged();
-        pd.show();
-        new ConnectionSub().execute();
-    }
-
-    private void select_sub_category(int position) {
-        selected_page = position;
-        selected_sub_category_id = results_categories.get(position).getId();
-        adapter_sub.notifyDataSetChanged();
-        pd.show();
-        new ConnectionSub().execute();
-
-    }
-
     class ConnectionSub extends AsyncTask<String, Void, String> {
 
         protected String doInBackground(String... args) {
 
             results = new ArrayList<>();
-            results_categories_temp = new ArrayList<>();
 
             List<Pair<String, String>> nameValuePairs = new ArrayList<>();
 
-           /* nameValuePairs.add(new Pair<>("param1", APP.base64Encode(APP.main_user != null ? APP.main_user.id : "0")));
-            nameValuePairs.add(new Pair<>("param2", APP.base64Encode(Categories.results.get(selected_main_page).getId())));
-            nameValuePairs.add(new Pair<>("param3", APP.base64Encode(selected_sub_category_id)));
-            nameValuePairs.add(new Pair<>("param4", APP.base64Encode(APP.language_id)));
-            nameValuePairs.add(new Pair<>("param5", APP.base64Encode("A"))); */
-
             nameValuePairs.add(new Pair<>("param1", APP.base64Encode(APP.main_user != null ? APP.main_user.id : "0")));
-           // nameValuePairs.add(new Pair<>("param2", APP.base64Encode(String.valueOf(selected_category_id))));
-            nameValuePairs.add(new Pair<>("param2", APP.base64Encode("59")));
-
+            //nameValuePairs.add(new Pair<>("param2", APP.base64Encode(String.valueOf(selected_category_id))));
+            nameValuePairs.add(new Pair<>("param2", APP.base64Encode("80")));
             nameValuePairs.add(new Pair<>("param3", APP.base64Encode(APP.language_id)));
             nameValuePairs.add(new Pair<>("param4", APP.base64Encode("A")));
 
@@ -261,35 +167,20 @@ public class Products extends FragmentActivity {
                     for (int i = 0; i < parse.getElementsByTagName("row").getLength(); i++) {
 
                         part1 = APP.base64Decode(APP.getElement(parse, "part1")).split("\\[##\\]");
-                        part2 = APP.base64Decode(APP.getElement(parse, "part2")).split("\\[##\\]");
                     }
+
 
                     if (!part1[0].contentEquals("")) {
 
                         for (int i = 0; i < part1.length; i++) {
                             String[] temp = part1[i].split("\\[#\\]");
-                            MainItem ai = new MainItem(temp.length > 0 ? temp[0] : "",
-                                    temp.length > 1 ? temp[1] : "",
-                                    temp.length > 2 ? temp[2] : "",
-                                    temp.length > 3 ? temp[3] : "",
-                                    temp.length > 4 ? temp[4] : "",
-                                    temp.length > 5 ? temp[5] : "");
-                            results_categories_temp.add(ai);
-                        }
-
-                    }
-
-                    if (!part2[0].contentEquals("")) {
-
-                        for (int i = 0; i < part2.length; i++) {
-                            String[] temp = part2[i].split("\\[#\\]");
                             ProductItem ai = new ProductItem(temp.length > 0 ? temp[0] : "",
                                     temp.length > 1 ? temp[1] : "", temp.length > 2 ? temp[2] : "",
                                     temp.length > 3 ? temp[3] : "", temp.length > 4 ? temp[4] : "",
-                                    temp.length > 5 ? temp[5] : "");
+                                    temp.length > 5 ? temp[5] : "", temp.length > 6 ? temp[6] : "",
+                                    temp.length > 7 ? temp[7] : "", temp.length > 8 ? temp[8] : "");
                             results.add(ai);
                         }
-
                     }
 
                     return "true";
@@ -311,69 +202,12 @@ public class Products extends FragmentActivity {
                 refreshLayout.finishRefresh();
             if (result.contentEquals("true")) {
 
-                fill_products();
+                adapter = new lazy();
+                list.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
 
             } else {
                 APP.show_status(m_activity, 1, getString(R.string.s_unexpected_connection_error_has_occured));
-            }
-        }
-    }
-
-    private void fill_products() {
-        adapter.notifyDataSetChanged();
-        results_categories = results_categories_temp;
-        adapter_sub.notifyDataSetChanged();
-        hl_sub.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                hl_sub.smoothScrollToPosition(selected_page);
-            }
-        }, 250);
-    }
-
-    class rvSubCategoryAdapter extends RecyclerView.Adapter<rvSubCategoryAdapter.GroceryViewHolder> {
-
-        public rvSubCategoryAdapter() {
-        }
-
-        @Override
-        public rvSubCategoryAdapter.GroceryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View groceryProductView = LayoutInflater.from(parent.getContext()).inflate(R.layout.c_item_hl_sub, parent, false);
-            rvSubCategoryAdapter.GroceryViewHolder gvh = new rvSubCategoryAdapter.GroceryViewHolder(groceryProductView);
-            return gvh;
-        }
-
-        @Override
-        public void onBindViewHolder(rvSubCategoryAdapter.GroceryViewHolder holder, final int position) {
-            holder.ll_root.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    select_sub_category(position);
-                }
-            });
-            holder.title.setText(results_categories.get(position).getTitle());
-            if (selected_page == position) {
-                holder.ll_root.setSelected(true);
-                holder.title.setTypeface(null,Typeface.BOLD_ITALIC);
-            } else {
-                holder.ll_root.setSelected(false);
-                holder.title.setTypeface(null,Typeface.NORMAL);
-            }
-        }
-
-        @Override
-        public int getItemCount() {
-            return results_categories.size();
-        }
-
-        public class GroceryViewHolder extends RecyclerView.ViewHolder {
-            LinearLayout ll_root;
-            TextView title;
-
-            public GroceryViewHolder(View view) {
-                super(view);
-                ll_root = view.findViewById(R.id.ll_root);
-                title = view.findViewById(R.id.title);
             }
         }
     }
@@ -404,7 +238,7 @@ public class Products extends FragmentActivity {
 
             SimpleDraweeView img;
             SimpleDraweeView img_play, img_favorite;
-            MyTextView title, price;
+            MyTextView title;
 
         }
 
@@ -420,7 +254,6 @@ public class Products extends FragmentActivity {
                 holder.img = view.findViewById(R.id.img);
                 holder.img_play = view.findViewById(R.id.img_play);
                 holder.title = view.findViewById(R.id.title);
-                holder.price = view.findViewById(R.id.price);
 
                 view.setTag(holder);
             } else {
@@ -428,15 +261,14 @@ public class Products extends FragmentActivity {
             }
 
             holder.img.setImageURI(item.getImage());
-            holder.title.setText(item.getTitle());
-            holder.price.setText(item.getPrice());
+            holder.title.setText(item.getName());
 
           /*  if(!item.getVideo().contentEquals(""))
                 holder.img_play.setImageResource(R.drawable.play_k);
             else
                 holder.img_play.setImageResource(R.drawable.play_k); */
 
-            holder.img_play.setOnClickListener(new View.OnClickListener() {
+           /* holder.img_play.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if(!item.getVideo().contentEquals(""))
@@ -444,7 +276,7 @@ public class Products extends FragmentActivity {
                         startActivity(new Intent(m_activity, MyVideoDialog.class).putExtra("url",item.getVideo()));
                     }
                 }
-            });
+            }); */
 
            /* if(!item.getFavorite().contentEquals("0"))
                 holder.img_favorite.setImageResource(R.drawable.fav_flower_k);
@@ -466,7 +298,7 @@ public class Products extends FragmentActivity {
 
                     startActivity(new Intent(m_activity,ProductDetail.class)
                             .putExtra("product_id",item.getId())
-                            .putExtra("product_title",item.getTitle())
+                            .putExtra("product_title",item.getName())
                     );
                 }
             });
@@ -486,7 +318,7 @@ public class Products extends FragmentActivity {
             nameValuePairs.add(new Pair<>("param3", APP.base64Encode(APP.language_id)));
             nameValuePairs.add(new Pair<>("param4", APP.base64Encode("A")));
 
-            String xml = APP.post1(nameValuePairs, APP.path + "/cart_controls/send_add_to_favorite_request.php");
+            String xml = APP.post1(nameValuePairs, APP.path + "/favorities/send_add_to_favorite_request.php");
 
             if (xml != null && !xml.contentEquals("fail")) {
 
@@ -520,7 +352,7 @@ public class Products extends FragmentActivity {
         protected void onPostExecute(String result) {
 
             if (result.contentEquals("true")) {
-                new ConnectionSub().execute();
+
             } else if (result.contentEquals("error")) {
                 if (pd != null)
                     pd.dismiss();

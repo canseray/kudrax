@@ -224,6 +224,7 @@
                             android:layout_height="@dimen/dp35"/>
 
                         <EditText
+                            android:inputType="date"
                             android:layout_marginStart="@dimen/dp2"
                             android:id="@+id/et_date_of_birth"
                             android:hint="@string/s_date_of_birth"
@@ -262,7 +263,7 @@
                             android:background="@android:color/transparent"
                             android:fontFamily="@font/comfortaa"
                             android:gravity="center_vertical|left"
-                            android:text="@string/s_skin_type"
+                            android:text="Cilt Tipi"
                             android:imeOptions="actionGo"
                             android:inputType="text"
                             android:textAlignment="textStart"
@@ -300,7 +301,7 @@
                             android:background="@android:color/transparent"
                             android:fontFamily="@font/comfortaa"
                             android:gravity="center_vertical|left"
-                            android:text="@string/s_skin_type"
+                            android:text="Cinsiyet"
                             android:imeOptions="actionGo"
                             android:inputType="text"
                             android:textAlignment="textStart"
@@ -336,7 +337,7 @@
                             android:background="@android:color/transparent"
                             android:fontFamily="@font/comfortaa"
                             android:gravity="center_vertical|left"
-                            android:text="@string/s_skin_type"
+                            android:text="Şehir"
                             android:imeOptions="actionGo"
                             android:inputType="text"
                             android:textAlignment="textStart"

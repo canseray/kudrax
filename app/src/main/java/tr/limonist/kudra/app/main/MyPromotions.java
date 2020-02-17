@@ -264,9 +264,13 @@ public class MyPromotions extends AppCompatActivity {
                 holder = (ViewHolder) view.getTag();
             }
 
-            /* for (int i=0; i < results.size(); i++ ){
-                holder.promotion_count.setText(String.valueOf(i));
-            } */
+
+            if (results.size() > 0){
+                for (int i = 0; i < results.size(); i++){
+                    holder.promotion_count.setText(String.valueOf(i));
+                }
+            }
+
 
             holder.promotion_product_name.setText(item.getTitle());
             holder.date.setText(item.getDate());

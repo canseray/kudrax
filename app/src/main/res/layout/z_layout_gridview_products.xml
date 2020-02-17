@@ -3,7 +3,7 @@
     android:id="@+id/lay_main"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/a_white11"
+    android:background="@drawable/all_skin_type_background_k"
     android:orientation="vertical">
 
     <LinearLayout
@@ -25,40 +25,15 @@
     </LinearLayout>
 
     <LinearLayout
-        android:background="@color/a_back"
+        android:background="@drawable/all_skin_type_background_k"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:gravity="center_horizontal|top"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:background="@color/a_white11"
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/dp50">
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/hl_main"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:background="@color/a_white11"
-            android:layout_marginTop="@dimen/dp5"
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/dp50"
-            android:padding="@dimen/dp5">
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/hl_sub"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent" />
-
-        </LinearLayout>
 
         <FrameLayout
-            android:background="@color/a_white11"
+            android:background="@drawable/all_skin_type_background_k"
             android:layout_marginTop="@dimen/dp5"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
