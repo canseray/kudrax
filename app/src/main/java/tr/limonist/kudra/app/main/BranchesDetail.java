@@ -40,7 +40,7 @@ public class BranchesDetail extends FragmentActivity implements OnMapReadyCallba
         super.onCreate(savedInstanceState);
         m_activity = BranchesDetail.this;
         APP.setWindowsProperties(m_activity, true);
-        store_item_detail = (BranchesItem) getIntent().getSerializableExtra("store_item");
+        store_item_detail = (BranchesItem) getIntent().getSerializableExtra("store_item_detail");
         pd = new TransparentProgressDialog(m_activity, "", true);
         setContentView(R.layout.z_branches_detail);
 

@@ -39,16 +39,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
-                android:layout_weight="2"
+                android:layout_weight="3"
                 android:background="@drawable/but_oval_str_brown1_tra"
                 android:orientation="vertical"
                 android:padding="@dimen/dp8">
 
-                <fragment
-                    android:id="@+id/map"
-                    android:name="com.google.android.gms.maps.SupportMapFragment"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/store_img"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"/>
 
             </LinearLayout>
 
@@ -57,8 +56,19 @@
                 android:layout_height="fill_parent"
                 android:layout_marginTop="@dimen/dp10"
                 android:layout_marginBottom="@dimen/dp10"
-                android:layout_weight="4"
+                android:layout_weight="3"
                 android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:text="magaza adı"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/comfortaa"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/dp10"
+                    android:textColor="@color/a_brown11"
+                    android:textSize="@dimen/dp18" />
 
                 <LinearLayout
                     android:orientation="horizontal"
@@ -66,68 +76,84 @@
                     android:layout_height="wrap_content">
 
                     <com.facebook.drawee.view.SimpleDraweeView
-                        android:background="@drawable/malls_inmenu_k"
+                        android:background="@drawable/address_k"
                         android:layout_width="@dimen/dp30"
                         android:layout_height="@dimen/dp30" />
 
                     <TextView
-                        android:id="@+id/title"
+                        android:id="@+id/adres"
+                        android:text="acık adres"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/comfortaa"
                         android:gravity="center_vertical"
                         android:padding="@dimen/dp5"
-                        android:textColor="@color/a_brown11"
-                        android:textSize="@dimen/dp18"
+                        android:textColor="@color/a_brown12"
+                        android:textSize="@dimen/dp12"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:background="@drawable/phone_three_k"
+                        android:layout_width="@dimen/dp30"
+                        android:layout_height="@dimen/dp30" />
+
+                    <TextView
+                        android:id="@+id/phone"
+                        android:text="acık adres"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/comfortaa"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/dp5"
+                        android:textColor="@color/a_brown12"
+                        android:textSize="@dimen/dp12"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:background="@drawable/email_dark_k"
+                        android:layout_width="@dimen/dp30"
+                        android:layout_height="@dimen/dp30" />
+
+                    <TextView
+                        android:id="@+id/email"
+                        android:text="acık adres"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/comfortaa"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/dp5"
+                        android:textColor="@color/a_brown12"
+                        android:textSize="@dimen/dp12"
                         android:textStyle="bold" />
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/adres"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/comfortaa"
-                    android:gravity="center_vertical"
-                    android:padding="@dimen/dp10"
-                    android:textColor="@color/a_brown12"
-                    android:textSize="@dimen/dp12" />
+
             </LinearLayout>
 
             <LinearLayout
+                android:background="@drawable/but_oval_str_brown1_tra"
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="4"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:padding="@dimen/dp15">
+                android:padding="@dimen/dp8">
 
-                <TextView
-                    android:id="@+id/select_store"
-                    android:text="@string/s_choose_store"
-                    android:textAlignment="center"
-                    android:gravity="center"
-                    android:textAllCaps="true"
-                    android:fontFamily="@font/comfortaa"
-                    android:textSize="@dimen/dp18"
-                    android:textColor="@color/a_brown11"
-                    android:layout_width="fill_parent"
-                    android:layout_height="@dimen/dp40"
-                    android:background="@drawable/but_oval_str_brown1_tra"
-                    android:src="@drawable/b_ic_con_phone" />
-
-                <TextView
-                    android:id="@+id/select_another_store"
-                    android:textAlignment="center"
-                    android:gravity="center"
-                    android:textSize="@dimen/dp18"
-                    android:textAllCaps="true"
-                    android:fontFamily="@font/comfortaa"
-                    android:textColor="@color/a_brown11"
-                    android:text="@string/s_choose_another_store"
-                    android:layout_width="fill_parent"
-                    android:layout_height="@dimen/dp40"
-                    android:layout_marginTop="@dimen/dp5"
-                    android:background="@drawable/but_oval_str_brown1_tra" />
+                <fragment
+                    android:id="@+id/map"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
             </LinearLayout>
 
