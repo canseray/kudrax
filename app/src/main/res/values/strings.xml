@@ -186,6 +186,11 @@
     <string name="s_date_of_birth">Doğum Tarihi</string>
     <string name="s_gender">Cinsiyet</string>
     <string name="s_country">Şehir</string>
+    <string name="s_another_store">Diğer Mağazalar</string>
+
+    <string name="s_choose_store">Mağazayı Seç</string>
+    <string name="s_choose_another_store">Başka Mağaza Seç</string>
+
 
 
 </resources>

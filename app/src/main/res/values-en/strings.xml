@@ -171,6 +171,12 @@
 
     <string name="s_my_promotions">My Promotions</string>
     <string name="s_scan_qr_code">Scan QR Code</string>
+    <string name="s_another_store">Another Store</string>
+
+    <string name="s_choose_store">Choose Store</string>
+    <string name="s_choose_another_store">Choose Another Store</string>
+
+
 
 
     <string-array name="profile_titles">

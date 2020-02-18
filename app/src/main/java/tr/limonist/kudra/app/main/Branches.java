@@ -273,7 +273,7 @@ public class Branches extends FragmentActivity implements OnMapReadyCallback {
                 @Override
                 public void onClick(View v) {
 
-                    startActivity(new Intent(m_activity, BranchesSingle.class).putExtra("branch_id", item.getId()));
+                    startActivity(new Intent(m_activity, BranchesSingle.class).putExtra("store_item", item));
                 }
             });
 
