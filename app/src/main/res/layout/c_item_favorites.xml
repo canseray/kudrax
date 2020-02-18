@@ -99,7 +99,7 @@
             android:textStyle="bold" />
 
     <View
-        android:paddingHorizontal="@dimen/dp20"
+        android:paddingHorizontal="@dimen/dp30"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp1"
         android:background="@color/a_brown11"/>

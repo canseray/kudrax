@@ -48,17 +48,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
-            <com.google.android.gms.maps.MapView
-                android:background="@drawable/but_oval_str_brown1_tra"
-                android:padding="@dimen/dp20"
+            <LinearLayout
+                android:padding="@dimen/dp8"
                 android:layout_marginStart="@dimen/dp10"
                 android:layout_marginEnd="@dimen/dp10"
+                android:background="@drawable/but_oval_str_brown1_tra"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp200">
+
+            <fragment
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:background="@drawable/but_oval_str_brown1_tra"
+                android:padding="@dimen/dp20"
                 android:layout_weight="90"
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"/>
 
+            </LinearLayout>
+
 
             <tr.limonist.extras.MyTextView
+                android:id="@+id/near_store_name"
                 android:layout_weight="5"
                 android:text="MALL OF ISTANBUL AVM"
                 android:textSize="@dimen/dp18"
@@ -104,7 +115,8 @@
                     android:id="@+id/list"
                     android:layout_width="match_parent"
                     android:layout_height="fill_parent"
-                    android:dividerHeight="@dimen/dp_half"
+                    android:dividerHeight="@dimen/dp1"
+                    android:divider="@color/a_brown11"
                     android:scrollbars="none" />
             </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 

@@ -1,10 +1,18 @@
 package tr.limonist.kudra.app.main;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.ColorDrawable;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,9 +22,20 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.scwang.smartrefresh.header.WaterDropHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+import com.thebrownarrow.permissionhelper.PermissionResult;
+import com.thebrownarrow.permissionhelper.PermissionUtils;
 import com.twotoasters.jazzylistview.JazzyHelper;
 import com.twotoasters.jazzylistview.JazzyListView;
 
@@ -34,8 +53,9 @@ import tr.limonist.kudra.R;
 import tr.limonist.classes.BranchesItem;
 import tr.limonist.extras.MyTextView;
 import tr.limonist.extras.TransparentProgressDialog;
+import tr.limonist.kudra.app.StartMain;
 
-public class Branches extends Activity {
+public class Branches extends FragmentActivity implements OnMapReadyCallback {
 
     ArrayList<BranchesItem> results;
     Activity m_activity;
@@ -44,6 +64,11 @@ public class Branches extends Activity {
     String[] part1;
     JazzyListView list;
     lazy adapter;
+    MyTextView near_store_name;
+    Marker marker;
+    LatLng dest;
+    private GoogleMap mMap;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,9 +77,11 @@ public class Branches extends Activity {
         APP.setWindowsProperties(m_activity, true);
         pd = new TransparentProgressDialog(m_activity, "", true);
 
+
         String title = getIntent().getStringExtra("title");
 
         setContentView(R.layout.z_layout_listview_with_white_top);
+        near_store_name = findViewById(R.id.near_store_name);
 
         ViewStub stub = (ViewStub) findViewById(R.id.lay_stub);
         stub.setLayoutResource(R.layout.b_top_img_txt_emp);
@@ -90,8 +117,8 @@ public class Branches extends Activity {
 
         list = (JazzyListView) findViewById(R.id.list);
         list.setTransitionEffect(JazzyHelper.TILT);
-        list.setDivider(new ColorDrawable(getResources().getColor(R.color.a_black12)));
-        list.setDividerHeight(0);
+        list.setDivider(new ColorDrawable(getResources().getColor(R.color.a_brown11)));
+        list.setDividerHeight(1);
 
         results = new ArrayList<>();
         adapter = new lazy();
@@ -100,6 +127,16 @@ public class Branches extends Activity {
         pd.show();
         new Connection().execute();
 
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+        mMap.getUiSettings().setZoomControlsEnabled(false);
     }
 
     class Connection extends AsyncTask<String, Void, String> {
@@ -111,8 +148,12 @@ public class Branches extends Activity {
             List<Pair<String, String>> nameValuePairs = new ArrayList<>();
 
             nameValuePairs.add(new Pair<>("param1", APP.base64Encode(APP.main_user != null ? APP.main_user.id : "0")));
-            nameValuePairs.add(new Pair<>("param2", APP.base64Encode(APP.language_id)));
-            nameValuePairs.add(new Pair<>("param3", APP.base64Encode("A")));
+            nameValuePairs.add(new Pair<>("param2", APP.base64Encode(String.valueOf(APP.lat))));
+            nameValuePairs.add(new Pair<>("param3", APP.base64Encode(String.valueOf(APP.lon))));
+            nameValuePairs.add(new Pair<>("param4", APP.base64Encode(APP.language_id)));
+            nameValuePairs.add(new Pair<>("param5", APP.base64Encode("A")));
+
+
 
             String xml = APP.post1(nameValuePairs, APP.path + "/get_branches_data_list.php");
 
@@ -135,7 +176,8 @@ public class Branches extends Activity {
                                     temp.length > 0 ? temp[0] : "", temp.length > 1 ? temp[1] : "",
                                     temp.length > 2 ? temp[2] : "", temp.length > 3 ? temp[3] : "",
                                     temp.length > 4 ? temp[4] : "", temp.length > 5 ? temp[5] : "",
-                                    temp.length > 6 ? temp[6] : "", temp.length > 7 ? temp[7] : ""
+                                    temp.length > 6 ? temp[6] : "", temp.length > 7 ? temp[7] : "",
+                                    temp.length > 8 ? temp[8] : ""
                             );
                             results.add(pi);
                         }
@@ -158,6 +200,12 @@ public class Branches extends Activity {
             if (refreshLayout != null)
                 refreshLayout.finishRefresh();
             if (result.contentEquals("true")) {
+
+
+                setUpMap(Double.parseDouble(results.get(0).getLat()),
+                        Double.parseDouble(results.get(0).getLng()),
+                        results.get(0).getName());
+
                 adapter.notifyDataSetChanged();
             } else {
                 APP.show_status(m_activity, 1,getResources().getString(R.string.s_unexpected_connection_error_has_occured));
@@ -209,8 +257,17 @@ public class Branches extends Activity {
                 holder = (ViewHolder) view.getTag();
             }
 
-            holder.name.setText(item.getName());
-            holder.address.setText(item.getCity());
+            near_store_name.setText(results.get(0).getName());
+
+
+
+            if (position == 0) {
+                view.setVisibility(View.GONE);
+
+            } else {
+                holder.name.setText(item.getName());
+                holder.address.setText(item.getAddress());
+            }
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -224,5 +281,14 @@ public class Branches extends Activity {
         }
 
     }
+
+    private void setUpMap(double mLat, double mLng, String mTitle){
+        mMap.addMarker(new MarkerOptions().position(new LatLng(mLat,mLng)).title(mTitle));
+        LatLng current_coordiantes = new LatLng(mLat,mLng);
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(current_coordiantes, 15f);
+        mMap.animateCamera(cameraUpdate);
+    }
+
+
 
 }

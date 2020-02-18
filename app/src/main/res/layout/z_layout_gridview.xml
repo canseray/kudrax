@@ -3,7 +3,7 @@
     android:id="@+id/lay_main"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/a_back"
+    android:background="@drawable/all_skin_type_background_k"
     android:orientation="vertical">
 
     <LinearLayout

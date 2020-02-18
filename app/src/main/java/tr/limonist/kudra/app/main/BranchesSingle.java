@@ -262,7 +262,8 @@ public class BranchesSingle extends FragmentActivity implements OnMapReadyCallba
                                 part1.length > 0 ? part1[0] : "", part1.length > 1 ? part1[1] : "",
                                 part1.length > 2 ? part1[2] : "", part1.length > 3 ? part1[3] : "",
                                 part1.length > 4 ? part1[4] : "", part1.length > 5 ? part1[5] : "",
-                                part1.length > 6 ? part1[6] : "", part1.length > 7 ? part1[7] : ""
+                                part1.length > 6 ? part1[6] : "", part1.length > 7 ? part1[7] : "",
+                                part1.length > 8 ? part1[8] : ""
                         );
                         return "true";
                     } else

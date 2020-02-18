@@ -18,9 +18,9 @@
             android:layout_height="wrap_content" />
 
         <View
-            android:background="@color/a_brown11"
             android:layout_width="fill_parent"
-            android:layout_height="@dimen/dp1"/>
+            android:layout_height="@dimen/dp1"
+            android:background="@color/a_brown11" />
 
     </LinearLayout>
 
@@ -31,77 +31,78 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:weightSum="10"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:paddingHorizontal="@dimen/dp10"
-            android:foregroundGravity="center"
-            android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="@dimen/dp50">
+            android:layout_height="@dimen/dp50"
+            android:layout_gravity="center"
+            android:foregroundGravity="center"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/dp10"
+            android:weightSum="10">
 
             <LinearLayout
                 android:id="@+id/lay_active_promotions"
-                android:layout_weight="5"
-                android:paddingHorizontal="@dimen/dp10"
-                android:orientation="vertical"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/dp10">
 
-            <tr.limonist.extras.MyTextView
-                android:id="@+id/tv_active_promotions"
-                android:textColor="@color/a_brown11"
-                android:fontFamily="@font/comfortaa"
-                android:gravity="center"
-                android:textSize="@dimen/dp15"
-                android:text="Aktif Promosyonlar"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"/>
+                <tr.limonist.extras.MyTextView
+                    android:id="@+id/tv_active_promotions"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/comfortaa"
+                    android:gravity="center"
+                    android:lines="1"
+                    android:text="Aktif Promosyonlar"
+                    android:textColor="@color/a_brown11"
+                    android:textSize="@dimen/dp15" />
 
                 <View
                     android:id="@+id/view_active_promotions"
-                    android:background="@color/a_brown11"
                     android:layout_width="fill_parent"
-                    android:layout_height="@dimen/dp1"/>
+                    android:layout_height="@dimen/dp1"
+                    android:background="@color/a_brown11" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/lay_used_promotions"
-                android:layout_weight="5"
-                android:paddingHorizontal="@dimen/dp10"
-                android:orientation="vertical"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/dp10">
 
                 <tr.limonist.extras.MyTextView
                     android:id="@+id/tv_used_promotions"
-                    android:textColor="@color/a_brown11"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/comfortaa"
                     android:gravity="center"
-                    android:textSize="@dimen/dp15"
+                    android:lines="1"
                     android:text="Kullanılmış Promosyon"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"/>
+                    android:textColor="@color/a_brown11"
+                    android:textSize="@dimen/dp15" />
 
                 <View
                     android:id="@+id/view_used_promotions"
-                    android:background="@color/a_brown11"
                     android:layout_width="fill_parent"
-                    android:layout_height="@dimen/dp1"/>
+                    android:layout_height="@dimen/dp1"
+                    android:background="@color/a_brown11" />
 
             </LinearLayout>
 
         </LinearLayout>
 
 
-
         <FrameLayout
-            android:background="@color/a_white11"
-            android:layout_marginTop="@dimen/dp5"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_weight="1">
+            android:layout_marginTop="@dimen/dp5"
+            android:layout_weight="1"
+            android:background="@color/a_white11">
 
             <com.scwang.smartrefresh.layout.SmartRefreshLayout
                 android:id="@+id/refreshLayout"

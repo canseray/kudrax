@@ -225,23 +225,23 @@ public class Feedback extends ActivityManagePermission {
                 public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
 
                     if (rating == 1){
-                        img.setImageResource(R.drawable.emoji_k);
+                        img.setImageResource(R.drawable.rat_one);
                         txt.setText("Çok Kötü");
 
                     } else if(rating == 2) {
-                        img.setImageResource(R.drawable.logo);
+                        img.setImageResource(R.drawable.rat_two);
                         txt.setText("Kötü");
 
                     } else if(rating == 3) {
-                        img.setImageResource(R.drawable.logo);
+                        img.setImageResource(R.drawable.rat_three);
                         txt.setText("İyi");
 
                     } else if(rating == 4) {
-                        img.setImageResource(R.drawable.logo);
+                        img.setImageResource(R.drawable.rat_four);
                         txt.setText("Çok İyi");
 
                     } else {
-                        img.setImageResource(R.drawable.logo);
+                        img.setImageResource(R.drawable.rat_five);
                         txt.setText("Harika");
 
                     }
