@@ -88,6 +88,7 @@ public class ProductDetail extends Activity {
     String comment_text = "";
     EditText comment_layout;
     private String part_cart_item_count = "10";
+    private String part4;
 
 
     //spark btn yerine share
@@ -362,6 +363,8 @@ public class ProductDetail extends Activity {
                         temp_list = APP.base64Decode(APP.getElement(parse, "part1")).split("\\[##\\]");
                         all_price_data = APP.base64Decode(APP.getElement(parse, "part2")).split("\\[##\\]");
                         all_comment_data = APP.base64Decode(APP.getElement(parse, "part3")).split("\\[##\\]");
+                        part4 = APP.base64Decode(APP.getElement(parse, "part4"));
+
 
                     }
 
@@ -459,7 +462,6 @@ public class ProductDetail extends Activity {
 
             TextView comment_name, comment_date, comment;
 
-
         }
 
         public View getView(final int position, View view, ViewGroup parent) {
@@ -474,7 +476,6 @@ public class ProductDetail extends Activity {
                 holder.comment_date = (TextView) view.findViewById(R.id.comment_date);
                 holder.comment = (TextView) view.findViewById(R.id.comment);
 
-
                 view.setTag(holder);
 
             } else {
@@ -487,23 +488,20 @@ public class ProductDetail extends Activity {
 
             return view;
         }
-
     }
-
-
 
     private void fillComponents() {
 
         int cart_count = 0;
 
         try {
-            cart_count = Integer.parseInt(part_cart_item_count);
+            cart_count = Integer.parseInt(part4);
         } catch (Exception e) {
         }
 
         if (cart_count > 0) {
             badge_right.setVisibility(View.VISIBLE);
-            badge_right.setText(part_cart_item_count);
+            badge_right.setText(part4);
         } else badge_right.setVisibility(View.GONE);
 
 

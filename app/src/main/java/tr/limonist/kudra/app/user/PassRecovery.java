@@ -118,7 +118,6 @@ public class PassRecovery extends Activity {
 				return false;
 			}
 		});
-
 	}
 
 	private void hideKeyboard(EditText et) {
@@ -132,7 +131,7 @@ public class PassRecovery extends Activity {
 
             List<Pair<String, String>> nameValuePairs = new ArrayList<>();
 
-            nameValuePairs.add(new Pair<>("param1", APP.base64Encode(logEmail)));
+            nameValuePairs.add(new Pair<>("param1", APP.base64Encode("")));
             nameValuePairs.add(new Pair<>("param2", APP.base64Encode(APP.language_id)));
             nameValuePairs.add(new Pair<>("param3", APP.base64Encode("A")));
 
