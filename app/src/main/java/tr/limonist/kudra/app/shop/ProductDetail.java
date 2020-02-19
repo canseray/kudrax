@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -68,21 +69,25 @@ public class ProductDetail extends Activity {
     private TextView tv_total;
     private LinearLayout lay_minus;
     private LinearLayout lay_plus;
-    private LinearLayout lay_cart;
+    private LinearLayout lay_cart, lay_add_comment,hl_sub;
     private String sendPart1,sendPart2;
     private String favPart1,favPart2;
+    private String comPart1,comPart2;
     private String[] temp_list, all_price_data, all_comment_data;
     ArrayList<ProductTempList> result_temp_list;
     ArrayList<ProductAllPricaData> result_all_price_data;
     ArrayList<ProductCommentData> result_comment_data;
     TextView gramaj_one, gramaj_two, price_one, price_two, tv_count_top, tv_desc, tv_content;
-    TextView tab_desc, tab_content, tab_comment, comment_layout;
+    TextView tab_desc, tab_content, tab_comment, add_comment_title;
     int product_count = 0;
     double total_price;
     AnimCheckBox checkbox_one, checkBox_two;
     JazzyListView list_comment;
     private lazy adapter;
     ImageView add_comment;
+    String comment_text = "";
+    EditText comment_layout;
+    private String part_cart_item_count = "10";
 
 
     //spark btn yerine share
@@ -165,6 +170,12 @@ public class ProductDetail extends Activity {
         tab_comment = findViewById(R.id.tab_comment);
         add_comment = findViewById(R.id.add_comment);
         comment_layout = findViewById(R.id.comment_layout);
+        lay_add_comment = findViewById(R.id.lay_add_comment);
+        hl_sub = findViewById(R.id.hl_sub);
+        add_comment_title = findViewById(R.id.add_comment_title);
+
+        add_comment_title.setVisibility(View.GONE);
+        tv_count_top.setText("");
 
         img = findViewById(R.id.img);
         img.setOnClickListener(new View.OnClickListener() {
@@ -278,10 +289,43 @@ public class ProductDetail extends Activity {
             @Override
             public void onClick(View arg0) {
 
-                pd.show();
-                new Connection2().execute();
+
+                if (product_count < 1){
+
+                    final MyImageDialog dia = new MyImageDialog(m_activity,"",
+                            "Lütfen ürün seçiniz.","Tamam",true);
+
+                    dia.setOkClick(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dia.dismiss();
+                        }
+                    });
+
+                    dia.show();
+
+                }  else {
+
+                    pd.show();
+                    new Connection2().execute();
+                }
+
             }
 
+        });
+
+        lay_add_comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                    comment_text = comment_layout.getText().toString();
+                    new Connection3().execute();
+
+
+
+
+            }
         });
 
 
@@ -432,6 +476,7 @@ public class ProductDetail extends Activity {
 
 
                 view.setTag(holder);
+
             } else {
                 holder = (ViewHolder) view.getTag();
             }
@@ -446,7 +491,22 @@ public class ProductDetail extends Activity {
     }
 
 
+
     private void fillComponents() {
+
+        int cart_count = 0;
+
+        try {
+            cart_count = Integer.parseInt(part_cart_item_count);
+        } catch (Exception e) {
+        }
+
+        if (cart_count > 0) {
+            badge_right.setVisibility(View.VISIBLE);
+            badge_right.setText(part_cart_item_count);
+        } else badge_right.setVisibility(View.GONE);
+
+
         tv_title.setText(result_temp_list.get(0).getProduct_name());
         img.setImageURI(Uri.parse(result_temp_list.get(0).getProduct_image()));
         gramaj_one.setText(result_all_price_data.get(0).getGramaj());
@@ -481,7 +541,7 @@ public class ProductDetail extends Activity {
     private void fillComment(){
         adapter = new lazy();
         list_comment.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+        //adapter.notifyDataSetChanged();
     }
 
     private void bottomMenu(){
@@ -498,6 +558,12 @@ public class ProductDetail extends Activity {
                 tv_desc.setVisibility(View.VISIBLE);
                 tv_content.setVisibility(View.GONE);
                 list_comment.setVisibility(View.GONE);
+
+                lay_add_comment.setVisibility(View.GONE);
+                lay_cart.setVisibility(View.VISIBLE);
+
+                add_comment_title.setVisibility(View.GONE);
+                hl_sub.setVisibility(View.VISIBLE);
             }
         });
 
@@ -514,6 +580,12 @@ public class ProductDetail extends Activity {
                 tv_desc.setVisibility(View.GONE);
                 tv_content.setVisibility(View.VISIBLE);
                 list_comment.setVisibility(View.GONE);
+
+                lay_add_comment.setVisibility(View.GONE);
+                lay_cart.setVisibility(View.VISIBLE);
+
+                add_comment_title.setVisibility(View.GONE);
+                hl_sub.setVisibility(View.VISIBLE);
             }
         });
 
@@ -530,6 +602,12 @@ public class ProductDetail extends Activity {
                 tv_desc.setVisibility(View.GONE);
                 tv_content.setVisibility(View.GONE);
                 list_comment.setVisibility(View.VISIBLE);
+
+                lay_add_comment.setVisibility(View.GONE);
+                lay_cart.setVisibility(View.VISIBLE);
+
+                add_comment_title.setVisibility(View.GONE);
+                hl_sub.setVisibility(View.VISIBLE);
             }
         });
 
@@ -540,10 +618,15 @@ public class ProductDetail extends Activity {
                 tv_desc.setVisibility(View.GONE);
                 tv_content.setVisibility(View.GONE);
                 list_comment.setVisibility(View.GONE);
+
+                lay_add_comment.setVisibility(View.VISIBLE);
+                lay_cart.setVisibility(View.GONE);
+
+                add_comment_title.setVisibility(View.VISIBLE);
+                hl_sub.setVisibility(View.GONE);
             }
         });
     }
-
 
     class Connection2 extends AsyncTask<String, Void, String> {
 
@@ -553,9 +636,10 @@ public class ProductDetail extends Activity {
 
             nameValuePairs.add(new Pair<>("param1", APP.base64Encode(APP.main_user != null ? APP.main_user.id : "0")));
             nameValuePairs.add(new Pair<>("param2", APP.base64Encode(product_id)));
-            nameValuePairs.add(new Pair<>("param3", APP.base64Encode("" )));
-            nameValuePairs.add(new Pair<>("param4", APP.base64Encode(APP.language_id)));
-            nameValuePairs.add(new Pair<>("param5", APP.base64Encode("A")));
+            nameValuePairs.add(new Pair<>("param3", APP.base64Encode(""))); //size id
+            nameValuePairs.add(new Pair<>("param4", APP.base64Encode("" )));
+            nameValuePairs.add(new Pair<>("param5", APP.base64Encode(APP.language_id)));
+            nameValuePairs.add(new Pair<>("param6", APP.base64Encode("A")));
 
             String xml = APP.post1(nameValuePairs, APP.path + "/cart_controls/add_or_update_item_in_cart.php");
 
@@ -606,7 +690,7 @@ public class ProductDetail extends Activity {
                 } else
                     badge_right.setVisibility(View.GONE);
 
-                startActivity(new Intent(m_activity, Cart.class));
+               // startActivity(new Intent(m_activity, Cart.class));
 
             } else if (result.contentEquals("error")) {
                 APP.show_status(m_activity, 2, sendPart2);
@@ -624,10 +708,9 @@ public class ProductDetail extends Activity {
 
             nameValuePairs.add(new Pair<>("param1", APP.base64Encode(APP.main_user != null ? APP.main_user.id : "0")));
             nameValuePairs.add(new Pair<>("param2", APP.base64Encode(product_id)));
-            nameValuePairs.add(new Pair<>("param3", APP.base64Encode(APP.language_id)));
-            nameValuePairs.add(new Pair<>("param4", APP.base64Encode("A")));
+            nameValuePairs.add(new Pair<>("param3", APP.base64Encode(comment_text)));
 
-            String xml = APP.post1(nameValuePairs, APP.path + "/cart_controls/send_add_to_favorite_request.php");
+            String xml = APP.post1(nameValuePairs, APP.path + "/send_product_review_request.php");
 
             if (xml != null && !xml.contentEquals("fail")) {
 
@@ -637,13 +720,13 @@ public class ProductDetail extends Activity {
                     Document parse = newDocumentBuilder.parse(new ByteArrayInputStream(xml.getBytes()));
 
                     for (int i = 0; i < parse.getElementsByTagName("row").getLength(); i++) {
-                        favPart1 = APP.base64Decode(APP.getElement(parse, "part1"));
-                        favPart2 = APP.base64Decode(APP.getElement(parse, "part2"));
+                        comPart1 = APP.base64Decode(APP.getElement(parse, "part1"));
+                        comPart2 = APP.base64Decode(APP.getElement(parse, "part2"));
                     }
 
-                    if (favPart1.contentEquals("OK"))
+                    if (comPart1.contentEquals("OK"))
                         return "true";
-                    else if (favPart1.contentEquals("FAIL"))
+                    else if (comPart1.contentEquals("FAIL"))
                         return "error";
                     else
                         return "false";
@@ -662,14 +745,18 @@ public class ProductDetail extends Activity {
             if (pd != null)
                 pd.dismiss();
             if (result.contentEquals("true")) {
-                if (favPart2.contentEquals("1")){
 
-                }
-                    //spark.setChecked(true);
-                else{
-                    // spark.setChecked(false);
+                final MyImageDialog dia = new MyImageDialog(m_activity,"",
+                        "Yorumunuz başarılı bir şekilde iletildi!","Tamam",true);
 
-                }
+                dia.setOkClick(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dia.dismiss();
+                    }
+                });
+
+                dia.show();
 
             } else if (result.contentEquals("error")) {
                 APP.show_status(m_activity, 2, favPart2);
@@ -679,3 +766,5 @@ public class ProductDetail extends Activity {
         }
     }
 }
+
+

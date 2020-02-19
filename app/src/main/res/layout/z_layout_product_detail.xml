@@ -366,79 +366,103 @@
                     android:visibility="gone" />
 
                 <LinearLayout
-                    android:id="@+id/hl_sub"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:gravity="start"
-                    android:orientation="horizontal"
-                    android:paddingVertical="@dimen/dp8"
-                    android:paddingEnd="@dimen/dp10">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                    <TextView
-                        android:id="@+id/tab_desc"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/comfortaa"
-                        android:gravity="center"
-                        android:paddingHorizontal="@dimen/dp10"
-                        android:text="Açıkama"
-                        android:textColor="@color/a_brown11"
-                        android:textSize="@dimen/dp15" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
-                    <View
-                        android:layout_width="@dimen/dp1"
-                        android:layout_height="fill_parent"
-                        android:background="@color/a_brown12"
-                        android:padding="@dimen/dp5"
-                        android:paddingVertical="@dimen/dp8" />
+                        <TextView
+                            android:id="@+id/add_comment_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/comfortaa"
+                            android:gravity="center_vertical"
+                            android:paddingStart="@dimen/dp10"
+                            android:paddingTop="@dimen/dp5"
+                            android:text="Yorum Ekle"
+                            android:textColor="@color/a_brown11"
+                            android:textSize="@dimen/dp15" />
 
-                    <TextView
-                        android:id="@+id/tab_content"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/comfortaa"
-                        android:gravity="center"
-                        android:paddingHorizontal="@dimen/dp10"
-                        android:text="İçerik"
-                        android:textColor="@color/a_brown12"
-                        android:textSize="@dimen/dp15" />
+                        <LinearLayout
+                            android:id="@+id/hl_sub"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:gravity="start"
+                            android:orientation="horizontal"
+                            android:paddingVertical="@dimen/dp8"
+                            android:paddingEnd="@dimen/dp10">
 
-                    <View
-                        android:layout_width="@dimen/dp1"
-                        android:layout_height="fill_parent"
-                        android:background="@color/a_brown12"
-                        android:padding="@dimen/dp5"
-                        android:paddingVertical="@dimen/dp8" />
+                            <TextView
+                                android:id="@+id/tab_desc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/comfortaa"
+                                android:gravity="center"
+                                android:paddingHorizontal="@dimen/dp10"
+                                android:text="Açıkama"
+                                android:textColor="@color/a_brown11"
+                                android:textSize="@dimen/dp15" />
 
-                    <TextView
-                        android:id="@+id/tab_comment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/comfortaa"
-                        android:gravity="center"
-                        android:paddingHorizontal="@dimen/dp10"
-                        android:text="Yorumlar"
-                        android:textColor="@color/a_brown12"
-                        android:textSize="@dimen/dp15" />
+                            <View
+                                android:layout_width="@dimen/dp1"
+                                android:layout_height="fill_parent"
+                                android:background="@color/a_brown12"
+                                android:padding="@dimen/dp5"
+                                android:paddingVertical="@dimen/dp8" />
 
-                    <View
-                        android:layout_width="@dimen/dp1"
-                        android:layout_height="fill_parent"
-                        android:layout_weight="2"
-                        android:padding="@dimen/dp5"
-                        android:paddingVertical="@dimen/dp8" />
+                            <TextView
+                                android:id="@+id/tab_content"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/comfortaa"
+                                android:gravity="center"
+                                android:paddingHorizontal="@dimen/dp10"
+                                android:text="İçerik"
+                                android:textColor="@color/a_brown12"
+                                android:textSize="@dimen/dp15" />
+
+                            <View
+                                android:layout_width="@dimen/dp1"
+                                android:layout_height="fill_parent"
+                                android:background="@color/a_brown12"
+                                android:padding="@dimen/dp5"
+                                android:paddingVertical="@dimen/dp8" />
+
+                            <TextView
+                                android:id="@+id/tab_comment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/comfortaa"
+                                android:gravity="center"
+                                android:paddingHorizontal="@dimen/dp10"
+                                android:text="Yorumlar"
+                                android:textColor="@color/a_brown12"
+                                android:textSize="@dimen/dp15" />
+
+                            <View
+                                android:layout_width="@dimen/dp1"
+                                android:layout_height="fill_parent"
+                                android:layout_weight="2"
+                                android:padding="@dimen/dp5"
+                                android:paddingVertical="@dimen/dp8" />
 
 
-                    <ImageView
-                        android:id="@+id/add_comment"
-                        android:layout_width="@dimen/dp20"
-                        android:layout_height="@dimen/dp20"
-                        android:layout_weight="0"
-                        android:background="@color/a_brown11" />
+                            <ImageView
+                                android:id="@+id/add_comment"
+                                android:layout_width="@dimen/dp20"
+                                android:layout_height="@dimen/dp20"
+                                android:layout_weight="0"
+                                android:background="@drawable/comment_k" />
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -453,41 +477,42 @@
 
                         <TextView
                             android:id="@+id/tv_desc"
-                            android:fontFamily="@font/comfortaa"
-                            android:textColor="@color/a_brown12"
-                            android:textSize="@dimen/dp12"
-                            android:padding="@dimen/dp10"
                             android:layout_width="fill_parent"
-                            android:layout_height="fill_parent" />
+                            android:layout_height="fill_parent"
+                            android:fontFamily="@font/comfortaa"
+                            android:padding="@dimen/dp10"
+                            android:textColor="@color/a_brown12"
+                            android:textSize="@dimen/dp12" />
 
                         <TextView
                             android:id="@+id/tv_content"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
                             android:fontFamily="@font/comfortaa"
+                            android:padding="@dimen/dp10"
                             android:textColor="@color/a_brown11"
                             android:textSize="@dimen/dp12"
-                            android:padding="@dimen/dp10"
-                            android:visibility="gone"
-                            android:layout_width="fill_parent"
-                            android:layout_height="fill_parent" />
+                            android:visibility="gone" />
 
 
                         <com.twotoasters.jazzylistview.JazzyListView
                             android:id="@+id/list_comment"
-                            android:padding="@dimen/dp10"
-                            android:visibility="gone"
                             android:layout_width="fill_parent"
-                            android:layout_height="fill_parent" />
+                            android:layout_height="fill_parent"
+                            android:padding="@dimen/dp10"
+                            android:visibility="gone" />
 
-                            <TextView
-                                android:visibility="gone"
-                                android:id="@+id/comment_layout"
-                                android:padding="@dimen/dp8"
-                                android:fontFamily="@font/comfortaa"
-                                android:textColor="@color/a_brown12"
-                                android:textSize="@dimen/dp12"
-                                android:background="@drawable/but_oval_str_brown2_tra"
-                                android:layout_width="fill_parent"
-                                android:layout_height="fill_parent"/>
+                        <EditText
+                            android:id="@+id/comment_layout"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:background="@drawable/but_oval_str_brown2_tra"
+                            android:fontFamily="@font/comfortaa"
+                            android:padding="@dimen/dp8"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/a_brown12"
+                            android:textSize="@dimen/dp12"
+                            android:visibility="gone" />
 
                     </RelativeLayout>
 
@@ -502,27 +527,56 @@
                     android:paddingHorizontal="@dimen/dp30"
                     android:paddingVertical="@dimen/dp10">
 
-                    <LinearLayout
-                        android:id="@+id/lay_cart"
+                    <RelativeLayout
                         android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:background="@drawable/but_oval_str_brown1_tra"
-                        android:gravity="center"
-                        android:orientation="horizontal">
+                        android:layout_height="fill_parent">
 
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:id="@+id/lay_cart"
+                            android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
-                            android:duplicateParentState="true"
-                            android:fontFamily="@font/comfortaa"
+                            android:background="@drawable/but_oval_str_brown1_tra"
                             android:gravity="center"
-                            android:text="@string/s_add_cart"
-                            android:textAllCaps="true"
-                            android:textColor="@color/a_brown11"
-                            android:textSize="@dimen/dp20"
-                            android:textStyle="bold" />
+                            android:orientation="horizontal">
 
-                    </LinearLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:duplicateParentState="true"
+                                android:fontFamily="@font/comfortaa"
+                                android:gravity="center"
+                                android:text="@string/s_add_cart"
+                                android:textAllCaps="true"
+                                android:textColor="@color/a_brown11"
+                                android:textSize="@dimen/dp20"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/lay_add_comment"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:background="@drawable/but_oval_str_brown1_tra"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:duplicateParentState="true"
+                                android:fontFamily="@font/comfortaa"
+                                android:gravity="center"
+                                android:text="@string/s_save"
+                                android:textAllCaps="true"
+                                android:textColor="@color/a_brown11"
+                                android:textSize="@dimen/dp20"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
