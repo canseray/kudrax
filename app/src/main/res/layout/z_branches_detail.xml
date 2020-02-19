@@ -81,7 +81,7 @@
                         android:layout_height="@dimen/dp30" />
 
                     <TextView
-                        android:id="@+id/adres"
+                        android:id="@+id/address"
                         android:text="acık adres"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"

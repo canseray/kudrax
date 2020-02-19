@@ -1,6 +1,7 @@
 package tr.limonist.kudra.app.main;
 
 import android.app.Activity;
+import android.net.Uri;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -33,7 +35,8 @@ public class BranchesDetail extends FragmentActivity implements OnMapReadyCallba
     public String[] part2,part1;
     private Activity m_activity;
     BranchesItem store_item_detail;
-    private TextView title,adres, select_store, select_another_store;
+    private TextView title,adres, phone, email;
+    SimpleDraweeView store_img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,12 @@ public class BranchesDetail extends FragmentActivity implements OnMapReadyCallba
         store_item_detail = (BranchesItem) getIntent().getSerializableExtra("store_item_detail");
         pd = new TransparentProgressDialog(m_activity, "", true);
         setContentView(R.layout.z_branches_detail);
+
+        title = findViewById(R.id.title);
+        adres = findViewById(R.id.address);
+        phone = findViewById(R.id.phone);
+        email = findViewById(R.id.email);
+        store_img = findViewById(R.id.store_img);
 
         ViewStub stub = findViewById(R.id.lay_stub);
         stub.setLayoutResource(R.layout.b_top_img_txt_emp);
@@ -64,6 +73,12 @@ public class BranchesDetail extends FragmentActivity implements OnMapReadyCallba
             }
         });
 
+
+        title.setText(store_item_detail.getName());
+        adres.setText(store_item_detail.getAddress());
+        phone.setText(store_item_detail.getPhone());
+        email.setText(store_item_detail.getEmail());
+        store_img.setImageURI(Uri.parse(store_item_detail.getImage()));
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
