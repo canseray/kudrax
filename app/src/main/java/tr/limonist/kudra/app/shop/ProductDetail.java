@@ -3,34 +3,55 @@ package tr.limonist.kudra.app.shop;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.util.Pair;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewStub;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.github.lguipeng.library.animcheckbox.AnimCheckBox;
+import com.github.marlonlom.utilities.timeago.TimeAgo;
+import com.github.marlonlom.utilities.timeago.TimeAgoMessages;
+import com.twotoasters.jazzylistview.JazzyListView;
 import com.varunest.sparkbutton.SparkButton;
 import com.varunest.sparkbutton.SparkEventListener;
 
 import org.w3c.dom.Document;
 
 import java.io.ByteArrayInputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import tr.limonist.classes.BannerItem;
+import tr.limonist.classes.MainItem;
+import tr.limonist.classes.NotificationsItem;
+import tr.limonist.classes.ProductAllPricaData;
+import tr.limonist.classes.ProductCommentData;
+import tr.limonist.classes.ProductTempList;
 import tr.limonist.kudra.APP;
 import tr.limonist.kudra.R;
 import tr.limonist.kudra.app.cart.Cart;
 import tr.limonist.extras.MyTextView;
 import tr.limonist.extras.TransparentProgressDialog;
+import tr.limonist.kudra.app.main.Main;
+import tr.limonist.views.MyImageDialog;
+import tr.limonist.views.MyNotificationDialog;
 import tr.limonist.views.MyZoomImageDialog;
 
 public class ProductDetail extends Activity {
@@ -39,17 +60,30 @@ public class ProductDetail extends Activity {
     TransparentProgressDialog pd;
     String[] part1;
     String product_id = "0",product_title="";
-    MyTextView badge_right;
+    TextView badge_right;
     SimpleDraweeView img;
     private SimpleDraweeView spark;
-    private MyTextView tv_title;
+    private TextView tv_title,tv_total_bottom;
     private TextView tv_count;
-    private MyTextView tv_total;
+    private TextView tv_total;
     private LinearLayout lay_minus;
     private LinearLayout lay_plus;
     private LinearLayout lay_cart;
     private String sendPart1,sendPart2;
     private String favPart1,favPart2;
+    private String[] temp_list, all_price_data, all_comment_data;
+    ArrayList<ProductTempList> result_temp_list;
+    ArrayList<ProductAllPricaData> result_all_price_data;
+    ArrayList<ProductCommentData> result_comment_data;
+    TextView gramaj_one, gramaj_two, price_one, price_two, tv_count_top, tv_desc, tv_content;
+    TextView tab_desc, tab_content, tab_comment, comment_layout;
+    int product_count = 0;
+    double total_price;
+    AnimCheckBox checkbox_one, checkBox_two;
+    JazzyListView list_comment;
+    private lazy adapter;
+    ImageView add_comment;
+
 
     //spark btn yerine share
 
@@ -111,30 +145,82 @@ public class ProductDetail extends Activity {
         badge_right.setBackgroundResource(R.drawable.but_circle_black1);
         badge_right.setTextColor(getResources().getColor(R.drawable.text_white));
 
+        gramaj_one = findViewById(R.id.gramaj_one);
+        gramaj_two = findViewById(R.id.gramaj_two);
+        price_one = findViewById(R.id.price_one);
+        price_two = findViewById(R.id.price_two);
+        tv_count_top = findViewById(R.id.tv_count_top);
+        tv_count = (TextView) findViewById(R.id.tv_count);
+        tv_total = (TextView) findViewById(R.id.tv_total);
+        spark = (SimpleDraweeView) findViewById(R.id.spark);
+        tv_total_bottom = findViewById(R.id.tv_total_bottom);
+        tv_title = (TextView) findViewById(R.id.tv_title);
+        checkbox_one = findViewById(R.id.checkbox_one);
+        checkBox_two = findViewById(R.id.checkbox_two);
+        tv_desc = findViewById(R.id.tv_desc);
+        tv_content = findViewById(R.id.tv_content);
+        list_comment = findViewById(R.id.list_comment);
+        tab_desc = findViewById(R.id.tab_desc);
+        tab_content = findViewById(R.id.tab_content);
+        tab_comment = findViewById(R.id.tab_comment);
+        add_comment = findViewById(R.id.add_comment);
+        comment_layout = findViewById(R.id.comment_layout);
+
         img = findViewById(R.id.img);
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new MyZoomImageDialog(m_activity, product_title,part_product_image, null, true).show();
+
+                new MyZoomImageDialog(m_activity, product_title,result_temp_list.get(0).getProduct_image(), null, true).show();
             }
         });
-
-        spark = (SimpleDraweeView) findViewById(R.id.spark);
-
-        tv_title = (MyTextView) findViewById(R.id.tv_title);
-
-        tv_count = (TextView) findViewById(R.id.tv_count);
-        tv_total = (MyTextView) findViewById(R.id.tv_total);
 
         lay_minus = (LinearLayout) findViewById(R.id.lay_minus);
         lay_minus.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-                if (product_cart_count > 1) {
-                    --product_cart_count;
-                    fillPrice();
+
+                if (!checkbox_one.isChecked() && !checkBox_two.isChecked()){
+
+                    final MyImageDialog dia = new MyImageDialog(m_activity,"",
+                            "Lütfen ilk olarak satın almak istediğiniz ürün gramajını seçiniz.","Tamam",true);
+
+                    dia.setOkClick(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dia.dismiss();
+
+                        }
+                    });
+
+                    dia.show();
+
+                } else if (checkbox_one.isChecked() && checkBox_two.isChecked()){
+
+                    final MyImageDialog dia = new MyImageDialog(m_activity,"",
+                            "Lütfen tek bir ürün gramajı seçiniz.","Tamam",true);
+
+                    dia.setOkClick(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dia.dismiss();
+                        }
+                    });
+
+                    dia.show();
+
+                } else {
+                    tv_count_top.setBackground(null);
+                    if (product_count > 1){
+                        --product_count;
+                        tv_count.setText(String.valueOf(product_count));
+                        tv_count_top.setText(String.valueOf(product_count));
+                        fillPrice();
+                    }
                 }
+
+
             }
 
         });
@@ -145,8 +231,43 @@ public class ProductDetail extends Activity {
             @Override
             public void onClick(View arg0) {
 
-                ++product_cart_count;
-                fillPrice();
+                if (!checkbox_one.isChecked() && !checkBox_two.isChecked()){
+
+                    final MyImageDialog dia = new MyImageDialog(m_activity,"",
+                            "Lütfen ilk olarak satın almak istediğiniz ürün gramajını seçiniz.","Tamam",true);
+
+                    dia.setOkClick(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dia.dismiss();
+                        }
+                    });
+
+                    dia.show();
+
+                } else if (checkbox_one.isChecked() && checkBox_two.isChecked()){
+
+                    final MyImageDialog dia = new MyImageDialog(m_activity,"",
+                            "Lütfen tek bir ürün gramajı seçiniz.","Tamam",true);
+
+                    dia.setOkClick(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dia.dismiss();
+                        }
+                    });
+
+                    dia.show();
+
+                } else {
+
+                    tv_count_top.setBackground(null);
+                    ++product_count;
+                    tv_count.setText(String.valueOf(product_count));
+                    tv_count_top.setText(String.valueOf(product_count));
+                    fillPrice();
+                }
+
             }
 
         });
@@ -163,14 +284,18 @@ public class ProductDetail extends Activity {
 
         });
 
+
     }
 
-    private String part_product_image, part_product_favorite = "0", part_product_currency, part_product_detail, part_cart_item_count;
-    private String part_product_price, part_product_cart_amount, part_product_video;
+
 
     class Connection extends AsyncTask<String, Void, String> {
 
         protected String doInBackground(String... args) {
+
+            result_temp_list = new ArrayList<>();
+            result_all_price_data = new ArrayList<>();
+            result_comment_data = new ArrayList<>();
 
             List<Pair<String, String>> nameValuePairs = new ArrayList<>();
 
@@ -179,7 +304,7 @@ public class ProductDetail extends Activity {
             nameValuePairs.add(new Pair<>("param3", APP.base64Encode(APP.language_id)));
             nameValuePairs.add(new Pair<>("param4", APP.base64Encode("A")));
 
-            String xml = APP.post1(nameValuePairs, APP.path + "/get_selected_product_details.php");
+            String xml = APP.post1(nameValuePairs, APP.path + "/get_product_detail.php");
 
             if (xml != null && !xml.contentEquals("fail")) {
 
@@ -190,19 +315,52 @@ public class ProductDetail extends Activity {
 
                     for (int i = 0; i < parse.getElementsByTagName("row").getLength(); i++) {
 
-                        part_product_cart_amount = APP.base64Decode(APP.getElement(parse, "part1"));
-                        part_product_price = APP.base64Decode(APP.getElement(parse, "part2"));
-                        part_cart_item_count = APP.base64Decode(APP.getElement(parse, "part3"));
-                        part_product_detail = APP.base64Decode(APP.getElement(parse, "part4"));
-                        part_product_currency = APP.base64Decode(APP.getElement(parse, "part5"));
-                        part_product_favorite = APP.base64Decode(APP.getElement(parse, "part6"));
-                        part_product_video = APP.base64Decode(APP.getElement(parse, "part7"));
-                        part_product_image = APP.base64Decode(APP.getElement(parse, "part8"));
-
+                        temp_list = APP.base64Decode(APP.getElement(parse, "part1")).split("\\[##\\]");
+                        all_price_data = APP.base64Decode(APP.getElement(parse, "part2")).split("\\[##\\]");
+                        all_comment_data = APP.base64Decode(APP.getElement(parse, "part3")).split("\\[##\\]");
 
                     }
 
-                    if (!part_product_price.contentEquals("")) {
+                    if (!temp_list[0].contentEquals("")) {
+
+                        for (int i = 0; i < temp_list.length; i++){
+                            String[] temp = temp_list[i].split("\\[#\\]");
+                            ProductTempList ai = new ProductTempList(temp.length > 0 ? temp[0] : "",
+                                    temp.length > 1 ? temp[1] : "",
+                                    temp.length > 2 ? temp[2] : "",
+                                    temp.length > 3 ? temp[3] : "",
+                                    temp.length > 4 ? temp[4] : "",
+                                    temp.length > 5 ? temp[5] : "",
+                                    temp.length > 6 ? temp[6] : "",
+                                    temp.length > 7 ? temp[7] : "");
+                            result_temp_list.add(ai);
+                        }
+
+                        if (!all_price_data[0].contentEquals("")) {
+
+                            for (int i = 0; i < all_price_data.length; i++) {
+                                String[] temp = all_price_data[i].split("\\[#\\]");
+                                ProductAllPricaData ai = new ProductAllPricaData(temp.length > 0 ? temp[0] : "",
+                                        temp.length > 1 ? temp[1] : "",
+                                        temp.length > 2 ? temp[2] : "",
+                                        temp.length > 3 ? temp[3] : "");
+                                result_all_price_data.add(ai);
+                            }
+
+                        }
+
+                        if (!all_comment_data[0].contentEquals("")) {
+
+                            for (int i = 0; i < all_comment_data.length; i++) {
+                                String[] temp = all_comment_data[i].split("\\[#\\]");
+                                ProductCommentData ai = new ProductCommentData(temp.length > 0 ? temp[0] : "",
+                                        temp.length > 1 ? temp[1] : "",
+                                        temp.length > 2 ? temp[2] : "");
+                                result_comment_data.add(ai);
+                            }
+
+                        }
+
                         return "true";
                     } else
                         return "false";
@@ -222,79 +380,170 @@ public class ProductDetail extends Activity {
                 pd.dismiss();
             if (result.contentEquals("true")) {
                 fillComponents();
+                fillDescription();
+                bottomMenu();
             } else {
                 APP.show_status(m_activity, 1, getResources().getString(R.string.s_unexpected_connection_error_has_occured));
             }
         }
     }
 
-    private void fillComponents() {
+    public class lazy extends BaseAdapter {
+        private LayoutInflater inflater = null;
 
-        tv_title.setText(product_title);
-        img.setImageURI(part_product_image);
+        public lazy() {
+            inflater = LayoutInflater.from(m_activity);
 
-        int cart_count = 0;
-
-        try {
-            cart_count = Integer.parseInt(part_cart_item_count);
-        } catch (Exception e) {
         }
 
-        if (cart_count > 0) {
-            badge_right.setVisibility(View.VISIBLE);
-            badge_right.setText(part_cart_item_count);
-        } else badge_right.setVisibility(View.GONE);
-
-        if (part_product_favorite.contentEquals("1")) {
-            //spark.setChecked(true);
-            //spark.playAnimation();
+        @Override
+        public int getCount() {
+            return result_comment_data.size();
         }
 
-      /*  spark.setEventListener(new SparkEventListener() {
-            @Override
-            public void onEvent(ImageView button, boolean buttonState) {
-                pd.show();
-                new Connection3().execute();
-            }
-
-            @Override
-            public void onEventAnimationEnd(ImageView button, boolean buttonState) {
-
-            }
-
-            @Override
-            public void onEventAnimationStart(ImageView button, boolean buttonState) {
-
-            }
-        }); */
-
-      spark.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-              //share
-          }
-      });
-
-        single_price = Double.parseDouble(part_product_price);
-        product_cart_count = 1;
-        try {
-            product_cart_count = Double.parseDouble(part_product_cart_amount);
-        } catch (Exception e) {
+        @Override
+        public ProductCommentData getItem(int position) {
+            return result_comment_data.get(position);
         }
 
-        fillPrice();
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        public class ViewHolder {
+
+            TextView comment_name, comment_date, comment;
+
+
+        }
+
+        public View getView(final int position, View view, ViewGroup parent) {
+            final ProductCommentData item = result_comment_data.get(position);
+
+            final ViewHolder holder;
+            if (view == null) {
+                holder = new ViewHolder();
+                view = inflater.inflate(R.layout.c_product_comment, null);
+
+                holder.comment_name = (TextView) view.findViewById(R.id.comment_name);
+                holder.comment_date = (TextView) view.findViewById(R.id.comment_date);
+                holder.comment = (TextView) view.findViewById(R.id.comment);
+
+
+                view.setTag(holder);
+            } else {
+                holder = (ViewHolder) view.getTag();
+            }
+
+            holder.comment_name.setText(item.getAuthor());
+            holder.comment_date.setText(item.getDate());
+            holder.comment.setText(item.getText());
+
+            return view;
+        }
 
     }
 
-    double product_cart_count = 1;
-    double single_price = 0;
-    double total_price = 0;
+
+    private void fillComponents() {
+        tv_title.setText(result_temp_list.get(0).getProduct_name());
+        img.setImageURI(Uri.parse(result_temp_list.get(0).getProduct_image()));
+        gramaj_one.setText(result_all_price_data.get(0).getGramaj());
+        gramaj_two.setText(result_all_price_data.get(1).getGramaj());
+        price_one.setText(result_all_price_data.get(0).getOld_price());
+        price_two.setText(result_all_price_data.get(1).getOld_price());
+
+    }
+
 
     void fillPrice() {
-        tv_count.setText(APP.formatFigureOnePlaces(product_cart_count));
-        total_price = product_cart_count * single_price;
-        tv_total.setText(APP.formatFigureTwoPlaces(total_price) + " " + part_product_currency);
+        if (checkbox_one.isChecked()){
+            total_price = product_count * Double.parseDouble(result_all_price_data.get(0).getOld_price());
+            tv_total.setText(result_all_price_data.get(0).getOld_price());
+            tv_total_bottom.setText(APP.formatFigureTwoPlaces(total_price));
+
+        } else if (checkBox_two.isChecked()){
+            total_price = product_count * Double.parseDouble(result_all_price_data.get(1).getOld_price());
+            tv_total.setText(result_all_price_data.get(1).getOld_price());
+            tv_total_bottom.setText(APP.formatFigureTwoPlaces(total_price));
+        }
     }
+
+    private void fillDescription(){
+        tv_desc.setText(result_temp_list.get(0).getProduct_desc());
+    }
+
+    private void fillContent(){
+        tv_content.setText(result_temp_list.get(0).getProduct_content());
+    }
+
+    private void fillComment(){
+        adapter = new lazy();
+        list_comment.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+    }
+
+    private void bottomMenu(){
+        tab_desc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fillDescription();
+
+                tab_desc.setTextColor(getResources().getColor(R.color.a_brown11));
+                tab_content.setTextColor(getResources().getColor(R.color.a_brown12));
+                tab_comment.setTextColor(getResources().getColor(R.color.a_brown12));
+
+                comment_layout.setVisibility(View.GONE);
+                tv_desc.setVisibility(View.VISIBLE);
+                tv_content.setVisibility(View.GONE);
+                list_comment.setVisibility(View.GONE);
+            }
+        });
+
+        tab_content.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fillContent();
+
+                tab_desc.setTextColor(getResources().getColor(R.color.a_brown12));
+                tab_content.setTextColor(getResources().getColor(R.color.a_brown11));
+                tab_comment.setTextColor(getResources().getColor(R.color.a_brown12));
+
+                comment_layout.setVisibility(View.GONE);
+                tv_desc.setVisibility(View.GONE);
+                tv_content.setVisibility(View.VISIBLE);
+                list_comment.setVisibility(View.GONE);
+            }
+        });
+
+        tab_comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fillComment();
+
+                tab_desc.setTextColor(getResources().getColor(R.color.a_brown12));
+                tab_content.setTextColor(getResources().getColor(R.color.a_brown12));
+                tab_comment.setTextColor(getResources().getColor(R.color.a_brown11));
+
+                comment_layout.setVisibility(View.GONE);
+                tv_desc.setVisibility(View.GONE);
+                tv_content.setVisibility(View.GONE);
+                list_comment.setVisibility(View.VISIBLE);
+            }
+        });
+
+        add_comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                comment_layout.setVisibility(View.VISIBLE);
+                tv_desc.setVisibility(View.GONE);
+                tv_content.setVisibility(View.GONE);
+                list_comment.setVisibility(View.GONE);
+            }
+        });
+    }
+
 
     class Connection2 extends AsyncTask<String, Void, String> {
 
@@ -304,7 +553,7 @@ public class ProductDetail extends Activity {
 
             nameValuePairs.add(new Pair<>("param1", APP.base64Encode(APP.main_user != null ? APP.main_user.id : "0")));
             nameValuePairs.add(new Pair<>("param2", APP.base64Encode(product_id)));
-            nameValuePairs.add(new Pair<>("param3", APP.base64Encode("" + product_cart_count)));
+            nameValuePairs.add(new Pair<>("param3", APP.base64Encode("" )));
             nameValuePairs.add(new Pair<>("param4", APP.base64Encode(APP.language_id)));
             nameValuePairs.add(new Pair<>("param5", APP.base64Encode("A")));
 
