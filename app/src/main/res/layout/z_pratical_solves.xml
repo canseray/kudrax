@@ -88,6 +88,8 @@
                 android:textColor="@drawable/text_white"
                 android:textSize="@dimen/dp15"
                 android:textStyle="bold" />
+
+
         </LinearLayout>
 
     </LinearLayout>
